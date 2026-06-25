@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { createClient } from '../../utils/supabase/server';
+import { supabaseAdmin } from '../../utils/supabaseAdmin';
 import { redirect } from 'next/navigation';
 import LogoutButton from './LogoutButton';
 import CheckoutButton from './CheckoutButton';
@@ -14,24 +15,43 @@ export default async function DashboardPage() {
     redirect('/login');
   }
 
-  // Fetch candidate record
-  const { data: candidate, error } = await supabase
+  // Fetch candidate record securely, bypassing RLS
+  let { data: candidate, error } = await supabaseAdmin
     .from('candidates')
     .select('*')
     .eq('email', user.email)
     .single();
 
   if (error || !candidate) {
-    // Edge case where auth exists but candidate row is missing
-    return (
-      <div style={{ minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'var(--bg-primary)', color: 'var(--text-primary)' }}>
-        <div style={{ textAlign: 'center' }}>
-          <h2>Profile Sync Error</h2>
-          <p>Your identity is registered, but your candidate record is missing.</p>
-          <LogoutButton />
+    // AUTO-HEAL: If the trigger wasn't run and client insert failed due to RLS,
+    // we use the Admin client here to forcefully initialize the user's record.
+    const { data: newCandidate, error: insertError } = await supabaseAdmin
+      .from('candidates')
+      .upsert({
+        email: user.email,
+        full_name: user.user_metadata?.full_name || 'Candidate',
+        payment_status: false,
+        passed_exam: false,
+        exam_score: 0,
+        exam_attempts: 0
+      }, { onConflict: 'email' })
+      .select()
+      .single();
+
+    if (insertError) {
+      console.error("Auto-heal failed:", insertError);
+      return (
+        <div style={{ minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'var(--bg-primary)', color: 'var(--text-primary)' }}>
+          <div style={{ textAlign: 'center' }}>
+            <h2>Profile Sync Error</h2>
+            <p>Your identity is registered, but the system could not initialize your profile.</p>
+            <LogoutButton />
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
+    
+    candidate = newCandidate;
   }
 
   // Determine state
