@@ -2,60 +2,104 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function FlipSection() {
-  const [isFlipped, setIsFlipped] = useState(false);
+  const router = useRouter();
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
 
-  const handleBeginRegistration = (e) => {
+  const handleCheckout = async (e) => {
     e.preventDefault();
-    setIsFlipped(true);
+    setIsLoading(true);
+    setErrorMsg('');
+
+    try {
+      const response = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, full_name: fullName })
+      });
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to initialize payment gateway.');
+      }
+
+      if (data.alreadyPaid) {
+        router.push(data.redirectUrl);
+      } else if (data.paymentUrl) {
+        window.location.href = data.paymentUrl;
+      }
+    } catch (err) {
+      console.error(err);
+      setErrorMsg(err.message);
+      setIsLoading(false);
+    }
   };
 
   return (
-    <div className="flip-container" id="register">
-      <div className={`flipper ${isFlipped ? 'flipped' : ''}`}>
+    <div className="flip-container" id="register" style={{ perspective: 'none', height: 'auto', marginBottom: '80px' }}>
+      <div style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-medium)', borderRadius: '8px', padding: '48px 32px', maxWidth: '500px', width: '100%', margin: '0 auto', boxShadow: '0 8px 32px rgba(0,0,0,0.1)' }}>
         
-        {/* SECTION 4 (FRONT): HOW TO REGISTER */}
-        <div className="front">
-          <h2>How to Join the Revolution</h2>
-          <p>
-            The revolution's mission is to build billionaires. It is not for everybody. It is reserved for those who have developed the right mindset and are ready to prove they are serious before the reward arrives.
+        <h2 style={{ fontSize: '28px', color: 'var(--text-primary)', marginBottom: '8px', fontWeight: '800', textAlign: 'center' }}>
+          Join the Revolution
+        </h2>
+        <p style={{ color: 'var(--text-secondary)', marginBottom: '32px', fontSize: '15px', textAlign: 'center', lineHeight: '1.6' }}>
+          Secure your clearance and gain access to the Preparatory Architecture. Only serious candidates may enter.
+        </p>
+
+        <form onSubmit={handleCheckout}>
+          {errorMsg && (
+            <div className="ui-notice-box urgent-notice mb-6" style={{ padding: '12px' }}>
+              <strong>NOTICE:</strong> {errorMsg}
+            </div>
+          )}
+
+          <div style={{ marginBottom: '20px' }}>
+            <label style={{ display: 'block', color: 'var(--text-primary)', fontSize: '14px', fontWeight: '600', marginBottom: '8px' }}>Full Legal Name</label>
+            <input
+              type="text"
+              style={{ width: '100%', padding: '14px 16px', backgroundColor: 'var(--bg-tertiary)', border: '1px solid var(--border-light)', borderRadius: '4px', color: 'var(--text-primary)', fontSize: '16px' }}
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
+              placeholder="e.g. Obinna Eze"
+              disabled={isLoading}
+              required
+            />
+          </div>
+
+          <div style={{ marginBottom: '32px' }}>
+            <label style={{ display: 'block', color: 'var(--text-primary)', fontSize: '14px', fontWeight: '600', marginBottom: '8px' }}>Secure Email Address</label>
+            <input
+              type="email"
+              style={{ width: '100%', padding: '14px 16px', backgroundColor: 'var(--bg-tertiary)', border: '1px solid var(--border-light)', borderRadius: '4px', color: 'var(--text-primary)', fontSize: '16px' }}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="e.g. obinna@domain.com"
+              disabled={isLoading}
+              required
+            />
+          </div>
+
+          <button 
+            type="submit" 
+            className={`btn ${isLoading ? 'btn-disabled' : 'btn-primary'}`}
+            style={{ width: '100%', padding: '16px', fontSize: '16px' }}
+            disabled={isLoading}
+          >
+            {isLoading ? 'Connecting to Secure Gateway...' : 'Pay ₦5,000 to Secure Access'}
+          </button>
+        </form>
+
+        <div style={{ marginTop: '24px', textAlign: 'center', fontSize: '13px' }}>
+          <p style={{ color: 'var(--text-secondary)', lineHeight: '1.5' }}>
+            By proceeding to payment you agree to our <Link href="/terms" className="text-wine">Terms and Conditions</Link>. 
+            You will create your account password immediately after payment.
           </p>
-          <div className="process-list" style={{ marginTop: '24px', marginBottom: '24px' }}>
-            <div className="process-item" style={{ padding: '12px 0', borderBottom: '1px solid var(--border-light)' }}><strong>1. Read:</strong> Study the foundational article we provide.</div>
-            <div className="process-item" style={{ padding: '12px 0', borderBottom: '1px solid var(--border-light)' }}><strong>2. Test:</strong> Take the Entrance Examination.</div>
-            <div className="process-item" style={{ padding: '12px 0' }}><strong>3. Assess:</strong> The Revolution Exam Team reviews your qualifications and decides the next step.</div>
-          </div>
-          
-          <div className="button-group-vertical mt-4">
-            <button onClick={handleBeginRegistration} className="btn btn-primary" type="button">Begin the Registration</button>
-            <Link href="#faq" className="text-link">Learn more about this process</Link>
-          </div>
         </div>
-
-        {/* SECTION 5 (BACK): TERMS OF ENTRY */}
-        <div className="back">
-          <h2>The Terms of Entry</h2>
-          <p>First, find out why you're here. Then, apply to be a member. We've summarized our terms in 5 bullet points. <strong>Do not apply if you do not accept our terms.</strong></p>
-          
-          <div className="ui-notice-box urgent-notice mb-4 mt-4">
-            <strong>⚠️ Urgent Notice:</strong> Our registration fee will increase to <strong>₦5,000</strong> as soon as we round up our first 1,000 finalists for 2026. Secure your spot now.
-          </div>
-
-          <ul className="terms-list">
-            <li><strong>Payment:</strong> ₦3,000 registration fee (bank charges may apply depending on country/location).</li>
-            <li><strong>Commitment:</strong> Strictly no refunds. The process is the preparation; you are paying for the architecture of your new life.</li>
-            <li><strong>Examination:</strong> An Entrance Examination must be taken to prove your readiness. A minimum score of 45/100 is required to pass.</li>
-            <li><strong>Opportunities:</strong> You are granted exactly <strong>two chances</strong> to pass the exam.</li>
-            <li><strong>Integrity:</strong> Zero tolerance for cheating. The exam is a mirror showing you who you are—do not lie to it.</li>
-          </ul>
-
-          <div className="button-group-vertical mt-4">
-            <Link href="/register" className="btn btn-primary">Create Identity & Proceed to Clearance</Link>
-            <Link href="#faq" className="text-link">Ask questions about the above terms</Link>
-          </div>
-        </div>
-        
       </div>
     </div>
   );

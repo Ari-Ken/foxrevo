@@ -1,15 +1,19 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { createClient } from '../../utils/supabase/client';
 
-export default function RegisterPage() {
+function RegisterForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const supabase = createClient();
+  
+  const queryEmail = searchParams.get('email') || '';
+  
   const [fullName, setFullName] = useState('');
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState(queryEmail);
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
@@ -49,7 +53,6 @@ export default function RegisterPage() {
 
     if (dbError) {
       console.error("Database init error:", dbError);
-      // We don't block them entirely, but log it. The dashboard will handle missing rows if needed, or we can just show an error.
     }
 
     // 3. Redirect to dashboard
@@ -61,10 +64,26 @@ export default function RegisterPage() {
     <div style={{ minHeight: 'calc(100vh - 80px)', backgroundColor: 'var(--bg-primary)', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '24px' }}>
       <div style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-medium)', borderRadius: '8px', padding: '40px 32px', maxWidth: '450px', width: '100%', boxShadow: '0 8px 32px rgba(0,0,0,0.2)' }}>
         
-        <h1 style={{ fontSize: '28px', color: 'var(--text-primary)', marginBottom: '8px', fontWeight: '800' }}>Candidate Registration</h1>
-        <p style={{ color: 'var(--text-secondary)', marginBottom: '32px', fontSize: '15px' }}>
-          Create your account. This identity will be permanently tied to your examination and blueprint access.
-        </p>
+        {queryEmail ? (
+          <>
+            <div style={{ width: '64px', height: '64px', backgroundColor: 'rgba(16, 185, 129, 0.1)', borderRadius: '50%', display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '0 auto 16px' }}>
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            <h1 style={{ fontSize: '28px', color: 'var(--text-primary)', marginBottom: '8px', fontWeight: '800', textAlign: 'center' }}>Clearance Successful</h1>
+            <p style={{ color: 'var(--text-secondary)', marginBottom: '32px', fontSize: '15px', textAlign: 'center' }}>
+              Your payment is verified. Finalize your identity by setting a secure password.
+            </p>
+          </>
+        ) : (
+          <>
+            <h1 style={{ fontSize: '28px', color: 'var(--text-primary)', marginBottom: '8px', fontWeight: '800' }}>Candidate Registration</h1>
+            <p style={{ color: 'var(--text-secondary)', marginBottom: '32px', fontSize: '15px' }}>
+              Create your account. This identity will be permanently tied to your examination and blueprint access.
+            </p>
+          </>
+        )}
 
         <form onSubmit={handleRegister}>
           {errorMsg && (
@@ -90,11 +109,11 @@ export default function RegisterPage() {
             <label style={{ display: 'block', color: 'var(--text-primary)', fontSize: '14px', fontWeight: '600', marginBottom: '8px' }}>Secure Email Address</label>
             <input
               type="email"
-              style={{ width: '100%', padding: '12px 16px', backgroundColor: 'var(--bg-tertiary)', border: '1px solid var(--border-light)', borderRadius: '4px', color: 'var(--text-primary)', fontSize: '16px' }}
+              style={{ width: '100%', padding: '12px 16px', backgroundColor: queryEmail ? 'var(--bg-secondary)' : 'var(--bg-tertiary)', border: '1px solid var(--border-light)', borderRadius: '4px', color: 'var(--text-primary)', fontSize: '16px', opacity: queryEmail ? 0.7 : 1 }}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="e.g. obinna@domain.com"
-              disabled={isLoading}
+              disabled={isLoading || !!queryEmail}
               required
             />
           </div>
@@ -119,16 +138,26 @@ export default function RegisterPage() {
             style={{ width: '100%', padding: '14px' }}
             disabled={isLoading}
           >
-            {isLoading ? 'Creating Identity...' : 'Register Identity'}
+            {isLoading ? 'Creating Identity...' : 'Complete Registration'}
           </button>
         </form>
 
-        <div style={{ marginTop: '24px', textAlign: 'center', fontSize: '14px' }}>
-          <p style={{ color: 'var(--text-secondary)' }}>
-            Already registered? <Link href="/login" className="text-wine">Login here</Link>
-          </p>
-        </div>
+        {!queryEmail && (
+          <div style={{ marginTop: '24px', textAlign: 'center', fontSize: '14px' }}>
+            <p style={{ color: 'var(--text-secondary)' }}>
+              Already registered? <Link href="/login" className="text-wine">Login here</Link>
+            </p>
+          </div>
+        )}
       </div>
     </div>
+  );
+}
+
+export default function RegisterPage() {
+  return (
+    <Suspense fallback={<div style={{ padding: '100px', textAlign: 'center' }}>Loading Registration...</div>}>
+      <RegisterForm />
+    </Suspense>
   );
 }
