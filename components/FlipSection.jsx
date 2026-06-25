@@ -45,7 +45,11 @@ export default function FlipSection() {
           >
             I Understand — Register My Identity
           </Link>
-          <p style={{ marginTop: '16px', color: 'var(--text-secondary)', fontSize: '12px' }}>
+          <p style={{ marginTop: '16px', color: 'var(--text-secondary)', fontSize: '14px' }}>
+            Already a member?{' '}
+            <Link href="/login" style={{ color: '#A51C30', textDecoration: 'none', fontWeight: 'bold' }}>Login here</Link>
+          </p>
+          <p style={{ marginTop: '8px', color: 'var(--text-secondary)', fontSize: '12px' }}>
             Free to register. By registering you accept our{' '}
             <Link href="/terms" style={{ color: '#A51C30', textDecoration: 'none' }}>Terms and Conditions</Link>.
           </p>
