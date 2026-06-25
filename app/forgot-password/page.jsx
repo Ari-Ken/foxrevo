@@ -7,82 +7,79 @@ import { createClient } from '../../utils/supabase/client';
 export default function ForgotPasswordPage() {
   const supabase = createClient();
   const [email, setEmail] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const [message, setMessage] = useState('');
-  const [errorMsg, setErrorMsg] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleReset = async (e) => {
+  const handleSend = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
-    setErrorMsg('');
-    setMessage('');
+    setLoading(true);
+    setError('');
 
-    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://foxrevo.com';
+    const origin = window.location.origin;
 
-    const { error } = await supabase.auth.resetPasswordForEmail(email.trim().toLowerCase(), {
+    const { error: resetError } = await supabase.auth.resetPasswordForEmail(email.trim().toLowerCase(), {
       redirectTo: `${origin}/reset-password`,
     });
 
-    if (error) {
-      setErrorMsg(error.message);
+    if (resetError) {
+      setError(resetError.message);
     } else {
-      setMessage("A password reset link has been sent to your email. Check your inbox (and spam folder) to proceed.");
+      setSent(true);
     }
-    
-    setIsLoading(false);
+    setLoading(false);
   };
 
   return (
     <div style={{ minHeight: 'calc(100vh - 80px)', backgroundColor: 'var(--bg-primary)', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '24px' }}>
-      <div style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-medium)', borderRadius: '8px', padding: '40px 32px', maxWidth: '450px', width: '100%', boxShadow: '0 8px 32px rgba(0,0,0,0.2)' }}>
-        
-        <h1 style={{ fontSize: '28px', color: 'var(--text-primary)', marginBottom: '8px', fontWeight: '800' }}>Reset Password</h1>
-        <p style={{ color: 'var(--text-secondary)', marginBottom: '32px', fontSize: '15px' }}>
-          Enter the email address you used to register. We will send you a secure link to reset your password.
+      <div style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-medium)', borderRadius: '8px', padding: '40px 32px', maxWidth: '440px', width: '100%', boxShadow: '0 8px 32px rgba(0,0,0,0.2)' }}>
+
+        <h1 style={{ fontSize: '26px', fontWeight: '800', color: 'var(--text-primary)', marginBottom: '8px' }}>
+          Reset Password
+        </h1>
+        <p style={{ color: 'var(--text-secondary)', marginBottom: '32px', fontSize: '14px', lineHeight: '1.6' }}>
+          Enter your registered email. We will send you a link to set a new password.
         </p>
 
-        <form onSubmit={handleReset}>
-          {errorMsg && (
-            <div className="ui-notice-box urgent-notice mb-6" style={{ padding: '12px' }}>
-              <strong>ERROR:</strong> {errorMsg}
-            </div>
-          )}
-
-          {message && (
-            <div className="ui-notice-box mb-6" style={{ padding: '12px', borderLeftColor: '#10B981', backgroundColor: 'rgba(16, 185, 129, 0.1)' }}>
-              <strong style={{ color: '#10B981' }}>SUCCESS:</strong> 
-              <p style={{ color: 'var(--text-primary)', marginTop: '4px' }}>{message}</p>
-            </div>
-          )}
-
-          <div style={{ marginBottom: '24px' }}>
-            <label style={{ display: 'block', color: 'var(--text-primary)', fontSize: '14px', fontWeight: '600', marginBottom: '8px' }}>Registered Email Address</label>
-            <input
-              type="email"
-              style={{ width: '100%', padding: '12px 16px', backgroundColor: 'var(--bg-tertiary)', border: '1px solid var(--border-light)', borderRadius: '4px', color: 'var(--text-primary)', fontSize: '16px' }}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="e.g. obinna@domain.com"
-              disabled={isLoading || !!message}
-              required
-            />
+        {sent ? (
+          <div style={{ background: 'rgba(16,185,129,0.1)', border: '1px solid #10B981', borderRadius: '4px', padding: '16px', color: 'var(--text-primary)', lineHeight: '1.6' }}>
+            <strong style={{ color: '#10B981' }}>Email Sent.</strong> Check your inbox (and spam folder) for the reset link.
           </div>
+        ) : (
+          <form onSubmit={handleSend}>
+            {error && (
+              <div style={{ background: 'rgba(165,28,48,0.1)', border: '1px solid #A51C30', borderRadius: '4px', padding: '12px', marginBottom: '20px', color: '#A51C30', fontSize: '14px' }}>
+                {error}
+              </div>
+            )}
+            <div style={{ marginBottom: '24px' }}>
+              <label style={{ display: 'block', color: 'var(--text-primary)', fontSize: '13px', fontWeight: '600', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                Registered Email
+              </label>
+              <input
+                type="email"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                placeholder="Your email"
+                disabled={loading}
+                required
+                style={{ width: '100%', padding: '12px 14px', backgroundColor: 'var(--bg-tertiary)', border: '1px solid var(--border-light)', borderRadius: '4px', color: 'var(--text-primary)', fontSize: '15px' }}
+              />
+            </div>
+            <button
+              type="submit"
+              disabled={loading}
+              className={`btn ${loading ? 'btn-disabled' : 'btn-primary'}`}
+              style={{ width: '100%', padding: '14px' }}
+            >
+              {loading ? 'Sending…' : 'Send Reset Link'}
+            </button>
+          </form>
+        )}
 
-          <button 
-            type="submit" 
-            className={`btn ${isLoading ? 'btn-disabled' : 'btn-primary'}`}
-            style={{ width: '100%', padding: '14px' }}
-            disabled={isLoading || !!message}
-          >
-            {isLoading ? 'Sending Link...' : 'Send Reset Link'}
-          </button>
-        </form>
-
-        <div style={{ marginTop: '24px', textAlign: 'center', fontSize: '14px' }}>
-          <p style={{ color: 'var(--text-secondary)' }}>
-            Remembered it? <Link href="/login" className="text-wine">Return to Login</Link>
-          </p>
-        </div>
+        <p style={{ textAlign: 'center', marginTop: '24px', fontSize: '14px', color: 'var(--text-secondary)' }}>
+          <Link href="/login" style={{ color: '#A51C30', textDecoration: 'none' }}>← Back to Login</Link>
+        </p>
       </div>
     </div>
   );

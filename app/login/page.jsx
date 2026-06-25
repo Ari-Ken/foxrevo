@@ -10,86 +10,96 @@ export default function LoginPage() {
   const supabase = createClient();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const [errorMsg, setErrorMsg] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
-    setErrorMsg('');
+    setLoading(true);
+    setError('');
 
-    const { data, error } = await supabase.auth.signInWithPassword({
+    const { error: loginError } = await supabase.auth.signInWithPassword({
       email: email.trim().toLowerCase(),
       password,
     });
 
-    if (error) {
-      setErrorMsg(error.message);
-      setIsLoading(false);
-    } else {
-      router.push('/dashboard');
-      router.refresh();
+    if (loginError) {
+      setError(loginError.message);
+      setLoading(false);
+      return;
     }
+
+    router.push('/dashboard');
+    router.refresh();
   };
 
   return (
     <div style={{ minHeight: 'calc(100vh - 80px)', backgroundColor: 'var(--bg-primary)', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '24px' }}>
-      <div style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-medium)', borderRadius: '8px', padding: '40px 32px', maxWidth: '450px', width: '100%', boxShadow: '0 8px 32px rgba(0,0,0,0.2)' }}>
-        
-        <h1 style={{ fontSize: '28px', color: 'var(--text-primary)', marginBottom: '8px', fontWeight: '800' }}>Access Portal</h1>
-        <p style={{ color: 'var(--text-secondary)', marginBottom: '32px', fontSize: '15px' }}>
-          Welcome back to the revolution. Enter your credentials.
+      <div style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-medium)', borderRadius: '8px', padding: '40px 32px', maxWidth: '440px', width: '100%', boxShadow: '0 8px 32px rgba(0,0,0,0.2)' }}>
+
+        <h1 style={{ fontSize: '26px', fontWeight: '800', color: 'var(--text-primary)', marginBottom: '8px' }}>
+          Login
+        </h1>
+        <p style={{ color: 'var(--text-secondary)', marginBottom: '32px', fontSize: '14px' }}>
+          Enter your registered credentials to access your dashboard.
         </p>
 
         <form onSubmit={handleLogin}>
-          {errorMsg && (
-            <div className="ui-notice-box urgent-notice mb-6" style={{ padding: '12px' }}>
-              <strong>NOTICE:</strong> {errorMsg}
+          {error && (
+            <div style={{ background: 'rgba(165,28,48,0.1)', border: '1px solid #A51C30', borderRadius: '4px', padding: '12px', marginBottom: '20px', color: '#A51C30', fontSize: '14px' }}>
+              {error}
             </div>
           )}
 
           <div style={{ marginBottom: '20px' }}>
-            <label style={{ display: 'block', color: 'var(--text-primary)', fontSize: '14px', fontWeight: '600', marginBottom: '8px' }}>Secure Email</label>
+            <label style={{ display: 'block', color: 'var(--text-primary)', fontSize: '13px', fontWeight: '600', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+              Email Address
+            </label>
             <input
               type="email"
-              style={{ width: '100%', padding: '12px 16px', backgroundColor: 'var(--bg-tertiary)', border: '1px solid var(--border-light)', borderRadius: '4px', color: 'var(--text-primary)', fontSize: '16px' }}
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              disabled={isLoading}
+              onChange={e => setEmail(e.target.value)}
+              placeholder="Your registered email"
+              disabled={loading}
               required
+              style={{ width: '100%', padding: '12px 14px', backgroundColor: 'var(--bg-tertiary)', border: '1px solid var(--border-light)', borderRadius: '4px', color: 'var(--text-primary)', fontSize: '15px' }}
             />
           </div>
 
-          <div style={{ marginBottom: '32px' }}>
+          <div style={{ marginBottom: '28px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-              <label style={{ display: 'block', color: 'var(--text-primary)', fontSize: '14px', fontWeight: '600' }}>Password</label>
-              <Link href="/forgot-password" style={{ color: 'var(--accent)', fontSize: '12px', textDecoration: 'none' }}>Forgot Password?</Link>
+              <label style={{ color: 'var(--text-primary)', fontSize: '13px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                Password
+              </label>
+              <Link href="/forgot-password" style={{ color: '#A51C30', fontSize: '12px', textDecoration: 'none' }}>
+                Forgot Password?
+              </Link>
             </div>
             <input
               type="password"
-              style={{ width: '100%', padding: '12px 16px', backgroundColor: 'var(--bg-tertiary)', border: '1px solid var(--border-light)', borderRadius: '4px', color: 'var(--text-primary)', fontSize: '16px' }}
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              disabled={isLoading}
+              onChange={e => setPassword(e.target.value)}
+              placeholder="Your password"
+              disabled={loading}
               required
+              style={{ width: '100%', padding: '12px 14px', backgroundColor: 'var(--bg-tertiary)', border: '1px solid var(--border-light)', borderRadius: '4px', color: 'var(--text-primary)', fontSize: '15px' }}
             />
           </div>
 
-          <button 
-            type="submit" 
-            className={`btn ${isLoading ? 'btn-disabled' : 'btn-primary'}`}
+          <button
+            type="submit"
+            disabled={loading}
+            className={`btn ${loading ? 'btn-disabled' : 'btn-primary'}`}
             style={{ width: '100%', padding: '14px' }}
-            disabled={isLoading}
           >
-            {isLoading ? 'Authenticating...' : 'Secure Login'}
+            {loading ? 'Logging in…' : 'Login'}
           </button>
         </form>
 
-        <div style={{ marginTop: '24px', textAlign: 'center', fontSize: '14px' }}>
-          <p style={{ color: 'var(--text-secondary)' }}>
-            Not an architect yet? <Link href="/register" className="text-wine">Register here</Link>
-          </p>
-        </div>
+        <p style={{ textAlign: 'center', marginTop: '24px', fontSize: '14px', color: 'var(--text-secondary)' }}>
+          No account?{' '}
+          <Link href="/register" style={{ color: '#A51C30', textDecoration: 'none' }}>Register here (free)</Link>
+        </p>
       </div>
     </div>
   );

@@ -3,46 +3,51 @@
 import React, { useState } from 'react';
 
 export default function CheckoutButton() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [errorMsg, setErrorMsg] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleCheckout = async () => {
-    setIsLoading(true);
-    setErrorMsg('');
-
+  const handlePay = async () => {
+    setLoading(true);
+    setError('');
     try {
-      // No body needed — API reads the user from the session cookie
-      const response = await fetch('/api/checkout', { method: 'POST' });
-      const data = await response.json();
+      // POST with no body — server reads identity from session cookie
+      const res = await fetch('/api/checkout', { method: 'POST' });
+      const data = await res.json();
 
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to initialize payment gateway.');
-      }
+      if (!res.ok) throw new Error(data.error || 'Payment gateway error.');
 
       if (data.paymentUrl) {
         window.location.href = data.paymentUrl;
       }
     } catch (err) {
-      console.error(err);
-      setErrorMsg(err.message);
-      setIsLoading(false);
+      setError(err.message);
+      setLoading(false);
     }
   };
 
   return (
     <div>
-      {errorMsg && (
-        <div style={{ backgroundColor: 'rgba(165, 28, 48, 0.1)', border: '1px solid #A51C30', borderRadius: '4px', padding: '12px', marginBottom: '16px', color: '#A51C30', fontSize: '14px' }}>
-          {errorMsg}
+      {error && (
+        <div style={{
+          background: 'rgba(165,28,48,0.1)',
+          border: '1px solid #A51C30',
+          borderRadius: '4px',
+          padding: '12px 16px',
+          color: '#A51C30',
+          fontSize: '14px',
+          marginBottom: '16px',
+          lineHeight: '1.5'
+        }}>
+          {error}
         </div>
       )}
       <button
-        onClick={handleCheckout}
-        disabled={isLoading}
-        className={`btn btn-large ${isLoading ? 'btn-disabled' : 'btn-primary'}`}
+        onClick={handlePay}
+        disabled={loading}
+        className={`btn btn-large ${loading ? 'btn-disabled' : 'btn-primary'}`}
         style={{ width: '100%' }}
       >
-        {isLoading ? 'Connecting to Gateway...' : 'Pay Examination Fee (₦5,000)'}
+        {loading ? 'Connecting to Gateway…' : 'Pay Examination Fee — ₦5,000'}
       </button>
     </div>
   );
