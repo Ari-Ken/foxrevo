@@ -1,109 +1,92 @@
 import { NextResponse } from 'next/server';
 import { supabaseAdmin } from '../../../utils/supabaseAdmin';
+import { createClient } from '../../../utils/supabase/server';
 
 export async function POST(req) {
   try {
-    let requestBody;
-    try {
-      requestBody = await req.json();
-    } catch (reqErr) {
-      throw new Error("Invalid request body from frontend. Could not parse JSON.");
-    }
-    
-    const { email, full_name } = requestBody;
+    // 1. Get authenticated user from session — no body needed from frontend
+    const supabase = createClient();
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
 
-    if (!email || !full_name) {
-      return NextResponse.json({ error: 'Email and Full Name are required.' }, { status: 400 });
+    if (authError || !user) {
+      return NextResponse.json({ error: 'You must be logged in to proceed.' }, { status: 401 });
     }
 
-    const formattedEmail = email.trim().toLowerCase();
+    const email = user.email.trim().toLowerCase();
+    const full_name = user.user_metadata?.full_name || 'Candidate';
 
-    // 1. Check if they already have a record
-    const { data: candidate, error: fetchError } = await supabaseAdmin
+    // 2. Check if already paid
+    const { data: candidate } = await supabaseAdmin
       .from('candidates')
       .select('payment_status')
-      .eq('email', formattedEmail)
+      .eq('email', email)
       .single();
 
-    if (candidate && candidate.payment_status) {
-      // Already paid! Redirect them directly to registration
-      const origin = req.headers.get('origin') || process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-      return NextResponse.json({ 
-        alreadyPaid: true,
-        redirectUrl: `${origin}/register?email=${encodeURIComponent(formattedEmail)}`
-      });
+    if (candidate?.payment_status) {
+      return NextResponse.json({ error: 'Your clearance fee has already been paid.' }, { status: 400 });
     }
 
-    // 2. Initialize or Update record (Upsert)
-    const { error: dbError } = await supabaseAdmin
+    // 3. Ensure candidate row exists
+    await supabaseAdmin
       .from('candidates')
-      .upsert({
-        email: formattedEmail,
-        full_name: full_name.trim(),
-      }, { onConflict: 'email' });
+      .upsert({ email, full_name }, { onConflict: 'email' });
 
-    if (dbError) {
-      console.error('Database Error:', dbError);
-      return NextResponse.json({ error: 'Failed to initialize system record.' }, { status: 500 });
-    }
-
-    // 3. Generate Flutterwave Payment Link
+    // 4. Generate Flutterwave Payment Link
     const FLUTTERWAVE_SECRET_KEY = process.env.FLUTTERWAVE_SECRET_KEY;
-    const origin = req.headers.get('origin') || process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+    const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://foxrevo.com';
 
     if (!FLUTTERWAVE_SECRET_KEY) {
-      console.warn("FLUTTERWAVE_SECRET_KEY is missing. Simulating payment link.");
-      return NextResponse.json({ 
-        paymentUrl: `${origin}/register?email=${encodeURIComponent(formattedEmail)}&simulated=true`,
-        message: 'Simulation mode'
-      });
+      console.warn('FLUTTERWAVE_SECRET_KEY missing — simulation mode');
+      return NextResponse.json({ paymentUrl: `${BASE_URL}/dashboard?simulated=true` });
     }
 
-    const tx_ref = `foxrevo_${formattedEmail}_${Date.now()}`;
-    const amount = 100; // Testing amount (UI will say ₦5,000)
+    const tx_ref = `foxrevo_${email}_${Date.now()}`;
 
     const payload = {
-      tx_ref: tx_ref,
-      amount: amount,
-      currency: "NGN",
-      redirect_url: `${origin}/register?email=${encodeURIComponent(formattedEmail)}`,
-      customer: {
-        email: formattedEmail,
-        name: full_name.trim(),
-      },
+      tx_ref,
+      amount: 100, // Test amount — change to 5000 for live
+      currency: 'NGN',
+      redirect_url: `${BASE_URL}/dashboard`,
+      customer: { email, name: full_name },
       customizations: {
-        title: "FoxRevo Entrance Clearance",
-        description: "Registration and Examination Fee for The Wealth Revolution"
-      }
+        title: 'FoxRevo Entrance Examination Fee',
+        description: 'Clearance fee for The Wealth Revolution entrance exam',
+      },
     };
 
-    const response = await fetch("https://api.flutterwave.com/v3/payments", {
-      method: "POST",
+    const fwResponse = await fetch('https://api.flutterwave.com/v3/payments', {
+      method: 'POST',
       headers: {
         Authorization: `Bearer ${FLUTTERWAVE_SECRET_KEY}`,
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(payload),
     });
 
-    const responseText = await response.text();
+    const responseText = await fwResponse.text();
     let fwData;
     try {
       fwData = JSON.parse(responseText);
-    } catch (parseErr) {
-      console.error("Flutterwave raw response:", responseText);
-      throw new Error(`Flutterwave Gateway returned invalid response: ${responseText || 'Empty response body'}`);
+    } catch {
+      console.error('Flutterwave raw response:', responseText);
+      return NextResponse.json(
+        { error: 'Payment gateway returned an unreadable response. Please try again.' },
+        { status: 502 }
+      );
     }
 
-    if (fwData.status === "success" && fwData.data && fwData.data.link) {
+    if (fwData.status === 'success' && fwData.data?.link) {
       return NextResponse.json({ paymentUrl: fwData.data.link });
-    } else {
-      console.error("Flutterwave Error:", fwData);
-      return NextResponse.json({ error: 'Failed to generate payment link with gateway.' }, { status: 500 });
     }
 
-  } catch (error) {
-    console.error("Checkout API Error:", error);
-    return NextResponse.json({ error: `Internal Server Error: ${error.message}` }, { status: 500 });
+    console.error('Flutterwave Error:', fwData);
+    return NextResponse.json(
+      { error: fwData.message || 'Failed to generate payment link. Please try again.' },
+      { status: 500 }
+    );
+
+  } catch (err) {
+    console.error('Checkout API Error:', err);
+    return NextResponse.json({ error: 'Internal Server Error.' }, { status: 500 });
   }
 }
