@@ -3,7 +3,14 @@ import { supabaseAdmin } from '../../../utils/supabaseAdmin';
 
 export async function POST(req) {
   try {
-    const { email, full_name } = await req.json();
+    let requestBody;
+    try {
+      requestBody = await req.json();
+    } catch (reqErr) {
+      throw new Error("Invalid request body from frontend. Could not parse JSON.");
+    }
+    
+    const { email, full_name } = requestBody;
 
     if (!email || !full_name) {
       return NextResponse.json({ error: 'Email and Full Name are required.' }, { status: 400 });
@@ -79,7 +86,14 @@ export async function POST(req) {
       body: JSON.stringify(payload),
     });
 
-    const fwData = await response.json();
+    const responseText = await response.text();
+    let fwData;
+    try {
+      fwData = JSON.parse(responseText);
+    } catch (parseErr) {
+      console.error("Flutterwave raw response:", responseText);
+      throw new Error(`Flutterwave Gateway returned invalid response: ${responseText || 'Empty response body'}`);
+    }
 
     if (fwData.status === "success" && fwData.data && fwData.data.link) {
       return NextResponse.json({ paymentUrl: fwData.data.link });
