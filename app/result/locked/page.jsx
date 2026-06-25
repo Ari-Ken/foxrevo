@@ -1,10 +1,10 @@
 "use client";
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 
-export default function LockedPage() {
+function LockedContent() {
   const searchParams = useSearchParams();
   const score = searchParams.get('score');
 
@@ -35,5 +35,13 @@ export default function LockedPage() {
         </Link>
       </div>
     </div>
+  );
+}
+
+export default function LockedPage() {
+  return (
+    <Suspense fallback={<div style={{ padding: '100px', textAlign: 'center' }}>Loading...</div>}>
+      <LockedContent />
+    </Suspense>
   );
 }

@@ -1,10 +1,10 @@
 "use client";
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 
-export default function RetryPage() {
+function RetryContent() {
   const searchParams = useSearchParams();
   const score = searchParams.get('score');
   const remaining = searchParams.get('remaining');
@@ -42,5 +42,13 @@ export default function RetryPage() {
         </Link>
       </div>
     </div>
+  );
+}
+
+export default function RetryPage() {
+  return (
+    <Suspense fallback={<div style={{ padding: '100px', textAlign: 'center' }}>Loading...</div>}>
+      <RetryContent />
+    </Suspense>
   );
 }
