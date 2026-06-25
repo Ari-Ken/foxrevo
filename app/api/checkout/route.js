@@ -40,7 +40,7 @@ export async function POST(req) {
     }
 
     const tx_ref = `foxrevo_${formattedEmail}_${Date.now()}`;
-    const amount = 3000; // E.g., 3,000 NGN (adjust as necessary based on blueprint)
+    const amount = 100; // TEMPORARILY REDUCED FOR TESTING (Original: 3000)
 
     const payload = {
       tx_ref: tx_ref,
