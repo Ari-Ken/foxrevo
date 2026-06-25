@@ -1,32 +1,38 @@
 import { NextResponse } from 'next/server';
 import { supabaseAdmin } from '../../../utils/supabaseAdmin';
+import { createClient } from '../../../utils/supabase/server';
 
 export async function POST(req) {
   try {
-    const { email, full_name } = await req.json();
+    const supabase = createClient();
+    
+    // 1. Get authenticated user
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
 
-    if (!email || !full_name) {
-      return NextResponse.json({ error: 'Email and Full Name are required.' }, { status: 400 });
+    if (authError || !user) {
+      return NextResponse.json({ error: 'Unauthorized access.' }, { status: 401 });
     }
 
-    const formattedEmail = email.trim().toLowerCase();
+    const email = user.email;
+    const full_name = user.user_metadata?.full_name || 'Candidate';
 
-    // 1. Create or update candidate record in Supabase
-    // We use upsert to handle if they registered before but abandoned payment
-    const { error: dbError } = await supabaseAdmin
+    // 2. Double check candidate record in public table exists
+    const { data: candidate, error: dbError } = await supabaseAdmin
       .from('candidates')
-      .upsert({
-        email: formattedEmail,
-        full_name: full_name.trim(),
-        // We do not set payment_status to true here, that is the webhook's job
-      }, { onConflict: 'email' });
+      .select('payment_status')
+      .eq('email', email)
+      .single();
 
     if (dbError) {
       console.error('Database Error:', dbError);
-      return NextResponse.json({ error: 'Failed to initialize candidate record.' }, { status: 500 });
+      return NextResponse.json({ error: 'Candidate record missing or corrupted.' }, { status: 500 });
     }
 
-    // 2. Generate Flutterwave Payment Link
+    if (candidate.payment_status) {
+      return NextResponse.json({ error: 'Payment has already been cleared.' }, { status: 400 });
+    }
+
+    // 3. Generate Flutterwave Payment Link
     const FLUTTERWAVE_SECRET_KEY = process.env.FLUTTERWAVE_SECRET_KEY;
     const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
 
@@ -39,8 +45,8 @@ export async function POST(req) {
       });
     }
 
-    const tx_ref = `foxrevo_${formattedEmail}_${Date.now()}`;
-    const amount = 100; // TEMPORARILY REDUCED FOR TESTING (Original: 3000)
+    const tx_ref = `foxrevo_${email}_${Date.now()}`;
+    const amount = 100; // TEMPORARILY REDUCED FOR TESTING
 
     const payload = {
       tx_ref: tx_ref,
@@ -48,8 +54,8 @@ export async function POST(req) {
       currency: "NGN",
       redirect_url: `${BASE_URL}/confirmation`,
       customer: {
-        email: formattedEmail,
-        name: full_name.trim(),
+        email: email,
+        name: full_name,
       },
       customizations: {
         title: "FoxRevo Entrance Clearance",

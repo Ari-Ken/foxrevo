@@ -167,7 +167,7 @@ export default function Terms() {
         </p>
 
         <div className="button-group-vertical mt-4">
-          <Link href="/checkout" className="btn btn-primary">I Accept. Proceed to Checkout & Registration.</Link>
+          <Link href="/register" className="btn btn-primary">I Accept. Proceed to Registration.</Link>
           <Link href="/" className="btn btn-secondary">I Do Not Accept. Take Me Back to the Homepage.</Link>
         </div>
       </section>

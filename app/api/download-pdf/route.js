@@ -1,15 +1,17 @@
 import { NextResponse } from 'next/server';
 import { supabaseAdmin } from '../../../utils/supabaseAdmin';
+import { createClient } from '../../../utils/supabase/server';
 
 export async function POST(req) {
   try {
-    const { email } = await req.json();
+    const supabase = createClient();
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
 
-    if (!email) {
-      return NextResponse.json({ error: 'Email required for authorization.' }, { status: 400 });
+    if (authError || !user) {
+      return NextResponse.json({ error: 'Unauthorized access. Session invalid.' }, { status: 401 });
     }
 
-    const formattedEmail = email.trim().toLowerCase();
+    const formattedEmail = user.email;
 
     // 1. Verify candidate has passed the exam and paid
     const { data: candidate, error: fetchError } = await supabaseAdmin

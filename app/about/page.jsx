@@ -136,7 +136,7 @@ export default function About() {
         </p>
 
         <div className="button-group-vertical mt-4">
-          <Link href="/checkout" className="btn btn-primary">Begin the Registration Process</Link>
+          <Link href="/register" className="btn btn-primary">Begin the Registration Process</Link>
           <Link href="/terms" className="btn btn-secondary">Read the Entrance Terms & FAQs</Link>
         </div>
       </section>

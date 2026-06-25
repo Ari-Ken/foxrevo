@@ -18,16 +18,7 @@ export default function ExamPage() {
 
   useEffect(() => {
     setQuestions(parseQuestions());
-    const email = sessionStorage.getItem('foxrevo_email');
-    if (!email) {
-      setIsUnauthorized(true);
-      setTimeout(() => {
-        router.push('/access');
-      }, 3000);
-    } else {
-      setCandidateEmail(email);
-    }
-  }, [router]);
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -95,7 +86,6 @@ export default function ExamPage() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          email: candidateEmail,
           answers: answers
         })
       });
@@ -124,20 +114,7 @@ export default function ExamPage() {
     }
   };
 
-  if (isUnauthorized) {
-    return (
-      <div style={{ height: '100vh', backgroundColor: '#000', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '24px', textAlign: 'center' }}>
-        <div style={{ maxWidth: '500px' }}>
-          <div style={{ color: '#A51C30', fontSize: '48px', marginBottom: '16px' }}>⚠️</div>
-          <h1 style={{ color: '#A51C30', fontSize: '24px', fontWeight: '800', marginBottom: '16px', letterSpacing: '2px' }}>UNAUTHORIZED ACCESS</h1>
-          <p style={{ color: '#CBD5E1', lineHeight: '1.6', fontSize: '16px' }}>
-            You cannot access the examination room without clearance. The revolution protects its borders.
-          </p>
-          <p style={{ color: '#64748B', fontSize: '14px', marginTop: '24px' }}>Redirecting to Verification Gateway...</p>
-        </div>
-      </div>
-    );
-  }
+
 
   if (questions.length === 0) return <div className="exam-loading">Initializing Assessment Architecture...</div>;
 

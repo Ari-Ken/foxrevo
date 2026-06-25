@@ -1,16 +1,24 @@
 import { NextResponse } from 'next/server';
 import { supabaseAdmin } from '../../../utils/supabaseAdmin';
 import { parseQuestions } from '../../exam/questionsData';
+import { createClient } from '../../../utils/supabase/server';
 
 export async function POST(req) {
   try {
-    const { email, answers } = await req.json();
+    const supabase = createClient();
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
 
-    if (!email || !answers || typeof answers !== 'object') {
+    if (authError || !user) {
+      return NextResponse.json({ error: 'Unauthorized access. Session invalid.' }, { status: 401 });
+    }
+
+    const { answers } = await req.json();
+
+    if (!answers || typeof answers !== 'object') {
       return NextResponse.json({ error: 'Invalid payload' }, { status: 400 });
     }
 
-    const formattedEmail = email.trim().toLowerCase();
+    const formattedEmail = user.email;
 
     // 1. Verify candidate in Supabase
     const { data: candidate, error: fetchError } = await supabaseAdmin

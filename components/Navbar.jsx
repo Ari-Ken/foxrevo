@@ -1,17 +1,32 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, X, Moon, Sun } from 'lucide-react';
+import { Menu, X, Moon, Sun, UserCircle } from 'lucide-react';
 import './Navbar.css';
+import { createClient } from '../utils/supabase/client';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [theme, setTheme] = useState('light');
+  const [user, setUser] = useState(null);
+  const supabase = createClient();
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme') || 'light';
     setTheme(savedTheme);
     document.documentElement.setAttribute('data-theme', savedTheme);
+
+    // Check active session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user || null);
+    });
+
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user || null);
+    });
+
+    return () => subscription.unsubscribe();
   }, []);
 
   const toggleTheme = () => {
@@ -28,6 +43,15 @@ export default function Navbar() {
           FoxRevo<span className="logo-dot">.</span>
         </Link>
         <div className="navbar-actions">
+          {user ? (
+            <Link href="/dashboard" className="hidden md:flex align-center" style={{ marginRight: '16px', color: 'var(--text-primary)', fontWeight: 'bold' }}>
+              Dashboard
+            </Link>
+          ) : (
+            <Link href="/login" className="hidden md:flex align-center" style={{ marginRight: '16px', color: 'var(--text-primary)' }}>
+              Login
+            </Link>
+          )}
           <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
             {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
           </button>
@@ -43,7 +67,15 @@ export default function Navbar() {
           <Link href="/about" onClick={() => setIsMenuOpen(false)}>Mission</Link>
           <Link href="/#faq" onClick={() => setIsMenuOpen(false)}>FAQ</Link>
           <Link href="/contact" onClick={() => setIsMenuOpen(false)}>Contact</Link>
-          <Link href="/#register" onClick={() => setIsMenuOpen(false)} className="menu-btn-primary">Register</Link>
+          
+          {user ? (
+            <Link href="/dashboard" onClick={() => setIsMenuOpen(false)} className="menu-btn-primary">Dashboard</Link>
+          ) : (
+            <>
+              <Link href="/login" onClick={() => setIsMenuOpen(false)}>Login</Link>
+              <Link href="/register" onClick={() => setIsMenuOpen(false)} className="menu-btn-primary">Register</Link>
+            </>
+          )}
         </div>
       )}
     </nav>

@@ -51,7 +51,7 @@ export default function FlipSection() {
           </ul>
 
           <div className="button-group-vertical mt-4">
-            <Link href="/checkout" className="btn btn-primary">Proceed to Checkout</Link>
+            <Link href="/register" className="btn btn-primary">Create Identity & Proceed to Clearance</Link>
             <Link href="#faq" className="text-link">Ask questions about the above terms</Link>
           </div>
         </div>

@@ -32,9 +32,7 @@ export default function ExamInstructions() {
           </h3>
 
           <ol style={{ paddingLeft: '20px', color: 'var(--text-secondary)', lineHeight: '1.8', fontSize: '15px' }} className="instructions-list">
-            <li style={{ marginBottom: '20px' }}>
-              <strong style={{ color: 'var(--text-primary)' }}>Identity Verification Data:</strong> When submitting your exam, the system will demand your Full Name and Email Address. <strong>You must enter the exact email you used during your payment clearance.</strong> The system cross-references this email with the database. Check your payment receipt immediately to confirm your registered email. A mismatch will result in a 0 score and a voided attempt.
-            </li>
+
             
             <li style={{ marginBottom: '20px' }}>
               <strong style={{ color: 'var(--text-primary)' }}>Time Constraints:</strong> The examination is strictly timed. A digital timer will be visible at the top of your screen. When the timer hits <code>00:00</code>, your answers will be automatically submitted exactly as they are. Manage your time efficiently.
@@ -72,7 +70,7 @@ export default function ExamInstructions() {
               style={{ marginTop: '6px', marginRight: '16px', width: '20px', height: '20px', accentColor: '#A51C30' }}
             />
             <span style={{ color: 'var(--text-primary)', fontSize: '15px', lineHeight: '1.6' }}>
-              I declare that I have read the examination protocols. I have confirmed my registered payment email, and I understand that refreshing the page will terminate my session. I am ready to begin.
+              I declare that I have read the examination protocols. I understand that my identity is tied to my current session, and that refreshing the page will terminate my session. I am ready to begin.
             </span>
           </label>
         </div>

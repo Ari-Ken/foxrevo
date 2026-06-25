@@ -23,8 +23,8 @@ export default function ConfirmationPage() {
           <p style={{ color: 'var(--text-secondary)', fontSize: '13px', marginTop: '4px' }}>A receipt has been sent to your registered email.</p>
         </div>
 
-        <Link href="/exam-prep" style={{ display: 'inline-block', width: '100%', padding: '16px', backgroundColor: 'var(--accent)', color: 'white', fontWeight: '600', textDecoration: 'none', borderRadius: '4px', transition: 'opacity 0.2s' }}>
-          Proceed to Preparatory Architecture
+        <Link href="/dashboard" style={{ display: 'inline-block', width: '100%', padding: '16px', backgroundColor: 'var(--accent)', color: 'white', fontWeight: '600', textDecoration: 'none', borderRadius: '4px', transition: 'opacity 0.2s' }}>
+          Proceed to Dashboard
         </Link>
       </div>
     </div>

@@ -13,29 +13,13 @@ export default function DownloadDashboard() {
 
   const [isDownloading, setIsDownloading] = useState(false);
 
-  useEffect(() => {
-    const email = sessionStorage.getItem('foxrevo_email');
-    if (!email) {
-      setIsUnauthorized(true);
-      setTimeout(() => {
-        router.push('/access');
-      }, 3000);
-    }
-  }, [router]);
+
 
   const handleDownload = async () => {
     if (!covenantChecked) return;
     
-    const email = sessionStorage.getItem('foxrevo_email');
-    if (!email) return;
-
-    setIsDownloading(true);
-    
-    try {
       const response = await fetch('/api/download-pdf', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email })
       });
 
       const data = await response.json();
@@ -57,20 +41,7 @@ export default function DownloadDashboard() {
     }
   };
 
-  if (isUnauthorized) {
-    return (
-      <div style={{ height: '100vh', backgroundColor: '#000', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '24px', textAlign: 'center' }}>
-        <div style={{ maxWidth: '500px' }}>
-          <div style={{ color: '#A51C30', fontSize: '48px', marginBottom: '16px' }}>⚠️</div>
-          <h1 style={{ color: '#A51C30', fontSize: '24px', fontWeight: '800', marginBottom: '16px', letterSpacing: '2px' }}>UNAUTHORIZED ACCESS</h1>
-          <p style={{ color: '#CBD5E1', lineHeight: '1.6', fontSize: '16px' }}>
-            You have not been cleared by the system. Transformation must be earned. The revolution protects its borders.
-          </p>
-          <p style={{ color: '#64748B', fontSize: '14px', marginTop: '24px' }}>Redirecting to Verification Gateway...</p>
-        </div>
-      </div>
-    );
-  }
+
 
   return (
     <div className="dashboard-container">
