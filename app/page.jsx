@@ -107,8 +107,8 @@ export default function Home() {
       {/* SECTION 6: FAQS */}
       <FaqSection />
 
-      <div className="image-placeholder separator-image" style={{ padding: 0, overflow: 'hidden' }}>
-        <img src="/image003.jpg" alt="Advocate the Revolution" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+      <div className="separator-image" style={{ overflow: 'hidden', borderRadius: '4px', border: '1px solid var(--border-medium)' }}>
+        <img src="/image003.jpg" alt="Advocate the Revolution" style={{ width: '100%', height: 'auto', display: 'block' }} />
       </div>
 
       {/* SECTION 7: ADVOCACY & WISDOM SCROLL */}
