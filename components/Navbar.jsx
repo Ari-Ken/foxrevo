@@ -39,8 +39,11 @@ export default function Navbar() {
       {isMenuOpen && (
         <div className="mobile-menu">
           <Link href="/" onClick={() => setIsMenuOpen(false)}>Home</Link>
-          <Link href="/#mission" onClick={() => setIsMenuOpen(false)}>Mission</Link>
-          <Link href="/checkout" onClick={() => setIsMenuOpen(false)} className="menu-btn-primary">Register</Link>
+          <Link href="/about" onClick={() => setIsMenuOpen(false)}>About</Link>
+          <Link href="/about" onClick={() => setIsMenuOpen(false)}>Mission</Link>
+          <Link href="/#faq" onClick={() => setIsMenuOpen(false)}>FAQ</Link>
+          <Link href="/contact" onClick={() => setIsMenuOpen(false)}>Contact</Link>
+          <Link href="/#register" onClick={() => setIsMenuOpen(false)} className="menu-btn-primary">Register</Link>
         </div>
       )}
     </nav>
