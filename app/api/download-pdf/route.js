@@ -11,10 +11,10 @@ export async function POST(req) {
 
     const formattedEmail = email.trim().toLowerCase();
 
-    // 1. Verify candidate has passed the exam
+    // 1. Verify candidate has passed the exam and paid
     const { data: candidate, error: fetchError } = await supabaseAdmin
       .from('candidates')
-      .select('passed_exam')
+      .select('passed_exam, payment_status')
       .eq('email', formattedEmail)
       .single();
 
@@ -22,8 +22,8 @@ export async function POST(req) {
       return NextResponse.json({ error: 'Unauthorized. Candidate record not found.' }, { status: 403 });
     }
 
-    if (!candidate.passed_exam) {
-      return NextResponse.json({ error: 'Unauthorized. You have not passed the entrance examination.' }, { status: 403 });
+    if (!candidate.payment_status || !candidate.passed_exam) {
+      return NextResponse.json({ error: 'Unauthorized. You have not met all clearance and examination requirements.' }, { status: 403 });
     }
 
     // 2. Generate a secure, temporary signed URL (expires in 60 seconds)
