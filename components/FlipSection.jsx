@@ -42,16 +42,25 @@ export default function FlipSection() {
 
   return (
     <div className="flip-container" id="register" style={{ perspective: 'none', height: 'auto', marginBottom: '80px' }}>
-      <div style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-medium)', borderRadius: '8px', padding: '48px 32px', maxWidth: '500px', width: '100%', margin: '0 auto', boxShadow: '0 8px 32px rgba(0,0,0,0.1)' }}>
+      <div style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-medium)', borderRadius: '8px', padding: '48px 32px', maxWidth: '700px', width: '100%', margin: '0 auto', boxShadow: '0 8px 32px rgba(0,0,0,0.1)' }}>
         
         <h2 style={{ fontSize: '28px', color: 'var(--text-primary)', marginBottom: '8px', fontWeight: '800', textAlign: 'center' }}>
-          Join the Revolution
+          The Terms of Entry
         </h2>
-        <p style={{ color: 'var(--text-secondary)', marginBottom: '32px', fontSize: '15px', textAlign: 'center', lineHeight: '1.6' }}>
-          Secure your clearance and gain access to the Preparatory Architecture. Only serious candidates may enter.
+        <p style={{ color: 'var(--text-secondary)', marginBottom: '32px', fontSize: '16px', textAlign: 'center', lineHeight: '1.6' }}>
+          We are not looking for customers. We are filtering for architects. Read the terms below. Do not proceed if you are not ready for the consequences.
         </p>
 
-        <form onSubmit={handleCheckout}>
+        <div style={{ backgroundColor: 'var(--bg-tertiary)', borderLeft: '4px solid #A51C30', padding: '24px', marginBottom: '32px', borderRadius: '4px' }}>
+          <ul className="terms-list" style={{ margin: 0, padding: 0, listStyleType: 'none' }}>
+            <li style={{ marginBottom: '16px' }}><strong style={{ color: 'var(--text-primary)' }}>1. This is not a purchase:</strong> You are paying an examination fee of ₦5,000. This does not grant you the blueprint; it only grants you the right to be tested for it.</li>
+            <li style={{ marginBottom: '16px' }}><strong style={{ color: 'var(--text-primary)' }}>2. Zero Refunds:</strong> The fee is strictly non-refundable. If you are not ready to commit, do not initiate the gateway.</li>
+            <li style={{ marginBottom: '16px' }}><strong style={{ color: 'var(--text-primary)' }}>3. The Examination:</strong> You must score a minimum of 45/100 to pass. You are granted exactly two attempts.</li>
+            <li><strong style={{ color: 'var(--text-primary)' }}>4. Permanent Lockout:</strong> If you fail the exam twice, your access is permanently revoked. There is no appeal. You will be locked out of the revolution.</li>
+          </ul>
+        </div>
+
+        <form onSubmit={handleCheckout} style={{ maxWidth: '400px', margin: '0 auto' }}>
           {errorMsg && (
             <div className="ui-notice-box urgent-notice mb-6" style={{ padding: '12px' }}>
               <strong>NOTICE:</strong> {errorMsg}
@@ -65,7 +74,7 @@ export default function FlipSection() {
               style={{ width: '100%', padding: '14px 16px', backgroundColor: 'var(--bg-tertiary)', border: '1px solid var(--border-light)', borderRadius: '4px', color: 'var(--text-primary)', fontSize: '16px' }}
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
-              placeholder="e.g. Obinna Eze"
+              placeholder="Your true name"
               disabled={isLoading}
               required
             />
@@ -78,7 +87,7 @@ export default function FlipSection() {
               style={{ width: '100%', padding: '14px 16px', backgroundColor: 'var(--bg-tertiary)', border: '1px solid var(--border-light)', borderRadius: '4px', color: 'var(--text-primary)', fontSize: '16px' }}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="e.g. obinna@domain.com"
+              placeholder="Your primary email"
               disabled={isLoading}
               required
             />
@@ -87,17 +96,16 @@ export default function FlipSection() {
           <button 
             type="submit" 
             className={`btn ${isLoading ? 'btn-disabled' : 'btn-primary'}`}
-            style={{ width: '100%', padding: '16px', fontSize: '16px' }}
+            style={{ width: '100%', padding: '16px', fontSize: '16px', textTransform: 'uppercase', letterSpacing: '1px' }}
             disabled={isLoading}
           >
-            {isLoading ? 'Connecting to Secure Gateway...' : 'Pay ₦5,000 to Secure Access'}
+            {isLoading ? 'Connecting to Gateway...' : 'Accept Terms & Pay Examination Fee (₦5,000)'}
           </button>
         </form>
 
         <div style={{ marginTop: '24px', textAlign: 'center', fontSize: '13px' }}>
           <p style={{ color: 'var(--text-secondary)', lineHeight: '1.5' }}>
-            By proceeding to payment you agree to our <Link href="/terms" className="text-wine">Terms and Conditions</Link>. 
-            You will create your account password immediately after payment.
+            By submitting this form, you acknowledge that you have read and accepted the <Link href="/terms" className="text-wine">Terms and Conditions</Link>. 
           </p>
         </div>
       </div>
