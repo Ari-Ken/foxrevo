@@ -66,8 +66,7 @@ export async function POST(req) {
       },
       customizations: {
         title: "FoxRevo Entrance Clearance",
-        description: "Registration and Examination Fee for The Wealth Revolution",
-        logo: `${origin}/logo.png`, // Placeholder
+        description: "Registration and Examination Fee for The Wealth Revolution"
       }
     };
 
