@@ -1,0 +1,64 @@
+.terms-container {
+  padding: 0 0 64px;
+}
+
+.hero-warning {
+  margin-top: 16px;
+  font-weight: 600;
+  color: var(--accent);
+  text-align: center;
+}
+
+.highlight-truth {
+  background-color: rgba(165, 28, 48, 0.05);
+  border-left: 4px solid var(--accent);
+  padding: 16px;
+  margin: 24px 0;
+  font-size: 18px;
+  border-radius: 4px 8px 8px 4px;
+}
+
+.protection-clause {
+  margin-top: 24px;
+  font-style: italic;
+  color: var(--text-primary);
+  border-top: 1px solid var(--border-light);
+  padding-top: 24px;
+}
+
+.terms-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.term-item h3 {
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+.text-wine {
+  color: var(--accent);
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.bullet-list {
+  padding-left: 24px;
+  margin-top: 12px;
+}
+
+.bullet-list li {
+  margin-bottom: 8px;
+}
+
+.declaration-section {
+  border: 2px solid var(--border-medium);
+}
+
+.mt-4 { margin-top: 24px; }
+.mb-4 { margin-bottom: 24px; }

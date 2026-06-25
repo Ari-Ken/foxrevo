@@ -1,0 +1,68 @@
+.about-container {
+  padding: 0 0 64px;
+}
+
+.founder-signoff {
+  margin-top: 24px;
+  font-size: 18px;
+  color: var(--text-secondary);
+}
+
+.mission-points {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.mission-point h3 {
+  color: var(--accent);
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+.highlight-truth {
+  background-color: rgba(165, 28, 48, 0.05);
+  border-left: 4px solid var(--accent);
+  padding: 16px;
+  margin: 24px 0;
+  font-size: 18px;
+  border-radius: 4px 8px 8px 4px;
+}
+
+.philosophy-list {
+  margin: 24px 0;
+  padding-left: 24px;
+}
+
+.philosophy-list li {
+  margin-bottom: 12px;
+}
+
+.protection-clause {
+  margin-top: 24px;
+  font-style: italic;
+  color: var(--text-secondary);
+  border-top: 1px solid var(--border-light);
+  padding-top: 24px;
+}
+
+.projection-list {
+  margin: 24px 0;
+  list-style: none;
+  padding: 0;
+}
+
+.projection-list li {
+  margin-bottom: 12px;
+  padding-left: 24px;
+  position: relative;
+}
+
+.projection-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: bold;
+}
