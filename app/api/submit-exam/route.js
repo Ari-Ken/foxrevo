@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { supabaseAdmin } from '../../../../utils/supabaseAdmin';
+import { supabaseAdmin } from '../../../utils/supabaseAdmin';
 import { parseQuestions } from '../../exam/questionsData';
 
 export async function POST(req) {
