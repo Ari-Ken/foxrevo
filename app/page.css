@@ -92,16 +92,18 @@
 }
 
 .main-image {
-  height: 480px;
   width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 480px;
   margin-top: 32px;
 }
 
 .separator-image {
   max-width: 1200px;
-  height: 300px;
-  margin: 64px auto;
   width: 95%;
+  aspect-ratio: 21 / 9;
+  max-height: 300px;
+  margin: 64px auto;
 }
 
 /* Tickers & Carousels */
