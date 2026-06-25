@@ -1,22 +1,10 @@
-"use client";
-
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import './page.css';
+import FaqSection from '../components/FaqSection';
+import FlipSection from '../components/FlipSection';
 
 export default function Home() {
-  const [isFlipped, setIsFlipped] = useState(false);
-  const [openFaq, setOpenFaq] = useState(null);
-
-  const handleBeginRegistration = (e) => {
-    e.preventDefault();
-    setIsFlipped(true);
-  };
-
-  const toggleFaq = (index) => {
-    setOpenFaq(openFaq === index ? null : index);
-  };
-
   return (
     <div className="home-container">
       
@@ -102,52 +90,7 @@ export default function Home() {
       </section>
 
       {/* SECTIONS 4 & 5: THE REGISTRATION ENGINE (3D FLIP) */}
-      <div className="flip-container" id="register">
-        <div className={`flipper ${isFlipped ? 'flipped' : ''}`}>
-          
-          {/* SECTION 4 (FRONT): HOW TO REGISTER */}
-          <div className="front">
-            <h2>How to Join the Revolution</h2>
-            <p>
-              The revolution's mission is to build billionaires. It is not for everybody. It is reserved for those who have developed the right mindset and are ready to prove they are serious before the reward arrives.
-            </p>
-            <div className="process-list" style={{ marginTop: '24px', marginBottom: '24px' }}>
-              <div className="process-item" style={{ padding: '12px 0', borderBottom: '1px solid var(--border-light)' }}><strong>1. Read:</strong> Study the foundational article we provide.</div>
-              <div className="process-item" style={{ padding: '12px 0', borderBottom: '1px solid var(--border-light)' }}><strong>2. Test:</strong> Take the Entrance Examination.</div>
-              <div className="process-item" style={{ padding: '12px 0' }}><strong>3. Assess:</strong> The Revolution Exam Team reviews your qualifications and decides the next step.</div>
-            </div>
-            
-            <div className="button-group-vertical mt-4">
-              <button onClick={handleBeginRegistration} className="btn btn-primary">Begin the Registration</button>
-              <Link href="#faq" className="text-link">Learn more about this process</Link>
-            </div>
-          </div>
-
-          {/* SECTION 5 (BACK): TERMS OF ENTRY */}
-          <div className="back">
-            <h2>The Terms of Entry</h2>
-            <p>First, find out why you're here. Then, apply to be a member. We've summarized our terms in 5 bullet points. <strong>Do not apply if you do not accept our terms.</strong></p>
-            
-            <div className="ui-notice-box urgent-notice mb-4 mt-4">
-              <strong>⚠️ Urgent Notice:</strong> Our registration fee will increase to <strong>₦5,000</strong> as soon as we round up our first 1,000 finalists for 2026. Secure your spot now.
-            </div>
-
-            <ul className="terms-list">
-              <li><strong>Payment:</strong> ₦3,000 registration fee (bank charges may apply depending on country/location).</li>
-              <li><strong>Commitment:</strong> Strictly no refunds. The process is the preparation; you are paying for the architecture of your new life.</li>
-              <li><strong>Examination:</strong> An Entrance Examination must be taken to prove your readiness. A minimum score of 45/100 is required to pass.</li>
-              <li><strong>Opportunities:</strong> You are granted exactly <strong>two chances</strong> to pass the exam.</li>
-              <li><strong>Integrity:</strong> Zero tolerance for cheating. The exam is a mirror showing you who you are—do not lie to it.</li>
-            </ul>
-
-            <div className="button-group-vertical mt-4">
-              <Link href="/checkout" className="btn btn-primary">Proceed to Checkout</Link>
-              <Link href="#faq" className="text-link">Ask questions about the above terms</Link>
-            </div>
-          </div>
-          
-        </div>
-      </div>
+      <FlipSection />
 
       {/* CHOOSE THE STATEMENT THAT MOTIVATES YOU */}
       <section className="section-block" style={{ backgroundColor: 'transparent', border: 'none', boxShadow: 'none' }}>
@@ -162,29 +105,7 @@ export default function Home() {
       </section>
 
       {/* SECTION 6: FAQS */}
-      <section className="section-block" id="faq">
-        <h2>FAQS</h2>
-        <div className="faq-list">
-          {[
-            { q: "Q1: Why is there an entrance exam?", a: "FoxRevo is not a seminar you attend and forget. The exam is not gatekeeping; it is soil preparation. Transformation cannot be downloaded. The exam proves, before the lesson begins, that you are ready to receive it." },
-            { q: "Q2: What happens if I fail the exam?", a: "The required pass mark is 45 out of 100. You have two chances. If you do not pass, it means you are not ready for this specific revolution at this time. We protect the integrity of the process and the community." },
-            { q: "Q3: Why are there no refunds?", a: "Because the value is in the commitment, the detox, and the process—not just the information. You are investing in the deliberate dismantling of your old mindset." },
-            { q: "Q4: Can I share my login or the book with my friends and family?", a: "No. Sharing this with someone who did not earn it is not kindness; it robs them of the transformation. If you want someone to have access, send them to FoxRevo to register and earn it." },
-            { q: "Q5: Is this just another motivational program?", a: "No. We are not here to motivate you. We are here to change you. This is the deliberate installation of the principles that built the world's greatest companies, translated for the African context." },
-            { q: "Q6: What is the ultimate goal of FoxRevo?", a: <>To be the starting point of the story that a Nigerian billionaire tells in an interview thirty years from now when they say: <em>"It all started when I encountered the FoxRevo revolution."</em></> }
-          ].map((faq, index) => (
-            <div key={index} className={`faq-item ${openFaq === index ? 'active' : ''}`}>
-              <button className="faq-question" onClick={() => toggleFaq(index)}>
-                {faq.q}
-                <span className="faq-icon">＋</span>
-              </button>
-              <div className="faq-answer">
-                <p>{faq.a}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+      <FaqSection />
 
       <div className="image-placeholder separator-image" style={{ padding: 0, overflow: 'hidden' }}>
         <img src="/image003.jpg" alt="Advocate the Revolution" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
