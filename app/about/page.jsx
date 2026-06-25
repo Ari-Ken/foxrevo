@@ -13,7 +13,7 @@ export default function About() {
           FoxRevo is not a seminar. It is not a collection of quotes designed to make you feel inspired for 48 hours. It is the deliberate dismantling of the lies you were taught about wealth, and the installation of the principles that actually built the world.
         </p>
         <div className="image-placeholder main-image" style={{ padding: 0, overflow: 'hidden' }}>
-          <img src="/image001.jpg" alt="FoxRevo Mission Blueprint" style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={(e) => e.target.style.display='none'} />
+          <img src="/image001.jpg" alt="FoxRevo Mission Blueprint" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
         </div>
       </section>
 

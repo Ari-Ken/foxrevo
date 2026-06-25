@@ -40,7 +40,7 @@ export default function Home() {
         </div>
 
         <div className="image-placeholder main-image" style={{ padding: 0, overflow: 'hidden' }}>
-          <img src="/image001.jpg" alt="FoxRevo Hero Architecture" style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={(e) => e.target.style.display='none'} />
+          <img src="/image001.jpg" alt="FoxRevo Hero Architecture" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
         </div>
       </section>
 
@@ -93,7 +93,7 @@ export default function Home() {
         </div>
 
         <div className="image-placeholder main-image" style={{ height: '300px', padding: 0, overflow: 'hidden' }}>
-          <img src="/image002.jpg" alt="Revolution Progress" style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={(e) => e.target.style.display='none'} />
+          <img src="/image002.jpg" alt="Revolution Progress" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
         </div>
 
         <div className="ui-notice-box urgent-notice">
@@ -187,7 +187,7 @@ export default function Home() {
       </section>
 
       <div className="image-placeholder separator-image" style={{ padding: 0, overflow: 'hidden' }}>
-        <img src="/image003.jpg" alt="Advocate the Revolution" style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={(e) => e.target.style.display='none'} />
+        <img src="/image003.jpg" alt="Advocate the Revolution" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
       </div>
 
       {/* SECTION 7: ADVOCACY & WISDOM SCROLL */}
