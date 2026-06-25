@@ -140,10 +140,18 @@ export default async function DashboardPage() {
               <Link
                 href="/download"
                 className="btn btn-large"
-                style={{ display: 'block', textAlign: 'center', background: '#10B981', color: '#fff', border: 'none', borderRadius: '4px', padding: '14px', fontWeight: '700' }}
+                style={{ display: 'block', textAlign: 'center', background: '#10B981', color: '#fff', border: 'none', borderRadius: '4px', padding: '14px', fontWeight: '700', marginBottom: '16px' }}
               >
                 Access Download Dashboard →
               </Link>
+              <div style={{ textAlign: 'center', marginTop: '16px' }}>
+                <Link
+                  href="/exam-prep"
+                  style={{ color: 'var(--text-secondary)', textDecoration: 'underline', fontSize: '14px', fontWeight: '500' }}
+                >
+                  Revisit preparatory material & retake practice exam
+                </Link>
+              </div>
             </div>
           )}
 

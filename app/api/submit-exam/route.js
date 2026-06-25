@@ -36,7 +36,22 @@ export async function POST(req) {
     }
 
     if (candidate.passed_exam) {
-      return NextResponse.json({ error: 'Examination already passed.' }, { status: 400 });
+      // Practice mode! Grade the exam, but do NOT save anything in the database
+      const questions = parseQuestions();
+      let score = 0;
+      questions.forEach((q) => {
+        if (answers[q.id] === q.answer) {
+          score += 1;
+        }
+      });
+      const isPass = score >= 45;
+      return NextResponse.json({
+        success: true,
+        score: score,
+        passed: isPass,
+        attemptsRemaining: 2,
+        practiceMode: true
+      });
     }
 
     if (candidate.exam_attempts >= 2) {

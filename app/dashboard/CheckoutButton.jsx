@@ -47,7 +47,7 @@ export default function CheckoutButton() {
         className={`btn btn-large ${loading ? 'btn-disabled' : 'btn-primary'}`}
         style={{ width: '100%' }}
       >
-        {loading ? 'Connecting to Gateway…' : 'Pay Examination Fee — ₦5,000'}
+        {loading ? 'Connecting to Gateway…' : 'Pay Examination Fee — ₦3,000'}
       </button>
     </div>
   );

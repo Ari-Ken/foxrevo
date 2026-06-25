@@ -1,8 +1,37 @@
 import React from 'react';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
+import { createClient } from '../../utils/supabase/server';
+import { supabaseAdmin } from '../../utils/supabaseAdmin';
 import './prep.css';
 
-export default function ExamPrep() {
+export default async function ExamPrep() {
+  const supabase = createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
+  if (!user) redirect('/login');
+
+  const email = user.email.toLowerCase();
+
+  // Fetch candidate record using admin client (bypasses RLS)
+  const { data: candidate } = await supabaseAdmin
+    .from('candidates')
+    .select('*')
+    .eq('email', email)
+    .single();
+
+  if (!candidate || !candidate.payment_status) {
+    redirect('/dashboard');
+  }
+
+  const hasPassed = candidate.passed_exam === true;
+  const attempts = candidate.exam_attempts || 0;
+  const isLocked = attempts >= 2 && !hasPassed;
+
+  if (isLocked) {
+    redirect('/dashboard');
+  }
+
   return (
     <div className="prep-container">
       

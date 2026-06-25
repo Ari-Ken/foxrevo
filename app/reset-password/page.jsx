@@ -13,10 +13,20 @@ export default function ResetPasswordPage() {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    // Supabase injects the session from the URL hash when they land on this page
-    supabase.auth.onAuthStateChange((event) => {
-      if (event === 'PASSWORD_RECOVERY') setReady(true);
+    // Check if a session already exists (recovery session is automatically set by Supabase on load)
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session) {
+        setReady(true);
+      }
     });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === 'PASSWORD_RECOVERY' || session) {
+        setReady(true);
+      }
+    });
+
+    return () => subscription.unsubscribe();
   }, [supabase]);
 
   const handleUpdate = async (e) => {

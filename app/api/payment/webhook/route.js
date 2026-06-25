@@ -25,8 +25,11 @@ export async function POST(req) {
       // 3. Update the candidate's payment status in Supabase
       const { data: updateData, error } = await supabaseAdmin
         .from('candidates')
-        .update({ payment_status: true })
-        .eq('email', email)
+        .upsert({ 
+          email: email,
+          full_name: payload.data.customer.name || 'Candidate',
+          payment_status: true 
+        }, { onConflict: 'email' })
         .select();
 
       if (error) {

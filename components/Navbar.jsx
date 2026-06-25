@@ -44,11 +44,11 @@ export default function Navbar() {
         </Link>
         <div className="navbar-actions">
           {user ? (
-            <Link href="/dashboard" className="hidden md:flex align-center" style={{ marginRight: '16px', color: 'var(--text-primary)', fontWeight: 'bold' }}>
+            <Link href="/dashboard" className="desktop-nav-link" style={{ marginRight: '16px', color: 'var(--text-primary)', fontWeight: 'bold' }}>
               Dashboard
             </Link>
           ) : (
-            <Link href="/login" className="hidden md:flex align-center" style={{ marginRight: '16px', color: 'var(--text-primary)' }}>
+            <Link href="/login" className="desktop-nav-link" style={{ marginRight: '16px', color: 'var(--text-primary)' }}>
               Login
             </Link>
           )}

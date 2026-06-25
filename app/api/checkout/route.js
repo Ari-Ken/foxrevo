@@ -46,9 +46,10 @@ export async function POST() {
       return NextResponse.json({ paymentUrl: `${BASE_URL}/dashboard` });
     }
 
+    const cleanEmailForRef = email.replace(/[^a-zA-Z0-9]/g, '_');
     const payload = {
-      tx_ref: `foxrevo_${email}_${Date.now()}`,
-      amount: 100, // ← change to 5000 for live
+      tx_ref: `foxrevo_${cleanEmailForRef}_${Date.now()}`,
+      amount: 3000,
       currency: 'NGN',
       redirect_url: `${BASE_URL}/dashboard`,
       customer: { email, name: full_name },

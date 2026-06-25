@@ -90,3 +90,14 @@
   from { transform: translateX(100%); opacity: 0; }
   to { transform: translateX(0); opacity: 1; }
 }
+
+.desktop-nav-link {
+  display: inline-flex;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .desktop-nav-link {
+    display: none;
+  }
+}
