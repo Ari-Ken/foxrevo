@@ -18,6 +18,7 @@ export default function DownloadDashboard() {
   const handleDownload = async () => {
     if (!covenantChecked) return;
     
+    try {
       const response = await fetch('/api/download-pdf', {
         method: 'POST',
       });
