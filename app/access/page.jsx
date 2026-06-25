@@ -50,18 +50,18 @@ export default function AccessGateway() {
 
       // Routing Logic Based on DB Record
       if (!candidate.payment_status) {
-        setErrorMsg("Payment pending. Routing to checkout...");
-        setTimeout(() => router.push('/checkout'), 1500);
+        setErrorMsg("Payment pending. Please ensure your payment was completed successfully.");
+        setIsLoading(false);
       } else if (candidate.passed_exam) {
         // Passed exam -> Download Dashboard
-        router.push('/download');
+        window.location.href = '/download';
       } else if (candidate.exam_attempts >= 1 && !candidate.passed_exam) {
         // Max attempts reached (assuming 1 attempt for now)
         setErrorMsg("Your examination attempts have been exhausted without meeting the passing criteria. Access denied.");
         setIsLoading(false);
-      } else if (candidate.payment_status && candidate.exam_score === null) {
+      } else if (candidate.payment_status && (candidate.exam_score === null || candidate.exam_score === undefined)) {
         // Paid, has not taken exam yet -> Prep & Exam
-        router.push('/exam-prep');
+        window.location.href = '/exam-prep';
       } else {
         // Fallback
         setErrorMsg("An anomaly was detected in your clearance status. Contact support.");
