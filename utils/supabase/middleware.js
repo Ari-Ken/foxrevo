@@ -34,9 +34,26 @@ export async function updateSession(request) {
     data: { user },
   } = await supabase.auth.getUser();
 
+  const path = request.nextUrl.pathname;
+
+  // 1. Redirect /register to /admission (our general landing page)
+  if (path === '/register') {
+    const url = request.nextUrl.clone();
+    url.pathname = '/admission';
+    return NextResponse.redirect(url);
+  }
+
+  // 2. Redirect root (/) to /admission if PORTAL_CAMPAIGN_ACTIVE is 'true'
+  const isCampaignActive = process.env.PORTAL_CAMPAIGN_ACTIVE === 'true';
+  if (isCampaignActive && path === '/') {
+    const url = request.nextUrl.clone();
+    url.pathname = '/admission';
+    return NextResponse.redirect(url);
+  }
+
   // Define protected routes
   const protectedRoutes = ['/dashboard', '/exam', '/exam-prep', '/download'];
-  const isProtectedRoute = protectedRoutes.some((route) => request.nextUrl.pathname.startsWith(route));
+  const isProtectedRoute = protectedRoutes.some((route) => path.startsWith(route));
   
   if (isProtectedRoute && !user) {
     // no user, potentially respond by redirecting the user to the login page

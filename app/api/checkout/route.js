@@ -2,21 +2,33 @@ import { NextResponse } from 'next/server';
 import { createClient } from '../../../utils/supabase/server';
 import { supabaseAdmin } from '../../../utils/supabaseAdmin';
 
-export async function POST() {
+export async function POST(req) {
   try {
-    // Authenticate via session cookie — the client sends NO body
-    const supabase = createClient();
-    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    let email = '';
+    let full_name = '';
 
-    if (authError || !user) {
-      return NextResponse.json(
-        { error: 'You must be logged in to proceed to payment.' },
-        { status: 401 }
-      );
+    // Check if the request has a payload (JSON body)
+    try {
+      const body = await req.json();
+      email = body?.email?.toLowerCase()?.trim();
+      full_name = body?.fullName?.trim();
+    } catch (e) {
+      // Body is empty or not JSON, which is normal for standard session flow
     }
 
-    const email = user.email.toLowerCase();
-    const full_name = user.user_metadata?.full_name || 'Candidate';
+    if (!email) {
+      const supabase = createClient();
+      const { data: { user }, error: authError } = await supabase.auth.getUser();
+
+      if (authError || !user) {
+        return NextResponse.json(
+          { error: 'You must be logged in to proceed to payment.' },
+          { status: 401 }
+        );
+      }
+      email = user.email.toLowerCase();
+      full_name = user.user_metadata?.full_name || 'Candidate';
+    }
 
     // Guard: prevent double payment
     const { data: existing } = await supabaseAdmin
