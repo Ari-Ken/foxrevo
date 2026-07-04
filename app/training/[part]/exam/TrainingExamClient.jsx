@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { parsePart1Questions } from '../../questions/part1';
 import { parsePart2Questions } from '../../questions/part2';
+import { parsePart3Questions } from '../../questions/part3';
 import { ShieldCheck, AlertCircle, Clock, ArrowLeft, ArrowRight, CheckCircle2 } from 'lucide-react';
 import './trainingExam.css';
 
@@ -33,20 +34,8 @@ export default function TrainingExamClient({ part, candidate }) {
       setQuestions(parsePart1Questions());
     } else if (part === 'part2') {
       setQuestions(parsePart2Questions());
-    } else {
-      // Mock questions for development of Part 3
-      const mockSet = Array.from({ length: 5 }, (_, i) => ({
-        id: i + 1,
-        question: `Sample Assessment Question ${i + 1} for Part ${partNumber}. (Placeholder until official copy is loaded)`,
-        options: {
-          A: 'Option A: The systems-based builder response',
-          B: 'Option B: The employee matrix response',
-          C: 'Option C: The shortcut noise response',
-          D: 'Option D: The theatrical wealth response'
-        },
-        answer: 'A'
-      }));
-      setQuestions(mockSet);
+    } else if (part === 'part3') {
+      setQuestions(parsePart3Questions());
     }
   }, [part, partNumber]);
 
