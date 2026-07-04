@@ -57,6 +57,7 @@ export default function FunnelPopup() {
   const showPopupOnRoutes = ['/', '/admission'];
   const shouldRenderOnRoute = showPopupOnRoutes.includes(pathname);
 
+  const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
   const [step, setStep] = useState(1); // 1: Interrupt, 2: Reality Check, 3: Quiz, 4: Pivot/bait, 5: Register, 6: Paywall
@@ -73,6 +74,10 @@ export default function FunnelPopup() {
   // Checkout redirect state
   const [checkoutLoading, setCheckoutLoading] = useState(false);
   const [checkoutError, setCheckoutError] = useState('');
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // 5-second initial trigger
   useEffect(() => {
@@ -105,12 +110,17 @@ export default function FunnelPopup() {
     return () => clearTimeout(retriggerTimer);
   }, [isOpen, shouldRenderOnRoute, hasStarted]);
 
-  if (!shouldRenderOnRoute || !isOpen) {
+  if (!mounted || !shouldRenderOnRoute) {
+    return null;
+  }
+
+  if (!isOpen) {
     // Show teaser badge if popup is closed and registration hasn't started yet
-    const completed = typeof window !== 'undefined' && sessionStorage.getItem('foxrevo_funnel_done') === 'true';
-    if (!completed && shouldRenderOnRoute) {
+    const completed = sessionStorage.getItem('foxrevo_funnel_done') === 'true';
+    if (!completed) {
       return (
         <button 
+          type="button"
           onClick={() => { setIsOpen(true); setStep(1); setHasStarted(true); }}
           className="funnel-teaser-badge print-hide"
         >
