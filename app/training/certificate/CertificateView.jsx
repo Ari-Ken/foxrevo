@@ -6,6 +6,7 @@ import Link from 'next/link';
 import './certificate.css';
 
 export default function CertificateView({ candidate }) {
+  const [fullName, setFullName] = useState(candidate.full_name || '');
   const [businessVenture, setBusinessVenture] = useState('E-commerce & Service Arbitrage');
   const [revenueTarget, setRevenueTarget] = useState('5,000,000');
   const [scale, setScale] = useState(1);
@@ -60,7 +61,12 @@ export default function CertificateView({ candidate }) {
         <div className="cert-inputs-grid">
           <div className="cert-input-group">
             <label>Recipient Name</label>
-            <input type="text" value={candidate.full_name} disabled style={{ opacity: 0.7, cursor: 'not-allowed' }} />
+            <input 
+              type="text" 
+              value={fullName} 
+              onChange={(e) => setFullName(e.target.value)} 
+              placeholder="Recipient Name"
+            />
           </div>
           <div className="cert-input-group">
             <label>Chosen Business Venture</label>
@@ -140,7 +146,7 @@ export default function CertificateView({ candidate }) {
             <div className="declaration">
               <div className="decl-title">Certificate of Completion</div>
               <div className="decl-intro">This certifies that</div>
-              <div className="decl-name">{candidate.full_name}</div>
+              <div className="decl-name">{fullName}</div>
               <div className="decl-body">
                 has successfully completed the FoxRevo Wealth‑Mindset &amp; Entrepreneurship Program and is hereby recognized as a
               </div>

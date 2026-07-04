@@ -6,6 +6,7 @@ import { supabaseAdmin } from '../../utils/supabaseAdmin';
 import LogoutButton from './LogoutButton';
 import CheckoutButton from './CheckoutButton';
 import CertificateButton from './CertificateButton';
+import DashboardHeader from './DashboardHeader';
 
 export default async function DashboardPage() {
   const supabase = createClient();
@@ -63,17 +64,7 @@ export default async function DashboardPage() {
       <div style={{ maxWidth: '720px', margin: '0 auto' }}>
 
         {/* Header */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', borderBottom: '1px solid var(--border-medium)', paddingBottom: '24px', marginBottom: '32px' }}>
-          <div>
-            <h1 style={{ fontSize: '30px', fontWeight: '800', color: 'var(--text-primary)', marginBottom: '4px' }}>
-              Candidate Dashboard
-            </h1>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '14px' }}>
-              {candidate.full_name} &nbsp;·&nbsp; {candidate.email}
-            </p>
-          </div>
-          <LogoutButton />
-        </div>
+        <DashboardHeader candidate={candidate} />
 
         {/* Status Panel */}
         <div style={{ backgroundColor: 'var(--bg-secondary)', borderRadius: '8px', border: '1px solid var(--border-medium)', padding: '28px', marginBottom: '24px' }}>
