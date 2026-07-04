@@ -5,6 +5,7 @@ import { createClient } from '../../utils/supabase/server';
 import { supabaseAdmin } from '../../utils/supabaseAdmin';
 import LogoutButton from './LogoutButton';
 import CheckoutButton from './CheckoutButton';
+import CertificateButton from './CertificateButton';
 
 export default async function DashboardPage() {
   const supabase = createClient();
@@ -151,6 +152,124 @@ export default async function DashboardPage() {
                 >
                   Revisit preparatory material & retake practice exam
                 </Link>
+              </div>
+
+              {/* TRAINING ROADMAP PANEL */}
+              <div style={{ marginTop: '32px', borderTop: '1px solid var(--border-medium)', paddingTop: '24px' }}>
+                <h3 style={{ fontSize: '18px', fontWeight: '800', color: 'var(--text-primary)', marginBottom: '16px' }}>
+                  The Wealth Revolution Academy Roadmap
+                </h3>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '14px', lineHeight: '1.6', marginBottom: '24px' }}>
+                  Now that your clearance is confirmed, you are granted complete access to the three-part book assessment sequence. Read each part of the book, confirm your understanding, and complete the assessments below to graduate.
+                </p>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                  {[
+                    {
+                      num: 1,
+                      title: 'Part 1: The Detox Confirmation',
+                      desc: 'Prove that you have cleared the ground, audited your environment, and deadened the noise.',
+                      passed: candidate.part1_passed || false,
+                      score: candidate.part1_score || 0,
+                      route: '/training/part1/prep'
+                    },
+                    {
+                      num: 2,
+                      title: 'Part 2: The Rewire Assessment',
+                      desc: 'Confirm your structural understanding of the asset column and macroeconomic systems.',
+                      passed: candidate.part2_passed || false,
+                      score: candidate.part2_score || 0,
+                      route: '/training/part2/prep'
+                    },
+                    {
+                      num: 3,
+                      title: 'Part 3: The Launch Assessment',
+                      desc: 'Demonstrate alignment with legacy building, system leverage, and capital scaling.',
+                      passed: candidate.part3_passed || false,
+                      score: candidate.part3_score || 0,
+                      route: '/training/part3/prep'
+                    }
+                  ].map((part) => (
+                    <div key={part.num} style={{
+                      backgroundColor: 'var(--bg-tertiary)',
+                      border: '1px solid var(--border-light)',
+                      borderRadius: '6px',
+                      padding: '20px',
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'flex-start',
+                      flexWrap: 'wrap',
+                      gap: '16px'
+                    }}>
+                      <div style={{ flex: '1', minWidth: '240px' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                          <span style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            width: '24px',
+                            height: '24px',
+                            borderRadius: '50%',
+                            backgroundColor: part.passed ? 'rgba(16,185,129,0.1)' : 'rgba(165,28,48,0.06)',
+                            color: part.passed ? '#10B981' : 'var(--accent)',
+                            fontSize: '12px',
+                            fontWeight: '800'
+                          }}>
+                            {part.num}
+                          </span>
+                          <h4 style={{ margin: 0, fontSize: '15px', fontWeight: '700', color: 'var(--text-primary)' }}>
+                            {part.title}
+                          </h4>
+                          <span style={{
+                            fontSize: '11px',
+                            fontWeight: '700',
+                            padding: '2px 8px',
+                            borderRadius: '4px',
+                            backgroundColor: part.passed ? 'rgba(16,185,129,0.1)' : 'rgba(245,158,11,0.08)',
+                            color: part.passed ? '#10B981' : '#F59E0B'
+                          }}>
+                            {part.passed ? 'PASSED' : 'PENDING'}
+                          </span>
+                        </div>
+                        <p style={{ margin: 0, fontSize: '13px', color: 'var(--text-tertiary)', lineHeight: '1.5' }}>
+                          {part.desc}
+                        </p>
+                      </div>
+
+                      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '8px', minWidth: '140px' }}>
+                        {part.passed && (
+                          <span style={{ fontSize: '13px', fontWeight: '700', color: '#10B981' }}>
+                            Score: {part.score}%
+                          </span>
+                        )}
+                        <Link
+                          href={part.route}
+                          className="btn"
+                          style={{
+                            padding: '8px 16px',
+                            fontSize: '13px',
+                            backgroundColor: part.passed ? 'transparent' : 'var(--accent)',
+                            color: part.passed ? 'var(--text-primary)' : '#fff',
+                            border: part.passed ? '1px solid var(--border-medium)' : 'none',
+                            borderRadius: '4px',
+                            fontWeight: '600'
+                          }}
+                        >
+                          {part.passed ? 'Review Prep / Retake' : 'Read Book & Sit Exam'}
+                        </Link>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <CertificateButton
+                  p1Passed={candidate.part1_passed || false}
+                  p1Score={candidate.part1_score || 0}
+                  p2Passed={candidate.part2_passed || false}
+                  p2Score={candidate.part2_score || 0}
+                  p3Passed={candidate.part3_passed || false}
+                  p3Score={candidate.part3_score || 0}
+                />
               </div>
             </div>
           )}
