@@ -20,15 +20,15 @@ export default function FlipSection() {
           Guidelines for Admission
         </h2>
         <p style={{ color: 'var(--text-secondary)', textAlign: 'center', fontSize: '15px', lineHeight: '1.7', marginBottom: '32px' }}>
-          Welcome to the beginning of your build. FoxRevo is dedicated to developing the next generation of builders. To ensure we construct a community focused on growth and excellence, we ask that you review and accept these core guidelines before starting.
+          Welcome to the beginning of your build. Review these core parameters to begin.
         </p>
 
         <div style={{ borderLeft: '3px solid #A51C30', paddingLeft: '20px', marginBottom: '36px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
           {[
-            ['The Commitment to Build.', 'Registration is free. To progress to the preparatory material and sit the entrance examination, an introductory fee of ₦3,000 is required. This represents your commitment to the process.'],
-            ['Administrative Contribution.', 'The registration fee is strictly non-refundable once paid, as it directly supports the maintenance of the assessment architecture and portal.'],
-            ['The Entrance Assessment.', 'To join the core member community, you will study the prep material and sit a timed entrance exam, aiming for a passing score of 45/100 or higher.'],
-            ['Focus and Preparation.', 'We protect the standards of our cohorts. You are granted exactly two (2) attempts. If both attempts are exhausted without passing, your session will be locked to allow you time to study and prepare before applying in a future intake.'],
+            ['₦3,000 Commitment Sacrifice:', 'Required contribution to access preparatory architecture and unlock the assessment portal.'],
+            ['Entrance Assessment:', 'Study the provided blueprints and clear the timed examination with a score of 45% or higher.'],
+            ['Attempt Limitations:', 'You have exactly two (2) attempts. If both are exhausted, you must re-register to clear your attempts.'],
+            ['Official Support Line:', 'Support is available strictly through our official WhatsApp customer line (+234 707 742 2928).']
           ].map(([title, body]) => (
             <div key={title}>
               <span style={{ color: 'var(--text-primary)', fontWeight: '700', fontSize: '15px' }}>{title} </span>
@@ -39,7 +39,7 @@ export default function FlipSection() {
 
         <div style={{ textAlign: 'center' }}>
           <Link
-            href="/register"
+            href="/admission"
             className="btn btn-primary"
             style={{ display: 'inline-block', padding: '16px 48px', fontSize: '15px', textTransform: 'uppercase', letterSpacing: '1px' }}
           >

@@ -2,6 +2,7 @@ import './globals.css';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import WhatsAppWidget from '../components/WhatsAppWidget';
+import FunnelPopup from '../components/FunnelPopup';
 
 export const metadata = {
   title: 'FoxRevo | The Wealth Revolution',
@@ -40,6 +41,7 @@ export default function RootLayout({ children }) {
           {children}
         </main>
         <WhatsAppWidget />
+        <FunnelPopup />
         <Footer />
       </body>
     </html>
