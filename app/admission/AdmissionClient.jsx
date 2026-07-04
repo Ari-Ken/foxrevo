@@ -189,9 +189,9 @@ export default function AdmissionClient({ initialIsOpen, openDateStr }) {
               <Lock size={14} style={{ marginRight: '6px' }} />
               Portal Closed
             </div>
-            <h1 className="admission-headline">The FoxRevo Portal Is Currently Closed.</h1>
+            <h1 className="admission-headline">The Portal Is Closed. But Something Big Is Coming.</h1>
             <p className="admission-subheadline">
-              Admission reopens on <strong className="highlight-date">{formatOpenDate(openDateStr)}</strong>. Before then, the only place to prepare and receive the exact opening time is our official preparatory group.
+              In <strong className="highlight-date">{timeLeft.days}</strong> days, we open admission for <strong>3,000 Nigerian graduates</strong>. One mission: Build businesses. Transform the nation. The countdown has started.
             </p>
 
             {/* Countdown Ticker */}
@@ -219,69 +219,116 @@ export default function AdmissionClient({ initialIsOpen, openDateStr }) {
 
           {/* Body Content */}
           <div className="admission-body-sections">
+            
+            {/* THE REALITY CHECK */}
+            <div className="info-block">
+              <h3>The Reality Check</h3>
+              <p style={{ fontWeight: '700', fontSize: '16px', color: 'var(--text-primary)', marginBottom: '8px' }}>
+                You just graduated. Now what?
+              </p>
+              <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>
+                No job. No capital. No direction.<br />
+                Your mates are posting "hustle" photos while staying broke.<br />
+                You're tired of noise. Tired of courses that teach nothing.<br />
+                You want <strong>real business. Real money. Real impact.</strong>
+              </p>
+              <p style={{ fontWeight: '700', color: 'var(--accent)', marginTop: '8px' }}>This is your moment.</p>
+            </div>
+
+            {/* WHAT IS FOXREVO? */}
             <div className="info-block">
               <h3>What Is FoxRevo?</h3>
-              <p>
-                FoxRevo is a wealth‑mindset and entrepreneurship revolution. We train ordinary Africans to build lasting wealth, start real businesses, and become the architects of Africa’s next great companies. Not noise. Not quick money. A structured, disciplined program with an entrance exam, certified training, and a mission to build billionaires.
-              </p>
+              <p>Not another seminar. Not another WhatsApp course.</p>
+              <p style={{ fontWeight: '800', color: 'var(--text-primary)' }}>FoxRevo is a revolution.</p>
+              <p>We train ordinary Africans to:</p>
+              <ul style={{ paddingLeft: '20px', margin: '8px 0', lineHeight: '1.7', color: 'var(--text-secondary)' }}>
+                <li>Build lasting wealth</li>
+                <li>Start real businesses</li>
+                <li>Become Africa's next great entrepreneurs</li>
+              </ul>
+              <p style={{ fontWeight: '700', color: 'var(--text-primary)' }}>3,000 graduates. One mission. Zero excuses.</p>
             </div>
 
+            {/* WHAT YOU GET */}
+            <div className="info-block">
+              <h3>What You Get</h3>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '12px' }}>
+                <div>✓ <strong>Real Knowledge</strong> — Not theory. What actually works.</div>
+                <div>✓ <strong>Real Strategies</strong> — Step-by-step business building.</div>
+                <div>✓ <strong>Real Growth</strong> — From campus to market leader.</div>
+                <div>✓ <strong>100% FREE</strong> — No catch. Just opportunity.</div>
+              </div>
+            </div>
+
+            {/* WHY THE PORTAL IS CLOSED */}
             <div className="info-block">
               <h3>Why the Portal Is Closed</h3>
-              <p>
-                The revolution does not accept everyone at all times. We open in short, controlled windows to maintain the quality of our cohort, filter out those looking for quick money, and focus our resources entirely on the candidates who pass.
-              </p>
+              <p>We don't accept everyone. We open in <strong>controlled windows</strong>.</p>
+              <p>Only for those who are <strong>serious. Prepared. Ready.</strong></p>
               <p className="notice-highlight">
-                During this closed period, the portal is locked. You cannot register. You cannot pay. You cannot enter.
+                Right now, the current cohort is building. Your window opens soon.
               </p>
             </div>
 
-            <div className="info-block channel-block text-center">
-              <h3>The Only Path of Preparation</h3>
-              <p>
-                While the portal is closed, we release the preparatory syllabus and materials only in our official WhatsApp preparatory channel. If you are serious about passing the entrance exam on Friday, join the preparatory group now. We do not send materials anywhere else.
-              </p>
-              <a 
-                href="https://chat.whatsapp.com/F7vEC2ZWWmRGI5qhasXyiu" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="btn btn-primary cta-btn-large"
-              >
-                Join the Preparatory WhatsApp Group
-                <ArrowRight size={18} style={{ marginLeft: '8px' }} />
-              </a>
-            </div>
-
-            <hr className="divider" />
-
-            {/* Notify Me */}
-            <div className="notify-section">
-              <h3>Notify Me When the Portal Opens</h3>
-              <p>Enter your email below. We will send exactly one notification 15 minutes before the portal officially reopens.</p>
+            {/* WHAT TO DO NOW */}
+            <div className="info-block channel-block text-center" style={{ backgroundColor: 'var(--bg-tertiary)', borderRadius: '6px', padding: '24px' }}>
+              <h3>What To Do Now</h3>
               
-              {waitlistSuccess ? (
-                <div className="alert success">{waitlistSuccess}</div>
-              ) : (
-                <form onSubmit={handleWaitlistSubmit} className="inline-form">
-                  <input
-                    type="email"
-                    placeholder="name@example.com"
-                    value={waitlistEmail}
-                    onChange={(e) => setWaitlistEmail(e.target.value)}
-                    required
-                    disabled={waitlistLoading}
-                    className="form-input"
-                  />
-                  <button 
-                    type="submit" 
-                    disabled={waitlistLoading} 
-                    className="btn btn-secondary inline-btn"
-                  >
-                    {waitlistLoading ? 'Submitting...' : 'Notify Me'}
-                  </button>
-                </form>
-              )}
-              {waitlistError && <div className="alert error">{waitlistError}</div>}
+              <div style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', gap: '20px', margin: '20px 0' }}>
+                <div>
+                  <h4 style={{ color: 'var(--text-primary)', marginBottom: '4px' }}>1. Join the Preparatory WhatsApp Group</h4>
+                  <p style={{ color: 'var(--text-secondary)', fontSize: '14px', margin: 0 }}>Get exam materials. See proof. Know the exact opening time before others.</p>
+                </div>
+                
+                <a 
+                  href="https://chat.whatsapp.com/F7vEC2ZWWmRGI5qhasXyiu" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="btn btn-primary cta-btn-large"
+                  style={{ display: 'inline-flex', justifyContent: 'center', alignItems: 'center', margin: '0 auto', width: '100%', maxWidth: '360px' }}
+                >
+                  Join the Preparatory WhatsApp Group
+                  <ArrowRight size={18} style={{ marginLeft: '8px' }} />
+                </a>
+
+                <hr className="divider" style={{ margin: '8px 0' }} />
+
+                <div>
+                  <h4 style={{ color: 'var(--text-primary)', marginBottom: '4px' }}>2. Drop Your Email</h4>
+                  <p style={{ color: 'var(--text-secondary)', fontSize: '14px', margin: '0 0 12px 0' }}>We notify you the moment gates open. No spam. No noise.</p>
+                  
+                  {waitlistSuccess ? (
+                    <div className="alert success">{waitlistSuccess}</div>
+                  ) : (
+                    <form onSubmit={handleWaitlistSubmit} className="inline-form">
+                      <input
+                        type="email"
+                        placeholder="name@example.com"
+                        value={waitlistEmail}
+                        onChange={(e) => setWaitlistEmail(e.target.value)}
+                        required
+                        disabled={waitlistLoading}
+                        className="form-input"
+                      />
+                      <button 
+                        type="submit" 
+                        disabled={waitlistLoading} 
+                        className="btn btn-secondary inline-btn"
+                      >
+                        {waitlistLoading ? 'Submitting...' : 'Notify Me'}
+                      </button>
+                    </form>
+                  )}
+                  {waitlistError && <div className="alert error">{waitlistError}</div>}
+                </div>
+
+                <hr className="divider" style={{ margin: '8px 0' }} />
+
+                <div>
+                  <h4 style={{ color: 'var(--text-primary)', marginBottom: '4px' }}>3. Prepare Yourself</h4>
+                  <p style={{ color: 'var(--text-secondary)', fontSize: '14px', margin: 0 }}>Read the foundational article. The exam is timed. Proctored. Standard. Come ready or don't come at all.</p>
+                </div>
+              </div>
             </div>
 
             <hr className="divider" />
@@ -290,16 +337,18 @@ export default function AdmissionClient({ initialIsOpen, openDateStr }) {
             <div className="support-section text-center">
               <h4>Already Passed the Exam?</h4>
               <p>
-                If you passed the entrance exam in a previous window and have not received your exam record document, notify the team immediately at <strong className="accent-color">+234 707 742 2928</strong>, or <Link href="/login" className="login-link-underlined">Login Here</Link> to check your profile.
+                If you passed the entrance exam in a previous window and have not received your exam record document, contact us: <strong className="accent-color">+234 707 742 2928</strong>
               </p>
             </div>
           </div>
 
           {/* Footer Quote */}
-          <div className="admission-footer text-center">
-            <p className="footer-quote">
-              “An empty mind is the devil’s workshop. A right mind is the architect of nations.” <br />
-              <span className="quote-author">— Chinese Proverb (Adapted)</span>
+          <div className="admission-footer text-center" style={{ borderTop: '1px solid var(--border-medium)', paddingTop: '24px', marginTop: '24px' }}>
+            <p style={{ fontSize: '13px', fontWeight: '700', color: 'var(--text-secondary)', margin: '0 0 8px 0', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+              FoxRevo — The Silent Revolution Building Africa's Next Billionaires
+            </p>
+            <p className="footer-quote" style={{ fontSize: '15px', fontStyle: 'italic', margin: 0 }}>
+              “The best time to plant a tree was 20 years ago. The second best time is now.”
             </p>
           </div>
         </div>
