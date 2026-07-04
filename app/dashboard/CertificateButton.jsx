@@ -3,43 +3,87 @@
 import React, { useState } from 'react';
 import { Award, CheckCircle, Clock, X } from 'lucide-react';
 
-export default function CertificateButton({ p1Passed, p1Score, p2Passed, p2Score, p3Passed, p3Score }) {
+export default function CertificateButton({ p1Passed, p1Score, p2Passed, p2Score, p3Passed, p3Score, certPaid }) {
   const [showModal, setShowModal] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const isQualified = p1Passed && p2Passed && p3Passed;
 
-  const handleClaim = () => {
-    if (isQualified) {
-      window.location.href = '/training/certificate';
-    } else {
+  const handleClaim = async () => {
+    if (!isQualified) {
       setShowModal(true);
+      return;
+    }
+
+    if (certPaid) {
+      window.location.href = '/training/certificate';
+      return;
+    }
+
+    // Trigger certificate checkout payment of ₦1,000 NGN
+    setLoading(true);
+    setError('');
+    try {
+      const res = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: 'certificate' })
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Gateway connection failed.');
+      if (data.paymentUrl) {
+        window.location.href = data.paymentUrl;
+      }
+    } catch (err) {
+      setError(err.message);
+      setLoading(false);
     }
   };
 
   return (
     <div style={{ marginTop: '24px' }}>
+      {error && (
+        <div style={{
+          background: 'rgba(165,28,48,0.1)',
+          border: '1px solid #A51C30',
+          borderRadius: '4px',
+          padding: '12px 16px',
+          color: '#A51C30',
+          fontSize: '14px',
+          marginBottom: '16px',
+          lineHeight: '1.5'
+        }}>
+          {error}
+        </div>
+      )}
       <button
         onClick={handleClaim}
+        disabled={loading}
         className="btn btn-large w-full"
         style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           gap: '8px',
-          background: isQualified ? '#10B981' : '#F59E0B',
+          background: isQualified ? (certPaid ? '#10B981' : 'var(--accent)') : '#F59E0B',
           color: '#fff',
           border: 'none',
           borderRadius: '4px',
           padding: '16px',
           fontWeight: '700',
           fontSize: '16px',
-          cursor: 'pointer',
+          cursor: loading ? 'not-allowed' : 'pointer',
           boxShadow: '0 4px 15px rgba(0, 0, 0, 0.05)',
           transition: 'all 0.2s ease'
         }}
       >
         <Award size={20} />
-        {isQualified ? 'Claim & Download Certificate' : 'Attempt Certificate Download'}
+        {loading ? 'Connecting to Gateway…' : (
+          isQualified 
+            ? (certPaid ? 'Download Official Certificate →' : 'Pay Certificate Processing Fee — ₦1,000') 
+            : 'Attempt Certificate Download'
+        )}
       </button>
 
       {/* MOMENTUM POPUP MODAL */}

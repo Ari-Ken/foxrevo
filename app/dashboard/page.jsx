@@ -269,20 +269,22 @@ export default async function DashboardPage() {
                   p2Score={candidate.part2_score || 0}
                   p3Passed={candidate.part3_passed || false}
                   p3Score={candidate.part3_score || 0}
+                  certPaid={candidate.cert_paid || false}
                 />
               </div>
             </div>
           )}
 
-          {/* STATE 4: Locked out */}
+          {/* STATE 4: Locked out (with Re-registration option) */}
           {isPaid && isLocked && (
             <div>
-              <div style={{ background: 'rgba(165,28,48,0.1)', border: '1px solid #A51C30', borderRadius: '6px', padding: '16px' }}>
-                <strong style={{ color: '#A51C30' }}>Access Permanently Revoked</strong>
+              <div style={{ background: 'rgba(165,28,48,0.1)', border: '1px solid #A51C30', borderRadius: '6px', padding: '16px', marginBottom: '24px' }}>
+                <strong style={{ color: '#A51C30' }}>Clearance Attempt Limit Reached</strong>
                 <p style={{ color: 'var(--text-primary)', marginTop: '6px', fontSize: '14px', lineHeight: '1.6' }}>
-                  You have exhausted both examination attempts without meeting the passing criteria. Access to the blueprint has been permanently denied. There is no appeal.
+                  You have exhausted both examination attempts without meeting the passing criteria. However, you can choose to reset your clearance record and re-register by paying the examination fee again.
                 </p>
               </div>
+              <CheckoutButton type="exam" label="Re-Register & Reset Clearance — ₦3,000" />
             </div>
           )}
 

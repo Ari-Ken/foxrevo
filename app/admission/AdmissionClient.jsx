@@ -290,7 +290,7 @@ export default function AdmissionClient({ initialIsOpen, openDateStr }) {
             <div className="support-section text-center">
               <h4>Already Passed the Exam?</h4>
               <p>
-                If you passed the entrance exam in a previous window and have not received your exam record document, notify the team immediately at <strong className="accent-color">+234 902 393 1748</strong>, or <Link href="/login" className="login-link-underlined">Login Here</Link> to check your profile.
+                If you passed the entrance exam in a previous window and have not received your exam record document, notify the team immediately at <strong className="accent-color">+234 707 742 2928</strong>, or <Link href="/login" className="login-link-underlined">Login Here</Link> to check your profile.
               </p>
             </div>
           </div>

@@ -27,12 +27,13 @@ export default async function CertificatePage() {
     redirect('/login');
   }
 
-  // Must have passed entrance exam and all three training assessments
+  // Must have passed entrance exam, all three training assessments, and paid the fee
   const isQualified = 
     candidate.passed_exam && 
     candidate.part1_passed && 
     candidate.part2_passed && 
-    candidate.part3_passed;
+    candidate.part3_passed &&
+    candidate.cert_paid;
 
   if (!isQualified) {
     redirect('/dashboard');

@@ -6,12 +6,14 @@ export async function POST(req) {
   try {
     let email = '';
     let full_name = '';
+    let type = 'exam'; // default
 
     // Check if the request has a payload (JSON body)
     try {
       const body = await req.json();
       email = body?.email?.toLowerCase()?.trim();
       full_name = body?.fullName?.trim();
+      type = body?.type || 'exam';
     } catch (e) {
       // Body is empty or not JSON, which is normal for standard session flow
     }
@@ -30,18 +32,55 @@ export async function POST(req) {
       full_name = user.user_metadata?.full_name || 'Candidate';
     }
 
-    // Guard: prevent double payment
+    // Fetch candidate details
     const { data: existing } = await supabaseAdmin
       .from('candidates')
-      .select('payment_status')
+      .select('*')
       .eq('email', email)
       .single();
 
-    if (existing?.payment_status === true) {
-      return NextResponse.json(
-        { error: 'Your examination fee has already been paid.' },
-        { status: 400 }
-      );
+    // Guard checks based on payment type
+    let amount = 3000;
+    let title = 'FoxRevo Entrance Examination Fee';
+    let description = 'Non-refundable fee for The Wealth Revolution entrance exam';
+    let txRefPrefix = 'foxrevo_exam';
+
+    if (type === 'certificate') {
+      const isQualified = 
+        existing && 
+        existing.passed_exam && 
+        existing.part1_passed && 
+        existing.part2_passed && 
+        existing.part3_passed;
+
+      if (!isQualified) {
+        return NextResponse.json(
+          { error: 'You must pass all academy assessments before paying for the certificate.' },
+          { status: 400 }
+        );
+      }
+
+      if (existing?.cert_paid === true) {
+        return NextResponse.json(
+          { error: 'Your certificate fee has already been paid.' },
+          { status: 400 }
+        );
+      }
+
+      amount = 1000;
+      title = 'FoxRevo Certificate Processing Fee';
+      description = 'Processing fee to print and download your graduation certificate';
+      txRefPrefix = 'foxrevo_cert';
+    } else {
+      // Default: 'exam' (entrance or retake)
+      const isFailedAttempts = existing && existing.exam_attempts >= 2 && !existing.passed_exam;
+      
+      if (existing?.payment_status === true && !isFailedAttempts) {
+        return NextResponse.json(
+          { error: 'Your examination fee has already been paid.' },
+          { status: 400 }
+        );
+      }
     }
 
     // Ensure candidate row exists (upsert is safe — won't overwrite payment_status if already set)
@@ -60,14 +99,14 @@ export async function POST(req) {
 
     const cleanEmailForRef = email.replace(/[^a-zA-Z0-9]/g, '_');
     const payload = {
-      tx_ref: `foxrevo_${cleanEmailForRef}_${Date.now()}`,
-      amount: 3000,
+      tx_ref: `${txRefPrefix}_${cleanEmailForRef}_${Date.now()}`,
+      amount: amount,
       currency: 'NGN',
       redirect_url: `${BASE_URL}/dashboard`,
       customer: { email, name: full_name },
       customizations: {
-        title: 'FoxRevo Entrance Examination Fee',
-        description: 'Non-refundable fee for The Wealth Revolution entrance exam',
+        title: title,
+        description: description,
       },
     };
 

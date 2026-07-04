@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 
-export default function CheckoutButton() {
+export default function CheckoutButton({ type = 'exam', label = 'Pay Examination Fee — ₦3,000' }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -10,8 +10,11 @@ export default function CheckoutButton() {
     setLoading(true);
     setError('');
     try {
-      // POST with no body — server reads identity from session cookie
-      const res = await fetch('/api/checkout', { method: 'POST' });
+      const res = await fetch('/api/checkout', { 
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type })
+      });
       const data = await res.json();
 
       if (!res.ok) throw new Error(data.error || 'Payment gateway error.');
@@ -47,7 +50,7 @@ export default function CheckoutButton() {
         className={`btn btn-large ${loading ? 'btn-disabled' : 'btn-primary'}`}
         style={{ width: '100%' }}
       >
-        {loading ? 'Connecting to Gateway…' : 'Pay Examination Fee — ₦3,000'}
+        {loading ? 'Connecting to Gateway…' : label}
       </button>
     </div>
   );

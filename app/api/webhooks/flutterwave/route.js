@@ -21,16 +21,37 @@ export async function POST(req) {
     // 2. Validate the payment status
     if (payload.event === 'charge.completed' && payload.data.status === 'successful') {
       const email = payload.data.customer.email.toLowerCase();
+      const txRef = payload.data.tx_ref || '';
+      const isCertificatePayment = txRef.includes('_cert_');
       
-      // 3. Update the candidate's payment status in Supabase
-      const { data: updateData, error } = await supabaseAdmin
-        .from('candidates')
-        .upsert({ 
-          email: email,
-          full_name: payload.data.customer.name || 'Candidate',
-          payment_status: true 
-        }, { onConflict: 'email' })
-        .select();
+      let updateData;
+      let error;
+
+      if (isCertificatePayment) {
+        // Update certificate payment status
+        const res = await supabaseAdmin
+          .from('candidates')
+          .update({ cert_paid: true })
+          .eq('email', email)
+          .select();
+        updateData = res.data;
+        error = res.error;
+      } else {
+        // Upsert exam payment status and reset attempts
+        const res = await supabaseAdmin
+          .from('candidates')
+          .upsert({ 
+            email: email,
+            full_name: payload.data.customer.name || 'Candidate',
+            payment_status: true,
+            exam_attempts: 0,
+            passed_exam: false,
+            exam_score: 0
+          }, { onConflict: 'email' })
+          .select();
+        updateData = res.data;
+        error = res.error;
+      }
 
       if (error) {
         console.error('Failed to update candidate payment status in Supabase:', error);
