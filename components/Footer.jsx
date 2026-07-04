@@ -48,7 +48,7 @@ export default function Footer({ transactional = false, proverb = "The best time
             <Link href="/terms">Terms</Link>
             <Link href="/privacy">Privacy</Link>
             <Link href="/terms">Regulations</Link>
-            <Link href="/checkout">Register</Link>
+            <Link href="/admission">Register</Link>
             <Link href="/contact">Help</Link>
             <Link href="/contact">Contact</Link>
           </div>
