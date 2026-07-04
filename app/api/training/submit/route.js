@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { supabaseAdmin } from '../../../../utils/supabaseAdmin';
 import { createClient } from '../../../../utils/supabase/server';
 import { parsePart1Questions } from '../../../training/questions/part1';
+import { parsePart2Questions } from '../../../training/questions/part2';
 
 export async function POST(req) {
   try {
@@ -37,12 +38,14 @@ export async function POST(req) {
       return NextResponse.json({ error: 'Entrance exam clearance required before starting assessments.' }, { status: 403 });
     }
 
-    // 2. Load and grade the questions (Part 1 questions loaded; Parts 2 & 3 fall back to temporary mock sets until copies are shared)
+    // 2. Load and grade the questions
     let questions = [];
     if (partNum === 1) {
       questions = parsePart1Questions();
+    } else if (partNum === 2) {
+      questions = parsePart2Questions();
     } else {
-      // Mock questions for Parts 2 and 3 so the routes compile and work immediately
+      // Mock questions for Part 3 until the remaining questions are shared
       questions = Array.from({ length: 5 }, (_, i) => ({
         id: i + 1,
         question: `Question ${i + 1} for Part ${partNum}`,

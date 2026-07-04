@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { parsePart1Questions } from '../../questions/part1';
+import { parsePart2Questions } from '../../questions/part2';
 import { ShieldCheck, AlertCircle, Clock, ArrowLeft, ArrowRight, CheckCircle2 } from 'lucide-react';
 import './trainingExam.css';
 
@@ -30,8 +31,10 @@ export default function TrainingExamClient({ part, candidate }) {
     // Load appropriate questions set
     if (part === 'part1') {
       setQuestions(parsePart1Questions());
+    } else if (part === 'part2') {
+      setQuestions(parsePart2Questions());
     } else {
-      // Mock questions for development of Parts 2 and 3
+      // Mock questions for development of Part 3
       const mockSet = Array.from({ length: 5 }, (_, i) => ({
         id: i + 1,
         question: `Sample Assessment Question ${i + 1} for Part ${partNumber}. (Placeholder until official copy is loaded)`,
