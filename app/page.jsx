@@ -26,6 +26,9 @@ export default function Home() {
   // Voice swipe state
   const [currentVoiceIndex, setCurrentVoiceIndex] = useState(0);
 
+  // Sticky CTA state
+  const [showStickyCta, setShowStickyCta] = useState(false);
+
   const voiceQuotes = [
     { text: "I would not mind paying more for this. It is worth it.", author: "Member Voice" },
     { text: "I have always known there is a system sold to Africans that is not built for us. That is why we are still where we are. FoxRevo is the first thing that actually addressed it.", author: "Member Voice" },
@@ -64,14 +67,26 @@ export default function Home() {
           }, 150);
         }
       }
+
+      const handleScroll = () => {
+        if (window.scrollY > 600) {
+          setShowStickyCta(true);
+        } else {
+          setShowStickyCta(false);
+        }
+      };
+      window.addEventListener('scroll', handleScroll);
+      
+      // Auto voice quote swiper interval
+      const interval = setInterval(() => {
+        setCurrentVoiceIndex((prev) => (prev + 1) % voiceQuotes.length);
+      }, 4500);
+
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+        clearInterval(interval);
+      };
     }
-
-    // Auto voice quote swiper interval
-    const interval = setInterval(() => {
-      setCurrentVoiceIndex((prev) => (prev + 1) % voiceQuotes.length);
-    }, 4500);
-
-    return () => clearInterval(interval);
   }, []);
 
   const handleScrollToRegister = (e) => {
@@ -749,6 +764,21 @@ export default function Home() {
           <span>Adam Grant</span>
           <span>Carol Dweck</span>
           <span>James Clear</span>
+        </div>
+      </div>
+
+      {/* Sticky Bottom CTA */}
+      <div className={`sticky-cta-bar ${showStickyCta ? 'visible' : ''}`}>
+        <div className="sticky-cta-container">
+          <div className="sticky-cta-left">
+            <strong>The Wealth Revolution is Open.</strong>
+            <span>₦3,000 One-Time Fee • Exam Included • No Refunds</span>
+          </div>
+          <div className="sticky-cta-right">
+            <a href="#register" onClick={handleScrollToRegister} className="btn-sticky-cta">
+              Begin Your Application →
+            </a>
+          </div>
         </div>
       </div>
 

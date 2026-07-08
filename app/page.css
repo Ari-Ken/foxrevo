@@ -195,8 +195,11 @@
 
 /* SECTION BLOCKS */
 .section-block {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+  box-sizing: border-box;
 }
 
 .padding-y {
@@ -342,11 +345,11 @@
   background-color: var(--bg-secondary);
   border: 1px solid var(--border-light);
   border-radius: 12px;
-  padding: 32px;
+  padding: 40px 48px;
   box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
 .benefit-index {
@@ -456,7 +459,7 @@
   background-color: var(--bg-secondary);
   border: 1px solid var(--border-light);
   border-radius: 12px;
-  padding: 40px;
+  padding: 40px 48px;
   box-shadow: var(--shadow-sm);
   margin: 40px 0;
 }
@@ -845,4 +848,100 @@
   font-size: 14px;
   color: var(--text-tertiary);
   margin: 0;
+}
+
+/* Sticky Bottom CTA Bar */
+.sticky-cta-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-medium);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+  padding: 16px 24px;
+  z-index: 99;
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sticky-cta-bar.visible {
+  transform: translateY(0);
+}
+
+.sticky-cta-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+
+.sticky-cta-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: left;
+}
+
+.sticky-cta-left strong {
+  font-size: 15px;
+  color: var(--text-primary);
+}
+
+.sticky-cta-left span {
+  font-size: 13px;
+  color: var(--text-tertiary);
+}
+
+.btn-sticky-cta {
+  background-color: var(--accent);
+  color: var(--accent-text);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 0.2s, transform 0.1s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.btn-sticky-cta:hover {
+  background-color: var(--accent-hover);
+}
+
+.btn-sticky-cta:active {
+  transform: scale(0.98);
+}
+
+/* Responsive Card Paddings Override */
+@media (max-width: 768px) {
+  .benefit-card-full {
+    padding: 24px 20px !important;
+  }
+  .registration-card-inline {
+    padding: 24px 20px !important;
+  }
+  .founder-quote-box {
+    padding: 24px 20px !important;
+  }
+  .sticky-cta-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+  .sticky-cta-left {
+    display: none; /* Keep it compact on mobile */
+  }
+  .sticky-cta-right {
+    width: 100%;
+  }
+  .btn-sticky-cta {
+    width: 100%;
+  }
 }
