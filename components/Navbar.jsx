@@ -59,7 +59,6 @@ export default function Navbar() {
           <Link href="/" className="nav-link">Home</Link>
           <Link href="/about" className="nav-link">About</Link>
           <Link href="/about#mission" className="nav-link">Mission</Link>
-          <Link href="/?scroll=register" onClick={handleRegisterClick} className="nav-link">Register</Link>
           <Link href="/#faq" className="nav-link">FAQ</Link>
           <Link href="/contact" className="nav-link">Contact</Link>
         </div>
@@ -74,9 +73,9 @@ export default function Navbar() {
               <Link href="/login" className="desktop-btn-secondary">
                 Login
               </Link>
-              <Link href="/?scroll=register" onClick={handleRegisterClick} className="desktop-btn-primary">
-                Begin Your Application
-              </Link>
+              <a href="/?scroll=register" onClick={handleRegisterClick} className="desktop-btn-primary">
+                Begin My Application →
+              </a>
             </>
           )}
           
@@ -95,7 +94,6 @@ export default function Navbar() {
           <Link href="/" onClick={() => setIsMenuOpen(false)}>Home</Link>
           <Link href="/about" onClick={() => setIsMenuOpen(false)}>About</Link>
           <Link href="/about#mission" onClick={() => setIsMenuOpen(false)}>Mission</Link>
-          <Link href="/?scroll=register" onClick={handleRegisterClick}>Register</Link>
           <Link href="/#faq" onClick={() => setIsMenuOpen(false)}>FAQ</Link>
           <Link href="/contact" onClick={() => setIsMenuOpen(false)}>Contact</Link>
           
@@ -104,7 +102,7 @@ export default function Navbar() {
           ) : (
             <>
               <Link href="/login" onClick={() => setIsMenuOpen(false)}>Login</Link>
-              <Link href="/?scroll=register" onClick={handleRegisterClick} className="menu-btn-primary-mob">Begin Your Application</Link>
+              <a href="/?scroll=register" onClick={handleRegisterClick} className="menu-btn-primary-mob">Begin My Application →</a>
             </>
           )}
         </div>

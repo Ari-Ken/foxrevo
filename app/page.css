@@ -135,6 +135,20 @@
   border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
+.social-proof-ticker.wine-red-ticker {
+  background-color: var(--accent);
+  color: #FFFFFF;
+  border: none;
+}
+
+.social-proof-ticker.wine-red-ticker span {
+  color: #FFFFFF;
+}
+
+.social-proof-ticker.wine-red-ticker strong {
+  color: #FFFFFF;
+}
+
 .social-proof-ticker.source-ticker {
   background-color: var(--bg-secondary);
   color: var(--text-secondary);
