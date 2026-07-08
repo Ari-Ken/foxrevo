@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { createClient } from '../utils/supabase/client';
-import { ShieldCheck, Lock, Users, Mail, AlertCircle, ArrowRight, CheckCircle2, TrendingUp, DollarSign } from 'lucide-react';
+import { ShieldCheck, Lock, Users, Mail, AlertCircle, ArrowRight, CheckCircle2, TrendingUp, DollarSign, BookOpen } from 'lucide-react';
 import './page.css';
 
 export default function Home() {
@@ -127,35 +127,35 @@ export default function Home() {
           <div className="hero-content">
             <div className="badge-promo">
               <span className="badge-accent">Free Training</span>
-              <span className="badge-details">Identity & Registration Fee: ₦3,000</span>
+              <span className="badge-details">One-Time Registration: ₦3,000</span>
             </div>
             
             <h1 className="hero-headline-new">
               Stop Performing Success.<br />
-              Start Monetizing Your Skills Like a Business.
+              Start Building Real Capability.
             </h1>
             
             <p className="hero-subheadline-new">
-              A no-fluff playbook built for Nigerian UI/UX designers, freelance writers, developers, and virtual assistants. Learn the exact mechanics of global client acquisition, professional positioning, and international billing. No hype. No "millions in 3 days" claims. Just pure business systems.
+              <em>The Wealth Revolution</em> is a rigorous, three-part operational blueprint built for ambitious Nigerian builders, professionals, and freelancers. Dismantle the employee matrix, reprogram your financial operating system, and master the exact mechanics of launching validated, zero-capital businesses.
             </p>
 
             <div className="benefit-bullets">
               <div className="benefit-item">
                 <CheckCircle2 size={20} className="benefit-icon" />
                 <div>
-                  <strong>Skill to Asset:</strong> Package your existing capabilities into structured service offerings that global clients trust.
+                  <strong>Part 1: The Detox</strong> — Eradicate performance noise, uncover unconscious money wounds, and escape the paycheck trap.
                 </div>
               </div>
               <div className="benefit-item">
                 <CheckCircle2 size={20} className="benefit-icon" />
                 <div>
-                  <strong>LinkedIn & Twitter Pipelines:</strong> Systematically attract high-paying client retainers without bidding wars.
+                  <strong>Part 2: The Rewire</strong> — Design your inputs environment, map your compound runway, and program your nervous system for abundance.
                 </div>
               </div>
               <div className="benefit-item">
                 <CheckCircle2 size={20} className="benefit-icon" />
                 <div>
-                  <strong>Global Invoicing & Banking:</strong> Learn how to legally set up professional invoicing, international bank accounts, and contracts.
+                  <strong>Part 3: The Build</strong> — Launch using zero-capital validation, develop productized moats, and capture asymmetrical returns in Africa.
                 </div>
               </div>
             </div>
@@ -165,8 +165,8 @@ export default function Home() {
           <div className="hero-form-panel" id="register">
             <div className="form-card">
               <div className="form-card-header">
-                <h2>Get Instant Access</h2>
-                <p>Create your student credentials and proceed to secure verification.</p>
+                <h2>Begin Your Rewire</h2>
+                <p>Create your student credentials to register your profile and access the dashboard.</p>
               </div>
 
               {regError && (
@@ -249,42 +249,42 @@ export default function Home() {
       {/* VALUE GRID SECTION */}
       <section className="value-grid-section">
         <div className="section-header text-center">
-          <h2 className="section-title">Build Real Capability. Not Motivation.</h2>
-          <p className="section-subtitle">A SaaS-style view of the business building systems you will learn and implement inside your personal dashboard.</p>
+          <h2 className="section-title">The Three Pillars of The Wealth Revolution</h2>
+          <p className="section-subtitle">Examine the exact structure of the modules, books, and blueprints waiting inside your learning workspace.</p>
         </div>
 
         <div className="features-grid">
           
           <div className="feature-card">
             <div className="feature-icon-wrapper">
-              <Users size={24} />
+              <Lock size={24} />
             </div>
-            <h3>Global Client Sourcing</h3>
-            <p>Learn the exact content frameworks and cold outreach systems that grab the attention of international founders and marketing directors. Stop fighting in the race to the bottom on Upwork or Fiverr.</p>
-          </div>
-
-          <div className="feature-card">
-            <div className="feature-icon-wrapper">
-              <CheckCircle2 size={24} />
-            </div>
-            <h3>Productized Services</h3>
-            <p>Turn your design, writing, development, or VA work into defined service packages with flat rates and specific timelines. Shift the conversation from "what is your hourly rate" to "here is the outcome you get."</p>
+            <h3>Pillar 1: The Detox</h3>
+            <p>Eradicate the 5 levels of Performance Noise. Confront subconscious money wounds, understand the 1971 money shift (how cash becomes debt), and dismantle the psychological safety leash of the paycheck trap.</p>
           </div>
 
           <div className="feature-card">
             <div className="feature-icon-wrapper">
               <TrendingUp size={24} />
             </div>
-            <h3>Operational Infrastructure</h3>
-            <p>Develop standard operating procedures to manage multiple international clients without breaking down. Learn to run your freelance profile with the structure of a premium digital agency.</p>
+            <h3>Pillar 2: The Rewire</h3>
+            <p>Install compound thinking systems over instant gratification. Perform an environmental input audit, design your daily builder day structure, and train your nervous system to stay calm under scale.</p>
           </div>
 
           <div className="feature-card">
             <div className="feature-icon-wrapper">
-              <DollarSign size={24} />
+              <BookOpen size={24} />
             </div>
-            <h3>Foreign Invoicing & Contracts</h3>
-            <p>Establish legal service agreements that protect your work. Configure foreign currency invoice pathways and multi-currency billing setups so global clients can pay you seamlessly.</p>
+            <h3>Pillar 3: The Build</h3>
+            <p>Master the Two-Hour Startup validation framework to validate client demand before building. Establish productized service moats, deploy Sinek's limbic circle communication, and learn the rules that break traditional corporate playbooks.</p>
+          </div>
+
+          <div className="feature-card">
+            <div className="feature-icon-wrapper">
+              <Users size={24} />
+            </div>
+            <h3>Pillar 4: Geopolitical Advantage</h3>
+            <p>Extract structural patterns of success from global case studies. Map the asymmetrical opportunities of the African Century (following models like Paystack, Flutterwave, and Andela) to build local assets.</p>
           </div>
 
         </div>
@@ -301,7 +301,7 @@ export default function Home() {
           
           <div className="testimonial-card">
             <p className="testimonial-body">
-              "I was charging local startups ₦50,000 per design project. After implementing these systems, I packaged my work as a subscription and landed my first US SaaS client at $1,200/month."
+              "I was charging local startups ₦50,000 per project. After implementing Part 3's productization systems, I packaged my work as a subscription and landed my first US SaaS client at $1,200/month."
             </p>
             <div className="testimonial-author">
               <strong>Oluwaseun A.</strong>
@@ -311,7 +311,7 @@ export default function Home() {
 
           <div className="testimonial-card">
             <p className="testimonial-body">
-              "I spent months trying to find gigs on Upwork. Moving my positioning to LinkedIn and productizing my VA offering helped me land 2 retainer contracts in less than 3 weeks."
+              "I spent months trying to find gigs on freelance sites. Moving my positioning and applying the zero-capital validation test helped me land 2 retainer contracts in less than 3 weeks."
             </p>
             <div className="testimonial-author">
               <strong>Chidi O.</strong>
@@ -321,7 +321,7 @@ export default function Home() {
 
           <div className="testimonial-card">
             <p className="testimonial-body">
-              "Stop writing 1,000-word articles for pennies. Productizing content strategy allowed me to charge premium fees per project instead of counting words."
+              "Stop writing 1,000-word articles for pennies. Productizing my output structure allowed me to charge premium fees per project instead of counting words."
             </p>
             <div className="testimonial-author">
               <strong>Blessing E.</strong>
@@ -330,6 +330,14 @@ export default function Home() {
           </div>
 
         </div>
+      </section>
+
+      {/* CORE VISION QUOTE */}
+      <section className="cta-action-banner text-center" style={{ backgroundColor: 'var(--bg-tertiary)', border: '1px solid var(--border-light)', marginBottom: '40px' }}>
+        <blockquote style={{ fontSize: '18px', fontStyle: 'italic', color: 'var(--text-primary)', border: 'none', padding: 0, margin: '0 0 16px 0', lineHeight: '1.6' }}>
+          "I envision a day when I see myself standing with Google and Apple, and the world asking, 'Did this really come from Africa?' A transformation they never imagined Africans to be capable of. That is what this revolution will deliver."
+        </blockquote>
+        <cite style={{ fontSize: '14px', fontWeight: 'bold', color: 'var(--text-secondary)' }}>— Kenneth A., CEO</cite>
       </section>
 
       {/* FAQ SECTION */}
@@ -357,7 +365,7 @@ export default function Home() {
       {/* CALL TO ACTION FOR REGISTRATION */}
       <section className="cta-action-banner text-center">
         <h2>Ready to build real capability?</h2>
-        <p>Register your student profile and secure your access to the skills monetization playbook.</p>
+        <p>Register your student profile and secure your access to the wealth revolution playbook.</p>
         <Link href="#register" className="btn-cta-scroll">
           <span>Secure My Spot Now</span>
           <ArrowRight size={18} style={{ marginLeft: '8px' }} />
