@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, X, Moon, Sun, UserCircle } from 'lucide-react';
+import { Menu, X, Moon, Sun } from 'lucide-react';
 import './Navbar.css';
 import { createClient } from '../utils/supabase/client';
 
@@ -16,12 +16,10 @@ export default function Navbar() {
     setTheme(savedTheme);
     document.documentElement.setAttribute('data-theme', savedTheme);
 
-    // Check active session
     supabase.auth.getSession().then(({ data: { session } }) => {
       setUser(session?.user || null);
     });
 
-    // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user || null);
     });
@@ -38,11 +36,13 @@ export default function Navbar() {
 
   const handleRegisterClick = (e) => {
     setIsMenuOpen(false);
-    if (typeof window !== 'undefined' && window.location.pathname === '/') {
-      e.preventDefault();
-      const el = document.getElementById('register');
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (typeof window !== 'undefined') {
+      if (window.location.pathname === '/') {
+        e.preventDefault();
+        const el = document.getElementById('register');
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
       }
     }
   };
@@ -51,40 +51,60 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="navbar-container">
         <Link href="/" className="logo">
-          FoxRevo<span className="logo-dot">.</span>
+          FOXREVO
         </Link>
+
+        {/* Desktop Navigation Links */}
+        <div className="desktop-nav-links">
+          <Link href="/" className="nav-link">Home</Link>
+          <Link href="/about" className="nav-link">About</Link>
+          <Link href="/about#mission" className="nav-link">Mission</Link>
+          <Link href="/?scroll=register" onClick={handleRegisterClick} className="nav-link">Register</Link>
+          <Link href="/#faq" className="nav-link">FAQ</Link>
+          <Link href="/contact" className="nav-link">Contact</Link>
+        </div>
+
         <div className="navbar-actions">
           {user ? (
-            <Link href="/dashboard" className="desktop-nav-link" style={{ marginRight: '16px', color: 'var(--text-primary)', fontWeight: 'bold' }}>
+            <Link href="/dashboard" className="desktop-btn-secondary">
               Dashboard
             </Link>
           ) : (
-            <Link href="/login" className="desktop-nav-link" style={{ marginRight: '16px', color: 'var(--text-primary)' }}>
-              Login
-            </Link>
+            <>
+              <Link href="/login" className="desktop-btn-secondary">
+                Login
+              </Link>
+              <Link href="/?scroll=register" onClick={handleRegisterClick} className="desktop-btn-primary">
+                Begin Your Application
+              </Link>
+            </>
           )}
+          
           <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
-            {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
+            {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
           </button>
+          
           <button className="hamburger" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </div>
+
       {isMenuOpen && (
         <div className="mobile-menu">
           <Link href="/" onClick={() => setIsMenuOpen(false)}>Home</Link>
           <Link href="/about" onClick={() => setIsMenuOpen(false)}>About</Link>
-          <Link href="/about" onClick={() => setIsMenuOpen(false)}>Mission</Link>
+          <Link href="/about#mission" onClick={() => setIsMenuOpen(false)}>Mission</Link>
+          <Link href="/?scroll=register" onClick={handleRegisterClick}>Register</Link>
           <Link href="/#faq" onClick={() => setIsMenuOpen(false)}>FAQ</Link>
           <Link href="/contact" onClick={() => setIsMenuOpen(false)}>Contact</Link>
           
           {user ? (
-            <Link href="/dashboard" onClick={() => setIsMenuOpen(false)} className="menu-btn-primary">Dashboard</Link>
+            <Link href="/dashboard" onClick={() => setIsMenuOpen(false)} className="menu-btn-primary-mob">Dashboard</Link>
           ) : (
             <>
               <Link href="/login" onClick={() => setIsMenuOpen(false)}>Login</Link>
-              <Link href="/?scroll=register" onClick={handleRegisterClick} className="menu-btn-primary">Register</Link>
+              <Link href="/?scroll=register" onClick={handleRegisterClick} className="menu-btn-primary-mob">Begin Your Application</Link>
             </>
           )}
         </div>
