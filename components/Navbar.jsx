@@ -73,7 +73,7 @@ export default function Navbar() {
           ) : (
             <>
               <Link href="/login" onClick={() => setIsMenuOpen(false)}>Login</Link>
-              <Link href="/admission" onClick={() => setIsMenuOpen(false)} className="menu-btn-primary">Register</Link>
+              <Link href="/#register" onClick={() => setIsMenuOpen(false)} className="menu-btn-primary">Register</Link>
             </>
           )}
         </div>

@@ -36,18 +36,10 @@ export async function updateSession(request) {
 
   const path = request.nextUrl.pathname;
 
-  // 1. Redirect /register to /admission (our general landing page)
-  if (path === '/register') {
+  // Redirect /register and /admission to / (the unified SaaS landing page)
+  if (path === '/register' || path === '/admission') {
     const url = request.nextUrl.clone();
-    url.pathname = '/admission';
-    return NextResponse.redirect(url);
-  }
-
-  // 2. Redirect root (/) to /admission if PORTAL_CAMPAIGN_ACTIVE is 'true'
-  const isCampaignActive = process.env.PORTAL_CAMPAIGN_ACTIVE === 'true';
-  if (isCampaignActive && path === '/') {
-    const url = request.nextUrl.clone();
-    url.pathname = '/admission';
+    url.pathname = '/';
     return NextResponse.redirect(url);
   }
 

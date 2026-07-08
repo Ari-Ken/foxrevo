@@ -2,15 +2,14 @@ import './globals.css';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import WhatsAppWidget from '../components/WhatsAppWidget';
-import FunnelPopup from '../components/FunnelPopup';
 
 export const metadata = {
-  title: 'FoxRevo | The Wealth Revolution',
-  description: "The revolution building Africa's next billionaires.",
+  title: 'FoxRevo | Skills Monetization & Client Acquisition Playbook',
+  description: "Learn the exact mechanics of client acquisition, positioning, and skill monetization to build a real freelance or VA operation.",
   metadataBase: new URL('https://foxrevo.com'),
   openGraph: {
-    title: 'FoxRevo | The Wealth Revolution',
-    description: "The revolution building Africa's next billionaires.",
+    title: 'FoxRevo | Skills Monetization & Client Acquisition Playbook',
+    description: "Learn the exact mechanics of client acquisition, positioning, and skill monetization to build a real freelance or VA operation.",
     url: 'https://foxrevo.com',
     siteName: 'FoxRevo',
     images: [
@@ -18,7 +17,7 @@ export const metadata = {
         url: '/image001.jpg',
         width: 1200,
         height: 630,
-        alt: 'FoxRevo | The Wealth Revolution',
+        alt: 'FoxRevo | Skills Monetization',
       },
     ],
     locale: 'en_US',
@@ -26,8 +25,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'FoxRevo | The Wealth Revolution',
-    description: "The revolution building Africa's next billionaires.",
+    title: 'FoxRevo | Skills Monetization & Client Acquisition Playbook',
+    description: "Learn the exact mechanics of client acquisition, positioning, and skill monetization to build a real freelance or VA operation.",
     images: ['/image001.jpg'],
   },
 };
@@ -41,7 +40,6 @@ export default function RootLayout({ children }) {
           {children}
         </main>
         <WhatsAppWidget />
-        <FunnelPopup />
         <Footer />
       </body>
     </html>
