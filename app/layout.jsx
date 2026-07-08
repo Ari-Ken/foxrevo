@@ -4,12 +4,12 @@ import Footer from '../components/Footer';
 import WhatsAppWidget from '../components/WhatsAppWidget';
 
 export const metadata = {
-  title: 'FoxRevo | Skills Monetization & Client Acquisition Playbook',
-  description: "Learn the exact mechanics of client acquisition, positioning, and skill monetization to build a real freelance or VA operation.",
+  title: 'FoxRevo | The Wealth System for African Builders',
+  description: "The system designed to help you stop trading time for money and start building compounding wealth. Sourced from the documented wisdom of Aliko Dangote, Elon Musk, Warren Buffett, and Robert Kiyosaki.",
   metadataBase: new URL('https://foxrevo.com'),
   openGraph: {
-    title: 'FoxRevo | Skills Monetization & Client Acquisition Playbook',
-    description: "Learn the exact mechanics of client acquisition, positioning, and skill monetization to build a real freelance or VA operation.",
+    title: 'FoxRevo | The Wealth System for African Builders',
+    description: "The system designed to help you stop trading time for money and start building compounding wealth. Sourced from the documented wisdom of Aliko Dangote, Elon Musk, Warren Buffett, and Robert Kiyosaki.",
     url: 'https://foxrevo.com',
     siteName: 'FoxRevo',
     images: [
@@ -17,7 +17,7 @@ export const metadata = {
         url: '/image001.jpg',
         width: 1200,
         height: 630,
-        alt: 'FoxRevo | Skills Monetization',
+        alt: 'FoxRevo | The Wealth System for African Builders',
       },
     ],
     locale: 'en_US',
@@ -25,8 +25,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'FoxRevo | Skills Monetization & Client Acquisition Playbook',
-    description: "Learn the exact mechanics of client acquisition, positioning, and skill monetization to build a real freelance or VA operation.",
+    title: 'FoxRevo | The Wealth System for African Builders',
+    description: "The system designed to help you stop trading time for money and start building compounding wealth. Sourced from the documented wisdom of Aliko Dangote, Elon Musk, Warren Buffett, and Robert Kiyosaki.",
     images: ['/image001.jpg'],
   },
 };
