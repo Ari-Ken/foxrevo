@@ -22,7 +22,26 @@ export default function Home() {
 
   useEffect(() => {
     setMounted(true);
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('scroll') === 'register') {
+        const el = document.getElementById('register');
+        if (el) {
+          setTimeout(() => {
+            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }, 150);
+        }
+      }
+    }
   }, []);
+
+  const handleScrollToRegister = (e) => {
+    e.preventDefault();
+    const el = document.getElementById('register');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  };
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -337,7 +356,7 @@ export default function Home() {
         <blockquote style={{ fontSize: '18px', fontStyle: 'italic', color: 'var(--text-primary)', border: 'none', padding: 0, margin: '0 0 16px 0', lineHeight: '1.6' }}>
           "I envision a day when I see myself standing with Google and Apple, and the world asking, 'Did this really come from Africa?' A transformation they never imagined Africans to be capable of. That is what this revolution will deliver."
         </blockquote>
-        <cite style={{ fontSize: '14px', fontWeight: 'bold', color: 'var(--text-secondary)' }}>— Kenneth A., CEO</cite>
+        <cite style={{ fontSize: '14px', fontWeight: 'bold', color: 'var(--text-secondary)' }}>— Benedict A., CEO</cite>
       </section>
 
       {/* FAQ SECTION */}
@@ -366,10 +385,10 @@ export default function Home() {
       <section className="cta-action-banner text-center">
         <h2>Ready to build real capability?</h2>
         <p>Register your student profile and secure your access to the wealth revolution playbook.</p>
-        <Link href="#register" className="btn-cta-scroll">
+        <a href="#register" onClick={handleScrollToRegister} className="btn-cta-scroll">
           <span>Secure My Spot Now</span>
           <ArrowRight size={18} style={{ marginLeft: '8px' }} />
-        </Link>
+        </a>
       </section>
 
     </div>

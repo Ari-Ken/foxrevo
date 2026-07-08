@@ -40,6 +40,7 @@ export async function updateSession(request) {
   if (path === '/register' || path === '/admission') {
     const url = request.nextUrl.clone();
     url.pathname = '/';
+    url.searchParams.set('scroll', 'register');
     return NextResponse.redirect(url);
   }
 

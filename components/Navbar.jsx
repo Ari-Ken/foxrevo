@@ -36,6 +36,17 @@ export default function Navbar() {
     document.documentElement.setAttribute('data-theme', newTheme);
   };
 
+  const handleRegisterClick = (e) => {
+    setIsMenuOpen(false);
+    if (typeof window !== 'undefined' && window.location.pathname === '/') {
+      e.preventDefault();
+      const el = document.getElementById('register');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+  };
+
   return (
     <nav className="navbar">
       <div className="navbar-container">
@@ -73,7 +84,7 @@ export default function Navbar() {
           ) : (
             <>
               <Link href="/login" onClick={() => setIsMenuOpen(false)}>Login</Link>
-              <Link href="/#register" onClick={() => setIsMenuOpen(false)} className="menu-btn-primary">Register</Link>
+              <Link href="/?scroll=register" onClick={handleRegisterClick} className="menu-btn-primary">Register</Link>
             </>
           )}
         </div>

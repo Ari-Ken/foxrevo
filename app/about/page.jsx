@@ -39,7 +39,7 @@ export default function About() {
           I realized that Africa does not need one more person waiting for change. Africa needs people who have decided to <em>become</em> the change. FoxRevo was built to find them, deprogram them, and hand them the blueprints.
         </p>
         <p className="founder-signoff">
-          <strong>— Kenneth Arinze, Founder</strong>
+          <strong>— Benedict Arinze, Founder</strong>
         </p>
       </section>
 
