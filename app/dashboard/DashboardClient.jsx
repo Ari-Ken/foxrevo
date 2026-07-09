@@ -51,6 +51,11 @@ export default function DashboardClient({ candidate }) {
   const [signupsCount, setSignupsCount] = useState(0);
   const [validationScore, setValidationScore] = useState(null);
 
+  // Book download states
+  const [covenantChecked, setCovenantChecked] = useState(false);
+  const [downloadStarted, setDownloadStarted] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
+
   const isPaid = candidate.payment_status === true;
   const hasPassed = candidate.passed_exam === true;
   const attempts = candidate.exam_attempts || 0;
@@ -241,6 +246,30 @@ export default function DashboardClient({ candidate }) {
     }
   };
 
+  const handleDownload = async () => {
+    if (!covenantChecked) return;
+    setIsDownloading(true);
+    try {
+      const response = await fetch('/api/download-pdf', {
+        method: 'POST',
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to authorize download.");
+      }
+
+      setDownloadStarted(true);
+      window.open(data.secureUrl, '_blank');
+    } catch (err) {
+      console.error(err);
+      alert(err.message);
+    } finally {
+      setIsDownloading(false);
+    }
+  };
+
   const handleLogout = async () => {
     await supabase.auth.signOut();
     router.push('/login');
@@ -418,9 +447,62 @@ export default function DashboardClient({ candidate }) {
                       </p>
                     </div>
 
-                    <Link href="/download" className="btn-submit-cta outlined-btn w-full text-center" style={{ textDecoration: 'none', marginBottom: '32px', display: 'block' }}>
-                      Open Books Download Center →
-                    </Link>
+                    {/* EMBEDDED BOOK DOWNLOAD CENTER (EMPHASIZED) */}
+                    <div style={{ backgroundColor: 'var(--bg-tertiary)', border: '1px solid rgba(255, 62, 108, 0.3)', borderRadius: '12px', padding: '32px', marginBottom: '32px', boxShadow: '0 0 20px rgba(255, 62, 108, 0.05)', textAlign: 'left' }}>
+                      <span style={{ fontSize: '11px', color: 'var(--accent-neon)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '8px' }}>CORE PLATFORM ASSET UNLOCKED</span>
+                      <h3 style={{ fontSize: '22px', fontWeight: '800', color: 'var(--text-primary)', marginBottom: '12px', fontFamily: 'var(--font-outfit), sans-serif' }}>
+                        📥 Download: The Wealth Revolution (Official Blueprint)
+                      </h3>
+                      
+                      <div style={{ color: 'var(--text-secondary)', fontSize: '14px', lineHeight: '1.6', marginBottom: '24px', backgroundColor: 'rgba(0,0,0,0.2)', padding: '16px 20px', borderRadius: '8px', borderLeft: '3px solid var(--accent)' }}>
+                        <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '6px' }}>The Covenant of the Revolution</strong>
+                        This blueprint was earned, not just downloaded. Sharing this file with someone who has not detoxed through the entrance exam is not generosity — it is a shortcut that robs them of their transformation. If you want someone to have access to this, send them to the platform. Let them earn their place.
+                      </div>
+
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                        <label style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', cursor: 'pointer', textAlign: 'left' }}>
+                          <input 
+                            type="checkbox" 
+                            checked={covenantChecked}
+                            onChange={(e) => setCovenantChecked(e.target.checked)}
+                            style={{ marginTop: '3px', cursor: 'pointer' }}
+                          />
+                          <span style={{ fontSize: '13px', color: 'var(--text-secondary)', lineHeight: '1.4' }}>
+                            <strong>I understand and agree to protect the process.</strong> I will not share my access or the book files with anyone.
+                          </span>
+                        </label>
+
+                        <div style={{ marginTop: '8px' }}>
+                          <button 
+                            onClick={handleDownload}
+                            disabled={!covenantChecked || isDownloading}
+                            className={`btn-submit-cta ${covenantChecked && !isDownloading ? 'neon-btn' : ''}`}
+                            style={{ 
+                              padding: '14px 28px', 
+                              fontSize: '15px', 
+                              width: '100%',
+                              backgroundColor: covenantChecked ? 'var(--accent)' : 'var(--bg-secondary)',
+                              color: covenantChecked ? '#fff' : 'var(--text-tertiary)',
+                              border: covenantChecked ? 'none' : '1px solid var(--border-light)',
+                              cursor: covenantChecked && !isDownloading ? 'pointer' : 'not-allowed',
+                              transition: 'all 0.2s',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center'
+                            }}
+                          >
+                            <span>{isDownloading ? 'Decrypting Secure Vault...' : '📥 Download "The Wealth Revolution" (PDF)'}</span>
+                          </button>
+                          <p style={{ margin: '8px 0 0 0', fontSize: '12px', color: 'var(--text-tertiary)' }}>Secure, encrypted file. Size: 4.2 MB</p>
+                        </div>
+                      </div>
+
+                      {downloadStarted && (
+                        <div style={{ marginTop: '16px', backgroundColor: 'rgba(16,185,129,0.08)', border: '1px solid #10B981', color: '#10B981', padding: '12px', borderRadius: '6px', fontSize: '13px', fontWeight: '600' }}>
+                          ✓ Decryption successful. Your download has started in a new tab.
+                        </div>
+                      )}
+                    </div>
 
                     {/* Academy Roadmap */}
                     <div style={{ borderTop: '1px solid var(--border-light)', paddingTop: '28px' }}>
