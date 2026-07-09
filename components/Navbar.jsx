@@ -74,7 +74,7 @@ export default function Navbar() {
                 Login
               </Link>
               <a href="/?scroll=register" onClick={handleRegisterClick} className="desktop-btn-primary">
-                Begin My Application →
+                Initialize OS (₦3,000) →
               </a>
             </>
           )}
@@ -102,7 +102,7 @@ export default function Navbar() {
           ) : (
             <>
               <Link href="/login" onClick={() => setIsMenuOpen(false)}>Login</Link>
-              <a href="/?scroll=register" onClick={handleRegisterClick} className="menu-btn-primary-mob">Begin My Application →</a>
+              <a href="/?scroll=register" onClick={handleRegisterClick} className="menu-btn-primary-mob">Initialize OS (₦3,000) →</a>
             </>
           )}
         </div>

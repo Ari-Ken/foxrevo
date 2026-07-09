@@ -75,7 +75,7 @@ export default function Footer({ transactional = false }) {
         
         <div className="footer-cta-box">
           <a href="/?scroll=register" onClick={handleRegisterClick} className="footer-btn-primary">
-            Join the Revolution →
+            Initialize FoxRevo OS (₦3,000) →
           </a>
         </div>
       </div>

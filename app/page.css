@@ -206,6 +206,32 @@
   letter-spacing: -0.02em;
 }
 
+.hero-capabilities-badge-row {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.cap-badge {
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-light);
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.cap-badge:hover {
+  border-color: rgba(255, 62, 108, 0.2);
+  color: var(--text-primary);
+}
+
 .hero-body-full {
   font-size: 16.5px;
   line-height: 1.65;
@@ -356,6 +382,36 @@
   font-size: 18px;
   color: var(--accent-neon);
   margin-top: 32px;
+}
+
+.pain-points-aida-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.pain-card {
+  padding: 32px 28px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pain-card h4 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  font-family: var(--font-outfit), sans-serif;
+}
+
+.pain-card p {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin: 0;
 }
 
 /* INTERACTIVE DASHBOARD MOCKUP */
@@ -1510,6 +1566,15 @@
 
   .curriculum-panel h3 {
     font-size: 20px !important;
+  }
+
+  .pain-points-aida-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  
+  .pain-card {
+    padding: 24px 20px !important;
   }
 
   .benefit-card-full {

@@ -216,33 +216,29 @@ export default function Home() {
       <div className="glow-blob blob-2"></div>
       <div className="glow-blob blob-3"></div>
 
-      {/* HERO SECTION — ABOVE THE FOLD */}
+      {/* HERO SECTION — ATTENTION */}
       <header className="hero-section text-center">
         <div className="hero-content-wide">
           <div className="saas-badge">FOXREVO OS v2.0</div>
           
           <h1 className="hero-headline-full neon-text-glow">
-            You Have the Skills.<br />
-            You Still Do Not Have the Wealth.
+            Stop trading hours for pennies.<br />
+            Install the Wealth OS.
           </h1>
           
           <p className="hero-lead-accent font-outfit">
-            That is not your fault. It is your curriculum.
+            You have the skills. You still do not have the wealth. We install the system that changes that.
           </p>
           
-          <p className="hero-body-full font-inter">
-            The traditional system was designed to make you useful to someone else's balance sheet. FoxRevo OS replaces that with the wealth operating system built to make you useful to your own.
-          </p>
-          <p className="hero-body-full font-inter">
-            We de-engineered the wealth creation frameworks of Aliko Dangote, Elon Musk, Warren Buffett, and Robert Kiyosaki and turned them into a responsive, actionable deprogramming curriculum.
-          </p>
-          <p className="hero-body-full font-inter">
-            No motivational speeches. No theoretical case studies. Just the cold, hard, mathematical system of compounding asset columns translated for the African reality.
-          </p>
+          <div className="hero-capabilities-badge-row">
+            <span className="cap-badge">✓ Deprogram the employee mindset</span>
+            <span className="cap-badge">✓ Install compounding asset columns</span>
+            <span className="cap-badge">✓ Build scalable systems, not hustles</span>
+          </div>
 
           <div style={{ marginTop: '40px' }} className="hero-cta-wrapper">
             <a href="#register" onClick={handleScrollToRegister} className="btn-cta-scroll full-mobile neon-btn">
-              <span>Initialize FoxRevo OS — Begin Application →</span>
+              <span>Initialize FoxRevo OS (₦3,000) →</span>
             </a>
             <p className="hero-cta-subtext">
               ₦3,000 profile fee | Entrance Exam required | Two attempts | Certificate on Graduation
@@ -271,12 +267,12 @@ export default function Home() {
         </div>
       </div>
 
-      {/* INTERACTIVE SAAS DASHBOARD MOCKUP */}
+      {/* PRODUCT WORKSPACE PREVIEW */}
       <section className="section-block padding-y" id="product-preview">
         <div className="text-center" style={{ marginBottom: '32px' }}>
           <div className="saas-badge mini">PRODUCT WORKSPACE PREVIEW</div>
-          <h2>Inside FoxRevo OS: Preview the Platform</h2>
-          <p className="section-subtitle">Click the tabs below to explore the digital framework dashboard you gain access to.</p>
+          <h2>Your Platform Workspace</h2>
+          <p className="section-subtitle">Click the tabs below to preview the digital deprogramming tools you gain access to.</p>
         </div>
 
         <div className="dashboard-mockup-wrapper glass-card">
@@ -443,22 +439,32 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 1 — THE PAIN */}
+      {/* SECTION 1 — INTEREST */}
       <section className="section-block padding-y" id="pain">
-        <h2>You Are Tired. And You Should Be.</h2>
-        <p className="lead-paragraph">
-          You freelance. You build. You send proposals. You take global clients. You develop skills that should be paying you serious money.
-        </p>
-        <p className="lead-paragraph">
-          And the income still does not match the effort.
-        </p>
-        <p className="lead-paragraph">
-          Because effort without the right framework is just expensive practice.
-        </p>
-        <p className="lead-paragraph">
-          FoxRevo teaches the framework. The one the world's wealthiest people used to stop trading time for money and start building systems that compound. The one no Nigerian school, no LinkedIn course, no YouTube channel ever gave you completely.
-        </p>
-        <div className="pain-highlight-text text-center neon-glow-box">
+        <div className="text-center" style={{ marginBottom: '40px' }}>
+          <div className="saas-badge mini">THE SKILL TRAP</div>
+          <h2>Why You Are Stuck.</h2>
+          <p className="section-subtitle font-inter">Effort without the right framework is just expensive practice.</p>
+        </div>
+
+        <div className="pain-points-aida-grid">
+          <div className="pain-card glass-card">
+            <h4>Tired of active freelancing?</h4>
+            <p>Trading hours for dollars is just remote employment. If you stop pushing proposals, your income drops to zero instantly.</p>
+          </div>
+          
+          <div className="pain-card glass-card">
+            <h4>Tired of notes-app ideas?</h4>
+            <p>Ideas are useless without validation. The wealthy build scalable business systems using repeatable launch frameworks, not creative inspiration.</p>
+          </div>
+
+          <div className="pain-card glass-card">
+            <h4>Tired of savings decay?</h4>
+            <p>Storing cash in local bank accounts is a mathematical loss. Inflation destroys capital daily. Moats and structural assets survive.</p>
+          </div>
+        </div>
+
+        <div className="pain-highlight-text text-center neon-glow-box" style={{ marginTop: '48px' }}>
           <strong>You are not behind. You were just handed the wrong map.</strong>
         </div>
 
@@ -472,11 +478,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 2 — WHAT CHANGES (INTERACTIVE CURRICULUM EXPLORER) */}
+      {/* SECTION 2 — DESIRE (INTERACTIVE CURRICULUM EXPLORER) */}
       <section className="section-block padding-y" id="curriculum">
         <div className="text-center" style={{ marginBottom: '32px' }}>
+          <div className="saas-badge mini">SYLLABUS BLUEPRINTS</div>
           <h2>Syllabus Architecture: Browse the Deprogramming Vault</h2>
-          <p className="section-subtitle">FoxRevo OS is built on progressive modules. Click each module below to view the syllabus blueprints.</p>
+          <p className="section-subtitle">Click the modules below to preview what you will install.</p>
         </div>
 
         {/* Tab switcher headers */}
@@ -546,7 +553,7 @@ export default function Home() {
               <p className="panel-lead">Transition from self-employment and high-end freelancing into scalable assets that compound without your direct attendance.</p>
               
               <ul className="syllabus-blueprint-list">
-                <li><strong>Zero-Capital Validation:</strong> Lean Startup frameworks to test, validate, and fund products before incurring development expenses.</li>
+                <li><strong>Zero-Capital Validation:</strong> Lean Startup frameworks to test, validate, and fund offers before incurring development expenses.</li>
                 <li><strong>Moat Architecture:</strong> How to build proprietary structures that protect your business system from competitors.</li>
                 <li><strong>Deprogramming Audiences:</strong> Rewiring the mindset that confuses flash and visibility with asset value.</li>
               </ul>
@@ -559,7 +566,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 3 — THE AUTHORITY */}
+      {/* SECTION 3 — THE AUTHORITY (DESIRE) */}
       <section className="section-block padding-y" id="authority">
         <h2>This Is Not Someone's Opinion.</h2>
         <p className="lead-paragraph">
@@ -622,7 +629,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* SECTION 4 — WHAT MEMBERS SAY */}
+      {/* SECTION 4 — WHAT MEMBERS SAY (DESIRE) */}
       <section className="section-block padding-y" id="members-say">
         <h2>What Members Say</h2>
         
@@ -653,27 +660,27 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 5 — HOW TO REGISTER */}
+      {/* SECTION 5 — HOW TO REGISTER (ACTION) */}
       <section className="section-block padding-y" id="how-to-register">
-        <h2>The Revolution Is Not for Everyone.<br />Which Is Exactly Why You Want In.</h2>
+        <h2>The Platform Entry Gate</h2>
         <p className="lead-paragraph">
-          FoxRevo has standards. Because the transformation inside is too serious to be wasted on someone who is not ready.
+          FoxRevo OS enforces performance entry filters. The dashboard workspace is locked until candidates pass structural validation.
         </p>
         
         <p style={{ fontWeight: '700', color: 'var(--text-primary)', marginTop: '24px' }}>Here is how it works:</p>
         <ol className="register-steps">
-          <li>Read the entry article we give you</li>
-          <li>Take the entrance examination</li>
-          <li>The FoxRevo review team assesses your submission</li>
-          <li>If accepted, you gain full access to the training, the knowledge vault, and the community</li>
+          <li>Read the platform documentation article we provide.</li>
+          <li>Take the automated entrance examination.</li>
+          <li>The verification engine analyzes your deprogramming scores.</li>
+          <li>If approved, your credentials activate, granting full database access.</li>
         </ol>
         <p className="text-secondary" style={{ fontSize: '14px', fontStyle: 'italic', marginTop: '12px' }}>
-          Two attempts at the exam. Use the first one seriously.
+          Candidates are permitted two attempts at the verification exam. Treat the first one seriously.
         </p>
 
         <div className="button-group-desktop mt-4">
           <a href="#register" onClick={handleScrollToRegister} className="btn-submit-cta neon-btn" style={{ textDecoration: 'none' }}>
-            <span>Begin My Application →</span>
+            <span>Initialize FoxRevo OS →</span>
           </a>
           <Link href="/contact" className="desktop-btn-secondary" style={{ border: '1px solid var(--border-medium)', borderRadius: '8px', padding: '12px 24px' }}>
             I Have Questions First →
@@ -681,12 +688,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 6 — TERMS */}
+      {/* SECTION 6 — TERMS (ACTION) */}
       <section className="section-block register-wrapper" id="register">
         <h2>Five Terms. Read All of Them.</h2>
         
         <div className="fee-increase-banner">
-          ⚠️ Fee increases to ₦5,000 after the first 1,000 finalists are confirmed. The current rate is ₦3,000.
+          ⚠️ Profile activation fee increases to ₦5,000 after 1,000 verified builders. The current rate is ₦3,000.
         </div>
 
         <ul className="terms-list" style={{ marginTop: '24px' }}>
@@ -771,7 +778,7 @@ export default function Home() {
             </div>
 
             <button type="submit" disabled={regLoading} className="btn-submit-cta w-full neon-btn" style={{ padding: '14px' }}>
-              <span>Proceed to Payment →</span>
+              <span>Proceed to Payment (₦3,000) →</span>
             </button>
           </form>
 
@@ -787,7 +794,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 7 — FAQ */}
+      {/* SECTION 7 — FAQ (ACTION) */}
       <section className="faq-section padding-y" id="faq">
         <div className="section-header text-center">
           <h2 className="section-title">Frequently Asked Questions</h2>
@@ -870,7 +877,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 8 — THE CLOSE */}
+      {/* SECTION 8 — THE CLOSE (ACTION) */}
       <section className="section-block padding-y text-center" id="final-close">
         <h2>Africa Will Produce the Next Generation of Global Builders.</h2>
         
@@ -886,7 +893,7 @@ export default function Home() {
 
         <div style={{ marginTop: '40px' }}>
           <a href="#register" onClick={handleScrollToRegister} className="btn-cta-scroll full-mobile neon-btn" style={{ padding: '16px 36px', fontSize: '17px' }}>
-            <span>Initialize FoxRevo OS →</span>
+            <span>Initialize FoxRevo OS (₦3,000) →</span>
           </a>
           <p className="hero-cta-subtext" style={{ maxWidth: '640px', margin: '12px auto 0' }}>
             ₦3,000 | Two Exam Attempts | Certificate on Completion<br />
@@ -920,7 +927,7 @@ export default function Home() {
           </div>
           <div className="sticky-cta-right">
             <a href="#register" onClick={handleScrollToRegister} className="btn-sticky-cta neon-btn">
-              Begin Application →
+              Initialize OS (₦3,000) →
             </a>
           </div>
         </div>
