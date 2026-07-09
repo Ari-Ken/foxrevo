@@ -51,22 +51,24 @@
 }
 
 .desktop-btn-primary {
-  background-color: var(--accent);
+  background: var(--accent-gradient, linear-gradient(135deg, #FF3E6C 0%, #A51C30 100%));
   color: var(--accent-text);
-  border: none;
+  border: 1px solid rgba(255, 62, 108, 0.3);
   border-radius: 8px;
   padding: 10px 16px;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
   text-decoration: none;
-  transition: background-color 0.2s;
+  transition: transform 0.1s, box-shadow 0.2s;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 0 10px rgba(255, 62, 108, 0.1);
 }
 
 .desktop-btn-primary:hover {
-  background-color: var(--accent-hover);
+  box-shadow: 0 0 15px rgba(255, 62, 108, 0.3);
+  transform: translateY(-1px);
 }
 
 .desktop-btn-secondary {
@@ -149,9 +151,9 @@
 }
 
 .menu-btn-primary-mob {
-  color: var(--accent) !important;
-  font-weight: 600 !important;
-  border-left: 3px solid var(--accent);
+  color: var(--accent-neon, #FF3E6C) !important;
+  font-weight: 700 !important;
+  border-left: 3px solid var(--accent-neon, #FF3E6C);
   padding-left: 8px !important;
 }
 

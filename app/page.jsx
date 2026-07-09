@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { createClient } from '../utils/supabase/client';
-import { AlertCircle, ArrowRight, Facebook, Linkedin, Send } from 'lucide-react';
+import { AlertCircle, ArrowRight, CheckCircle2, BookOpen, ShieldCheck, Lock, Award, RotateCcw, Facebook, Linkedin, Send } from 'lucide-react';
 import './page.css';
 
 export default function Home() {
@@ -20,12 +20,25 @@ export default function Home() {
   const [regError, setRegError] = useState('');
   const [statusMsg, setStatusMsg] = useState('');
 
-  // FAQ state
+  // Interactive FAQ state
   const [openFaq, setOpenFaq] = useState(null);
   
   // Voice swipe state
   const [currentVoiceIndex, setCurrentVoiceIndex] = useState(0);
   const [showStickyCta, setShowStickyCta] = useState(false);
+
+  // Interactive Dashboard Mockup Tab state
+  const [activeMockupTab, setActiveMockupTab] = useState('vault'); // 'vault' | 'exam' | 'certificate'
+  
+  // Sample Exam Question states
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [gradedState, setGradedState] = useState(null); // null | 'success' | 'retry'
+  
+  // Real-time certificate preview text state
+  const [certName, setCertName] = useState('Your Name');
+
+  // Interactive Curriculum Explorer Tab state
+  const [activeCurriculumTab, setActiveCurriculumTab] = useState('part1'); // 'part1' | 'part2' | 'part3'
 
   const voiceQuotes = [
     "I would not mind paying more for this. It is worth it.",
@@ -99,6 +112,19 @@ export default function Home() {
     }
   };
 
+  const handleGradeSampleExam = () => {
+    if (selectedAnswer === 1) {
+      setGradedState('success');
+    } else {
+      setGradedState('retry');
+    }
+  };
+
+  const handleResetSampleExam = () => {
+    setSelectedAnswer(null);
+    setGradedState(null);
+  };
+
   const handleRegister = async (e) => {
     e.preventDefault();
     if (!termsAccepted) {
@@ -167,7 +193,7 @@ export default function Home() {
     return (
       <div className="home-loading">
         <div className="spinner"></div>
-        <p>Loading FOXREVO Ecosystem...</p>
+        <p>Loading FOXREVO OS...</p>
       </div>
     );
   }
@@ -185,37 +211,44 @@ export default function Home() {
         </div>
       )}
 
+      {/* Decorative Glow Blobs */}
+      <div className="glow-blob blob-1"></div>
+      <div className="glow-blob blob-2"></div>
+      <div className="glow-blob blob-3"></div>
+
       {/* HERO SECTION — ABOVE THE FOLD */}
-      <header className="hero-section">
-        <div className="hero-content-wide text-center">
-          <h1 className="hero-headline-full">
+      <header className="hero-section text-center">
+        <div className="hero-content-wide">
+          <div className="saas-badge">FOXREVO OS v2.0</div>
+          
+          <h1 className="hero-headline-full neon-text-glow">
             You Have the Skills.<br />
             You Still Do Not Have the Wealth.
           </h1>
           
-          <p className="hero-lead-accent">
+          <p className="hero-lead-accent font-outfit">
             That is not your fault. It is your curriculum.
           </p>
           
-          <p className="hero-body-full">
-            The system you were handed was never designed to make you wealthy. It was designed to make you useful to someone else's wealth. FoxRevo exists to replace that system with the one that actually works.
+          <p className="hero-body-full font-inter">
+            The traditional system was designed to make you useful to someone else's balance sheet. FoxRevo OS replaces that with the wealth operating system built to make you useful to your own.
           </p>
-          <p className="hero-body-full">
-            Built on the documented wisdom of Warren Buffett, Elon Musk, Aliko Dangote, Robert Kiyosaki, Ray Dalio, Peter Thiel, and twelve other architects of the world's greatest wealth.
+          <p className="hero-body-full font-inter">
+            We de-engineered the wealth creation frameworks of Aliko Dangote, Elon Musk, Warren Buffett, and Robert Kiyosaki and turned them into a responsive, actionable deprogramming curriculum.
           </p>
-          <p className="hero-body-full">
-            Translated for the Nigerian and African builder. Applied to your reality. Starting now.
+          <p className="hero-body-full font-inter">
+            No motivational speeches. No theoretical case studies. Just the cold, hard, mathematical system of compounding asset columns translated for the African reality.
           </p>
 
-          <div style={{ marginTop: '40px' }}>
-            <a href="#register" onClick={handleScrollToRegister} className="btn-cta-scroll full-mobile">
-              <span>I Want In — Begin My Application →</span>
+          <div style={{ marginTop: '40px' }} className="hero-cta-wrapper">
+            <a href="#register" onClick={handleScrollToRegister} className="btn-cta-scroll full-mobile neon-btn">
+              <span>Initialize FoxRevo OS — Begin Application →</span>
             </a>
             <p className="hero-cta-subtext">
-              ₦3,000 | Entrance Exam | Two Attempts | Certificate on Completion
+              ₦3,000 profile fee | Entrance Exam required | Two attempts | Certificate on Graduation
             </p>
-            <p className="hero-warning-text">
-              ⚠️ Fee increases to ₦5,000 after our first 1,000 finalists are confirmed.
+            <p className="hero-warning-text font-outfit">
+              ⚠️ Profile activation fee increases to ₦5,000 after 1,000 verified builders are confirmed.
             </p>
           </div>
         </div>
@@ -238,6 +271,178 @@ export default function Home() {
         </div>
       </div>
 
+      {/* INTERACTIVE SAAS DASHBOARD MOCKUP */}
+      <section className="section-block padding-y" id="product-preview">
+        <div className="text-center" style={{ marginBottom: '32px' }}>
+          <div className="saas-badge mini">PRODUCT WORKSPACE PREVIEW</div>
+          <h2>Inside FoxRevo OS: Preview the Platform</h2>
+          <p className="section-subtitle">Click the tabs below to explore the digital framework dashboard you gain access to.</p>
+        </div>
+
+        <div className="dashboard-mockup-wrapper glass-card">
+          {/* Mockup Header */}
+          <div className="mockup-header">
+            <div className="window-dots">
+              <span className="dot dot-red"></span>
+              <span className="dot dot-yellow"></span>
+              <span className="dot dot-green"></span>
+            </div>
+            <div className="mockup-address-bar font-inter">platform.foxrevo.com/dashboard</div>
+          </div>
+
+          <div className="mockup-body">
+            {/* Sidebar Controls */}
+            <div className="mockup-sidebar">
+              <button 
+                onClick={() => setActiveMockupTab('vault')} 
+                className={`sidebar-tab ${activeMockupTab === 'vault' ? 'active' : ''}`}
+              >
+                <BookOpen size={16} />
+                <span>Knowledge Vault</span>
+              </button>
+              <button 
+                onClick={() => setActiveMockupTab('exam')} 
+                className={`sidebar-tab ${activeMockupTab === 'exam' ? 'active' : ''}`}
+              >
+                <ShieldCheck size={16} />
+                <span>Entrance Exam</span>
+              </button>
+              <button 
+                onClick={() => setActiveMockupTab('certificate')} 
+                className={`sidebar-tab ${activeMockupTab === 'certificate' ? 'active' : ''}`}
+              >
+                <Award size={16} />
+                <span>Credentials OS</span>
+              </button>
+            </div>
+
+            {/* Active Content Panel */}
+            <div className="mockup-content">
+              {activeMockupTab === 'vault' && (
+                <div className="vault-mockup animate-fade">
+                  <h4>Deprogramming Library</h4>
+                  <p className="panel-desc">All platform assets, lectures, and interactive checkpoints live here.</p>
+                  
+                  <div className="mockup-vault-grid">
+                    <div className="vault-item">
+                      <span className="part-badge">PART 1</span>
+                      <h5>The Detox Curriculum</h5>
+                      <span className="completion-stats">4 lectures • 2 Checkpoints completed</span>
+                      <div className="progress-bar-mock"><div className="progress-fill-mock w-half"></div></div>
+                    </div>
+                    <div className="vault-item locked">
+                      <span className="part-badge">PART 2</span>
+                      <h5>The Rewire Curriculum</h5>
+                      <span className="completion-stats"><Lock size={12} style={{ display: 'inline', marginRight: '4px' }} /> Locked until Part 1 passed</span>
+                      <div className="progress-bar-mock"><div className="progress-fill-mock w-zero"></div></div>
+                    </div>
+                    <div className="vault-item locked">
+                      <span className="part-badge">PART 3</span>
+                      <h5>The Build Curriculum</h5>
+                      <span className="completion-stats"><Lock size={12} style={{ display: 'inline', marginRight: '4px' }} /> Locked until Part 2 passed</span>
+                      <div className="progress-bar-mock"><div className="progress-fill-mock w-zero"></div></div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {activeMockupTab === 'exam' && (
+                <div className="exam-mockup animate-fade">
+                  <div className="exam-header-mock">
+                    <h4>FoxRevo Entrance Exam Center</h4>
+                    <span className="timer-mock">⏱️ 29:45 remaining</span>
+                  </div>
+                  <p className="panel-desc">You are permitted 2 attempts at the entrance examination. Try the sample question below:</p>
+
+                  <div className="quiz-question-box">
+                    <h5 className="question-text">
+                      Q: Which of the following best defines "compounding assets" in the FoxRevo framework?
+                    </h5>
+                    
+                    <div className="quiz-options">
+                      <button 
+                        onClick={() => setSelectedAnswer(0)} 
+                        className={`quiz-option-btn ${selectedAnswer === 0 ? 'selected' : ''}`}
+                        disabled={gradedState === 'success'}
+                      >
+                        <span>A. A high-yield savings account locked in local currency.</span>
+                      </button>
+                      <button 
+                        onClick={() => setSelectedAnswer(1)} 
+                        className={`quiz-option-btn ${selectedAnswer === 1 ? 'selected' : ''}`}
+                        disabled={gradedState === 'success'}
+                      >
+                        <span>B. A scalable business system with a structural moat that produces cash flow to be reinvested.</span>
+                      </button>
+                      <button 
+                        onClick={() => setSelectedAnswer(2)} 
+                        className={`quiz-option-btn ${selectedAnswer === 2 ? 'selected' : ''}`}
+                        disabled={gradedState === 'success'}
+                      >
+                        <span>C. A passive index fund that averages 3% growth in inflation environments.</span>
+                      </button>
+                    </div>
+
+                    <div className="quiz-actions mt-3">
+                      {gradedState === null ? (
+                        <button 
+                          onClick={handleGradeSampleExam} 
+                          className="btn-submit-cta mini-btn"
+                          disabled={selectedAnswer === null}
+                        >
+                          Grade My Answer
+                        </button>
+                      ) : gradedState === 'success' ? (
+                        <div className="grader-feedback success animate-scale">
+                          <CheckCircle2 size={16} />
+                          <span>Correct! Option B is the framework. Access token validated.</span>
+                          <button onClick={handleResetSampleExam} className="reset-quiz-btn"><RotateCcw size={12} /></button>
+                        </div>
+                      ) : (
+                        <div className="grader-feedback retry animate-scale">
+                          <span>Incorrect. That definition is a liability. Try again.</span>
+                          <button onClick={handleResetSampleExam} className="btn-submit-cta mini-btn outlined-btn">Retry</button>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {activeMockupTab === 'certificate' && (
+                <div className="certificate-mockup animate-fade">
+                  <h4>FoxRevo Credential Verification System</h4>
+                  <p className="panel-desc">All graduated candidates receive a secure, cryptographic, shareable certificate. Type your name below to preview yours:</p>
+                  
+                  <div className="name-input-wrapper">
+                    <input 
+                      type="text" 
+                      placeholder="Type your name..." 
+                      value={certName}
+                      onChange={(e) => setCertName(e.target.value || 'Your Name')} 
+                      className="mockup-name-input"
+                    />
+                  </div>
+
+                  <div className="certificate-canvas-mock">
+                    <div className="cert-border-mock">
+                      <div className="cert-watermark-mock">FOXREVO CERTIFIED</div>
+                      <h3>FOXREVO OS GRADUATE</h3>
+                      <p className="cert-recipient-name font-outfit">{certName}</p>
+                      <p className="cert-declaration">has successfully completed the complete wealth deprogramming curriculum and demonstrated mastery of compounding asset structures.</p>
+                      <div className="cert-footer-details">
+                        <span>ID: FR-OS-99824</span>
+                        <span>Sign: Benedict A., Founder</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* SECTION 1 — THE PAIN */}
       <section className="section-block padding-y" id="pain">
         <h2>You Are Tired. And You Should Be.</h2>
@@ -253,13 +458,13 @@ export default function Home() {
         <p className="lead-paragraph">
           FoxRevo teaches the framework. The one the world's wealthiest people used to stop trading time for money and start building systems that compound. The one no Nigerian school, no LinkedIn course, no YouTube channel ever gave you completely.
         </p>
-        <p className="pain-highlight-text">
+        <div className="pain-highlight-text text-center neon-glow-box">
           <strong>You are not behind. You were just handed the wrong map.</strong>
-        </p>
+        </div>
 
-        <div className="button-group-desktop mt-4">
-          <a href="#register" onClick={handleScrollToRegister} className="btn-submit-cta" style={{ textDecoration: 'none' }}>
-            <span>Join the Revolution →</span>
+        <div className="button-group-desktop mt-4" style={{ justifyContent: 'center' }}>
+          <a href="#register" onClick={handleScrollToRegister} className="btn-submit-cta neon-btn" style={{ textDecoration: 'none' }}>
+            <span>Initialize FoxRevo OS →</span>
           </a>
           <Link href="/about" className="desktop-btn-secondary" style={{ border: '1px solid var(--border-medium)', borderRadius: '8px', padding: '12px 24px' }}>
             Read Our Mission →
@@ -267,42 +472,90 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 2 — WHAT CHANGES */}
-      <section className="section-block padding-y" id="what-changes">
-        <h2>After FoxRevo, You Will Know:</h2>
-        
-        <div className="benefits-stack">
-          
-          <div className="benefit-card-full">
-            <h3>Why your money keeps disappearing</h3>
-            <p>and exactly what to do instead of saving it in an account that inflation quietly destroys.</p>
-          </div>
+      {/* SECTION 2 — WHAT CHANGES (INTERACTIVE CURRICULUM EXPLORER) */}
+      <section className="section-block padding-y" id="curriculum">
+        <div className="text-center" style={{ marginBottom: '32px' }}>
+          <h2>Syllabus Architecture: Browse the Deprogramming Vault</h2>
+          <p className="section-subtitle">FoxRevo OS is built on progressive modules. Click each module below to view the syllabus blueprints.</p>
+        </div>
 
-          <div className="benefit-card-full">
-            <h3>How to find business opportunities no one else is seeing</h3>
-            <p>using the same first-principles thinking Elon Musk used to build Tesla and SpaceX from ideas everyone called impossible.</p>
-          </div>
+        {/* Tab switcher headers */}
+        <div className="curriculum-tabs-header glass-card">
+          <button 
+            onClick={() => setActiveCurriculumTab('part1')}
+            className={`curriculum-tab-btn ${activeCurriculumTab === 'part1' ? 'active' : ''}`}
+          >
+            Module 1: The Detox
+          </button>
+          <button 
+            onClick={() => setActiveCurriculumTab('part2')}
+            className={`curriculum-tab-btn ${activeCurriculumTab === 'part2' ? 'active' : ''}`}
+          >
+            Module 2: The Rewire
+          </button>
+          <button 
+            onClick={() => setActiveCurriculumTab('part3')}
+            className={`curriculum-tab-btn ${activeCurriculumTab === 'part3' ? 'active' : ''}`}
+          >
+            Module 3: The Build
+          </button>
+        </div>
 
-          <div className="benefit-card-full">
-            <h3>How to start and validate a business without capital</h3>
-            <p>the same method Eric Ries documented, Mohnish Pabrai proved, and FoxRevo translates into the Nigerian market.</p>
-          </div>
+        {/* Dynamic content rendering */}
+        <div className="curriculum-content-display glass-card animate-fade">
+          {activeCurriculumTab === 'part1' && (
+            <div className="curriculum-panel">
+              <span className="benefit-index">MODULE 1</span>
+              <h3>Why Your Money Keeps Disappearing</h3>
+              <p className="panel-lead">This module deprograms the default employee curriculum that confuses active income with wealth.</p>
+              
+              <ul className="syllabus-blueprint-list">
+                <li><strong>The Inflation Fallacy:</strong> Why saving inside local bank accounts actively destroys wealth, and how to preserve assets.</li>
+                <li><strong>The Employee Trap:</strong> Programmed logic that keeps smart builders trading time for money.</li>
+                <li><strong>The Asset Map:</strong> The differences between true cash-generating assets and hidden liabilities.</li>
+              </ul>
+              
+              <div className="module-footer-info">
+                <strong>Checkpoint requirement:</strong> Define your baseline burn rate and map out 3 immediate structural leaks.
+              </div>
+            </div>
+          )}
 
-          <div className="benefit-card-full">
-            <h3>Why wealthy people use debt and you were told to fear it</h3>
-            <p>and how Aliko Dangote used this exact knowledge to build the largest industrial empire in African history.</p>
-          </div>
+          {activeCurriculumTab === 'part2' && (
+            <div className="curriculum-panel">
+              <span className="benefit-index">MODULE 2</span>
+              <h3>Rewiring for Opportunity Recognition</h3>
+              <p className="panel-lead">Extract the first-principles mental models Aliko Dangote and Elon Musk used to identify structural gaps in complex markets.</p>
+              
+              <ul className="syllabus-blueprint-list">
+                <li><strong>First-Principles Deconstruction:</strong> Stripping a problem down to its atomic elements to identify high-value solutions.</li>
+                <li><strong>Structural Debt Leverage:</strong> How the wealthy utilize strategic leverage to capture assets rather than fear it.</li>
+                <li><strong>Friction Points:</strong> Locating cash flow hiding in plain sight within commercial friction.</li>
+              </ul>
 
-          <div className="benefit-card-full">
-            <h3>How to build a business that grows while you sleep</h3>
-            <p>not a hustle. A system. With a moat. With compounding income. With the architecture of something that lasts.</p>
-          </div>
+              <div className="module-footer-info">
+                <strong>Checkpoint requirement:</strong> Identify one local structural gap and draft its deconstructed solution map.
+              </div>
+            </div>
+          )}
 
-          <div className="benefit-card-full">
-            <h3>How to stop being impressed by fake wealth</h3>
-            <p>and start building the kind that does not need an audience to confirm it is real.</p>
-          </div>
+          {activeCurriculumTab === 'part3' && (
+            <div className="curriculum-panel">
+              <span className="benefit-index">MODULE 3</span>
+              <h3>Scale and Build Systems</h3>
+              <p className="panel-lead">Transition from self-employment and high-end freelancing into scalable assets that compound without your direct attendance.</p>
+              
+              <ul className="syllabus-blueprint-list">
+                <li><strong>Zero-Capital Validation:</strong> Lean Startup frameworks to test, validate, and fund products before incurring development expenses.</li>
+                <li><strong>Moat Architecture:</strong> How to build proprietary structures that protect your business system from competitors.</li>
+                <li><strong>Deprogramming Audiences:</strong> Rewiring the mindset that confuses flash and visibility with asset value.</li>
+              </ul>
 
+              <div className="module-footer-info">
+                <strong>Checkpoint requirement:</strong> Launch a validated offer page and secure 5 target users without building the software.
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
@@ -374,7 +627,7 @@ export default function Home() {
         <h2>What Members Say</h2>
         
         {/* MEMBER VOICE SWIPER CAROUSEL */}
-        <div className="member-voice-swiper">
+        <div className="member-voice-swiper glass-card">
           <div className="swiper-progress-bar"></div>
           <div className="swiper-content">
             <p className="voice-text">"{voiceQuotes[currentVoiceIndex]}"</p>
@@ -419,7 +672,7 @@ export default function Home() {
         </p>
 
         <div className="button-group-desktop mt-4">
-          <a href="#register" onClick={handleScrollToRegister} className="btn-submit-cta" style={{ textDecoration: 'none' }}>
+          <a href="#register" onClick={handleScrollToRegister} className="btn-submit-cta neon-btn" style={{ textDecoration: 'none' }}>
             <span>Begin My Application →</span>
           </a>
           <Link href="/contact" className="desktop-btn-secondary" style={{ border: '1px solid var(--border-medium)', borderRadius: '8px', padding: '12px 24px' }}>
@@ -449,7 +702,7 @@ export default function Home() {
         </p>
 
         {/* INLINE REGISTRATION FORM CARD */}
-        <div className="registration-card-inline">
+        <div className="registration-card-inline glass-card">
           <div className="form-card-header">
             <h3>Start Your Journey</h3>
             <p>Fill in your credentials to create your student account. Secure your spot at the current ₦3,000 rate.</p>
@@ -517,7 +770,7 @@ export default function Home() {
               </label>
             </div>
 
-            <button type="submit" disabled={regLoading} className="btn-submit-cta w-full" style={{ padding: '14px' }}>
+            <button type="submit" disabled={regLoading} className="btn-submit-cta w-full neon-btn" style={{ padding: '14px' }}>
               <span>Proceed to Payment →</span>
             </button>
           </form>
@@ -632,8 +885,8 @@ export default function Home() {
         </p>
 
         <div style={{ marginTop: '40px' }}>
-          <a href="#register" onClick={handleScrollToRegister} className="btn-cta-scroll full-mobile" style={{ padding: '16px 36px', fontSize: '17px' }}>
-            <span>Begin My Application →</span>
+          <a href="#register" onClick={handleScrollToRegister} className="btn-cta-scroll full-mobile neon-btn" style={{ padding: '16px 36px', fontSize: '17px' }}>
+            <span>Initialize FoxRevo OS →</span>
           </a>
           <p className="hero-cta-subtext" style={{ maxWidth: '640px', margin: '12px auto 0' }}>
             ₦3,000 | Two Exam Attempts | Certificate on Completion<br />
@@ -662,12 +915,12 @@ export default function Home() {
       <div className={`sticky-cta-bar ${showStickyCta ? 'visible' : ''}`}>
         <div className="sticky-cta-container">
           <div className="sticky-cta-left">
-            <strong>The Wealth Revolution is Open.</strong>
-            <span>₦3,000 One-Time Fee • Exam Included • No Refunds</span>
+            <strong>FoxRevo OS Initializer</strong>
+            <span>₦3,000 Profile Fee • Exam Included • No Refunds</span>
           </div>
           <div className="sticky-cta-right">
-            <a href="#register" onClick={handleScrollToRegister} className="btn-sticky-cta">
-              Begin Your Application →
+            <a href="#register" onClick={handleScrollToRegister} className="btn-sticky-cta neon-btn">
+              Begin Application →
             </a>
           </div>
         </div>

@@ -48,7 +48,7 @@
   content: "•";
   position: absolute;
   left: 0;
-  color: var(--accent);
+  color: var(--accent-neon, #FF3E6C);
   font-size: 16px;
 }
 
@@ -73,7 +73,7 @@
 }
 
 .quick-links-grid a:hover {
-  color: var(--accent);
+  color: var(--accent-neon, #FF3E6C);
 }
 
 /* Footer Mid Section */
@@ -122,28 +122,30 @@
 }
 
 .highlight-flag {
-  border: 2px solid var(--accent);
+  border: 2px solid var(--accent-neon, #FF3E6C);
   width: 24px;
   height: 24px;
 }
 
 .footer-btn-primary {
-  background-color: var(--accent);
+  background: var(--accent-gradient, linear-gradient(135deg, #FF3E6C 0%, #A51C30 100%));
   color: var(--accent-text);
-  border: none;
+  border: 1px solid rgba(255, 62, 108, 0.3);
   border-radius: 8px;
   padding: 12px 24px;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
   text-decoration: none;
-  transition: background-color 0.2s, transform 0.1s;
+  transition: transform 0.1s, box-shadow 0.2s;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 0 10px rgba(255, 62, 108, 0.1);
 }
 
 .footer-btn-primary:hover {
-  background-color: var(--accent-hover);
+  box-shadow: 0 0 15px rgba(255, 62, 108, 0.3);
+  transform: translateY(-1px);
 }
 
 .footer-btn-primary:active {
