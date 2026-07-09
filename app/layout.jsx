@@ -1,8 +1,5 @@
 import { Inter, Outfit } from 'next/font/google';
 import './globals.css';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import WhatsAppWidget from '../components/WhatsAppWidget';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -44,16 +41,15 @@ export const metadata = {
   },
 };
 
+import LayoutWrapper from '../components/LayoutWrapper';
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable} ${outfit.variable}`} data-theme="dark">
       <body>
-        <Navbar />
-        <main className="main-content">
+        <LayoutWrapper>
           {children}
-        </main>
-        <WhatsAppWidget />
-        <Footer />
+        </LayoutWrapper>
       </body>
     </html>
   );

@@ -1,17 +1,20 @@
 /* FOXREVO OS v2.0 SAAS DASHBOARD STYLES */
 
 .dashboard-container {
-  min-height: calc(100vh - 64px);
+  height: 100vh;
+  min-height: 100vh;
   background-color: var(--bg-primary);
   display: flex;
   color: var(--text-primary);
   font-family: var(--font-inter), sans-serif;
   position: relative;
+  overflow: hidden;
 }
 
 /* Sidebar navigation */
 .dashboard-sidebar {
   width: 260px;
+  height: 100vh;
   background-color: var(--bg-secondary);
   border-right: 1px solid var(--border-light);
   padding: 32px 20px;
@@ -73,6 +76,7 @@
 /* Main Content Area */
 .dashboard-main-content {
   flex: 1;
+  height: 100vh;
   padding: 40px;
   box-sizing: border-box;
   overflow-y: auto;
@@ -523,20 +527,24 @@
   .dashboard-sidebar.mobile-open {
     display: flex;
     position: fixed;
-    top: 64px;
+    top: 56px;
     left: 0;
     width: 100%;
-    height: calc(100vh - 64px);
+    height: calc(100vh - 56px);
     z-index: 90;
     animation: slideInLeft 0.2s ease-out;
   }
   
   .dashboard-mobile-nav-header {
     display: flex;
+    height: 56px;
+    box-sizing: border-box;
   }
 
   .dashboard-main-content {
     padding: 24px 16px;
+    height: calc(100vh - 56px);
+    overflow-y: auto;
   }
 }
 
