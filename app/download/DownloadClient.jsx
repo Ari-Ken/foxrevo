@@ -180,7 +180,7 @@ export default function DownloadClient() {
           </div>
 
           <div className="mt-4 text-center">
-            <a href="https://wa.me/2347077422928?text=Hello%20FoxRevo%20Team%2C%20I%20have%20successfully%20passed%20the%20entrance%20examination%20and%20downloaded%20the%20blueprint.%20I%20would%20like%20to%20request%20access%20to%20join%20the%20member%20community." target="_blank" rel="noopener noreferrer" className="text-link">Access the Member Community Forum</a>
+            <a href="https://wa.me/2347077422928?text=Hello%20FoxRevo%20Team%2C%20I%20have%20successfully%20completed%20the%20readiness%20audit%20and%20downloaded%20the%20blueprint.%20I%20would%20like%20to%20request%20access%20to%20join%20the%20member%20community." target="_blank" rel="noopener noreferrer" className="text-link">Access the Member Community Forum</a>
             <p className="text-xs text-secondary mt-1">(Private community where successful candidates discuss the checkpoints)</p>
           </div>
         </section>
@@ -193,7 +193,7 @@ export default function DownloadClient() {
           </p>
           <ul className="support-list">
             <li><strong>Technical Issues with your download?</strong> Contact Support: <a href="mailto:support.foxrevo@gmail.com" className="text-wine">support.foxrevo@gmail.com</a></li>
-            <li><strong>Need to discuss a checkpoint?</strong> Request access via the <a href="https://wa.me/2347077422928?text=Hello%20FoxRevo%20Team%2C%20I%20have%20successfully%20passed%20the%20entrance%20examination%20and%20downloaded%20the%20blueprint.%20I%20would%20like%20to%20request%20access%20to%20join%20the%20member%20community." target="_blank" rel="noopener noreferrer" className="text-wine">WhatsApp Community Portal</a>.</li>
+            <li><strong>Need to discuss a checkpoint?</strong> Request access via the <a href="https://wa.me/2347077422928?text=Hello%20FoxRevo%20Team%2C%20I%20have%20successfully%20completed%20the%20readiness%20audit%20and%20downloaded%20the%20blueprint.%20I%20would%20like%20to%20request%20access%20to%20join%20the%20member%20community." target="_blank" rel="noopener noreferrer" className="text-wine">WhatsApp Community Portal</a>.</li>
             <li><strong>Want to refer a friend?</strong> Send them to the <Link href="/register" className="text-wine">official registration page</Link>. Let them earn their place.</li>
           </ul>
         </section>

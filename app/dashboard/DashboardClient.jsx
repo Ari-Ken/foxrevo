@@ -388,13 +388,13 @@ export default function DashboardClient({ candidate }) {
             <div className="animate-fade">
               <div className="panel-header-section">
                 <h2>Academy Vault Dashboard</h2>
-                <p>Track your assessment checkpoints, entrance examination statuses, and graduate certifications.</p>
+                <p>Track your assessment checkpoints, alignment audit statuses, and graduate certifications.</p>
               </div>
 
               {/* Status grid */}
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', marginBottom: '32px' }}>
                 <div className="glass-card" style={{ padding: '20px' }}>
-                  <span style={{ fontSize: '11px', color: 'var(--text-tertiary)', fontWeight: '700', textTransform: 'uppercase' }}>Entrance Exam</span>
+                  <span style={{ fontSize: '11px', color: 'var(--text-tertiary)', fontWeight: '700', textTransform: 'uppercase' }}>Readiness Audit</span>
                   <h4 style={{ color: examLabel.color, fontSize: '20px', fontWeight: '800', margin: '4px 0 0 0' }}>{examLabel.text}</h4>
                 </div>
                 <div className="glass-card" style={{ padding: '20px' }}>
@@ -415,7 +415,7 @@ export default function DashboardClient({ candidate }) {
                   <div>
                     <h3 style={{ fontSize: '18px', fontWeight: '800', marginBottom: '12px' }}>Activate Platform Access</h3>
                     <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6', marginBottom: '24px' }}>
-                      Your identity record is saved. To unlock the preparatory library and sit the entrance examination, you must settle the clearance fee.
+                      Your identity record is saved. To unlock the preparatory library and satisfy the Readiness Audit, you must settle the clearance fee.
                     </p>
                     <CheckoutButton />
                   </div>
@@ -424,12 +424,12 @@ export default function DashboardClient({ candidate }) {
                 {/* 2. Paid, pending exam */}
                 {isPaid && !hasPassed && !isLocked && (
                   <div>
-                    <h3 style={{ fontSize: '18px', fontWeight: '800', marginBottom: '12px' }}>Clearance Exam Required</h3>
+                    <h3 style={{ fontSize: '18px', fontWeight: '800', marginBottom: '12px' }}>Alignment Audit Required</h3>
                     <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6', marginBottom: '24px' }}>
-                      Payment validated. You are permitted {2 - attempts} attempt{2 - attempts !== 1 ? 's' : ''} to clear the entrance standards. Open the preparatory book chapters and sit the exam when ready.
+                      Payment validated. You are permitted {2 - attempts} attempt{2 - attempts !== 1 ? 's' : ''} to clear the mindset alignment check. Open the preparatory chapters and complete the audit when ready.
                     </p>
                     <Link href="/exam-prep" className="btn-submit-cta neon-btn" style={{ display: 'inline-flex', textDecoration: 'none' }}>
-                      <span>Enter Prep Library & Exam →</span>
+                      <span>Enter Prep Library & Audit →</span>
                     </Link>
                   </div>
                 )}
@@ -440,10 +440,10 @@ export default function DashboardClient({ candidate }) {
                     <div style={{ backgroundColor: 'rgba(16,185,129,0.06)', border: '1px solid #10B981', borderRadius: '8px', padding: '20px', marginBottom: '28px' }}>
                       <h4 style={{ color: '#10B981', margin: '0 0 4px 0', display: 'flex', alignItems: 'center', gap: '8px' }}>
                         <CheckCircle size={18} />
-                        <span>Entrance Clearance Confirmed</span>
+                        <span>Alignment Clearance Confirmed</span>
                       </h4>
                       <p style={{ margin: 0, fontSize: '14px', color: 'var(--text-secondary)', lineHeight: '1.5' }}>
-                        You cleared the entrance exam with a score of {candidate.exam_score}/50. The modular training sequences are fully unlocked below.
+                        You cleared the alignment audit with a score of {candidate.exam_score}/50. The modular training sequences are fully unlocked below.
                       </p>
                     </div>
 
@@ -456,7 +456,7 @@ export default function DashboardClient({ candidate }) {
                       
                       <div style={{ color: 'var(--text-secondary)', fontSize: '14px', lineHeight: '1.6', marginBottom: '24px', backgroundColor: 'rgba(0,0,0,0.2)', padding: '16px 20px', borderRadius: '8px', borderLeft: '3px solid var(--accent)' }}>
                         <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '6px' }}>The Covenant of the Revolution</strong>
-                        This blueprint was earned, not just downloaded. Sharing this file with someone who has not detoxed through the entrance exam is not generosity — it is a shortcut that robs them of their transformation. If you want someone to have access to this, send them to the platform. Let them earn their place.
+                        This blueprint was earned, not just downloaded. Sharing this file with someone who has not detoxed through the alignment audit is not generosity — it is a shortcut that robs them of their transformation. If you want someone to have access to this, send them to the platform. Let them earn their place.
                       </div>
 
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
@@ -545,10 +545,10 @@ export default function DashboardClient({ candidate }) {
                     <div style={{ backgroundColor: 'rgba(165,28,48,0.06)', border: '1px solid #A51C30', borderRadius: '8px', padding: '20px', marginBottom: '24px' }}>
                       <h4 style={{ color: '#A51C30', margin: '0 0 6px 0' }}>Clearance Attempt Limit Exceeded</h4>
                       <p style={{ margin: 0, fontSize: '14px', color: 'var(--text-secondary)', lineHeight: '1.5' }}>
-                        Both attempts have been exhausted. You must reset your examination logs and re-register to sit the exam again.
+                        Both attempts have been exhausted. You must reset your alignment logs and re-register to sit the audit again.
                       </p>
                     </div>
-                    <CheckoutButton type="exam" label="Re-Register & Reset Clearance — ₦3,000" />
+                    <CheckoutButton type="exam" label="Re-Register & Reset Audit — ₦3,000" />
                   </div>
                 )}
 

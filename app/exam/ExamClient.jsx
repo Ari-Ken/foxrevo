@@ -124,7 +124,7 @@ export default function ExamClient() {
       {/* CONSTANT STICKY HEADER */}
       <div className="exam-sticky-header">
         <div className="exam-header-top">
-          <h1 className="exam-title">FoxRevo Entrance Examination</h1>
+          <h1 className="exam-title">FoxRevo Mindset Alignment Audit</h1>
           <div className="timer-box">
             <span className="timer-label">TIME REMAINING</span>
             <span className="timer-value">{formatTime(timeLeft)}</span>
@@ -217,7 +217,7 @@ export default function ExamClient() {
             onClick={handleSubmitAttempt}
             disabled={isSubmitting}
           >
-            {isSubmitting ? 'Evaluating Architecture...' : 'Submit Examination'}
+            {isSubmitting ? 'Evaluating Alignment...' : 'Submit Audit Answers'}
           </button>
         </div>
       </div>
@@ -227,7 +227,7 @@ export default function ExamClient() {
         <div className="modal-overlay">
           <div className="modal-content">
             <h2 className="modal-title text-wine">Final Confirmation</h2>
-            <p className="modal-text">You are about to submit your Entrance Examination. Once submitted, your answers will be sealed and evaluated by the assessment team.</p>
+            <p className="modal-text">You are about to submit your Mindset Alignment Audit. Once submitted, your answers will be sealed and evaluated by the alignment team.</p>
             <p className="modal-text font-bold">Are you absolutely sure you want to proceed?</p>
             <div className="modal-actions mt-4">
               <button className="btn btn-secondary" onClick={() => setShowConfirm(false)}>Cancel & Review</button>

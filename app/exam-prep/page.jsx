@@ -42,12 +42,12 @@ export default async function ExamPrep() {
           You have paid the price of entry. Now, you must pay the price of attention.
         </p>
         <div className="ui-notice-box urgent-notice mb-4">
-          <strong className="text-wine">EXAMINATION PROTOCOL INITIATED:</strong>
+          <strong className="text-wine">AUDIT PROTOCOL INITIATED:</strong>
           <p className="mt-2">
-            The video below, and the manifesto that follows it, form the absolute foundation of your FoxRevo Entrance Examination. This is not casual consumption. This is the blueprint of your deprogramming. <strong>25 questions will be drawn directly from this material.</strong> 
+            The video below, and the manifesto that follows it, form the absolute foundation of your FoxRevo Readiness Audit. This is not casual consumption. This is the blueprint of your deprogramming. <strong>25 questions will be drawn directly from this material.</strong> 
           </p>
           <p className="mt-2">
-            Watch the video completely. Study the text meticulously. Internalize the mathematics of rebellion. When you are absolutely certain you are ready, proceed to the examination portal at the bottom of this page.
+            Watch the video completely. Study the text meticulously. Internalize the mathematics of rebellion. When you are absolutely certain you are ready, proceed to the alignment audit portal at the bottom of this page.
           </p>
         </div>
       </section>
@@ -497,14 +497,14 @@ export default async function ExamPrep() {
 
       </article>
 
-      {/* PROCEED TO EXAM SECTION */}
+      {/* PROCEED TO AUDIT SECTION */}
       <section className="section-block text-center border-top mt-4 mb-4">
         <h2>Are You Ready?</h2>
         <p className="mt-2 mb-4 text-secondary">
-          By proceeding, you confirm that you have watched the video, read the manifesto, and are fully prepared to take the FoxRevo Entrance Examination. You have 2 attempts.
+          By proceeding, you confirm that you have watched the video, read the manifesto, and are fully prepared to take the FoxRevo Readiness Audit. You have 2 attempts.
         </p>
         <Link href="/exam-instructions" className="btn btn-primary btn-large">
-          I Am Ready. Proceed to Exam Instructions
+          I Am Ready. Proceed to Audit Instructions
         </Link>
       </section>
 

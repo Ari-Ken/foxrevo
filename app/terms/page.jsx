@@ -42,48 +42,48 @@ export default function Terms() {
         <div className="terms-list-container">
           <div className="term-item">
             <h3>1. The Profile Initialization Fee</h3>
-            <p>The current registration fee to initialize your profile and access the entrance examination is <strong>₦3,000</strong> (payment gateway and transaction charges may apply depending on your location).</p>
+            <p>The current registration fee to initialize your profile and access the Mindset Alignment Check is <strong>₦3,000</strong> (payment gateway and transaction charges may apply depending on your location).</p>
           </div>
           
           <div className="term-item">
             <h3>2. Vetted Builder Threshold</h3>
-            <p>This fee is introductory. <strong className="text-wine">Notice:</strong> The profile initialization fee automatically increases to <strong>₦5,000</strong> after 1,000 verified builders have cleared the entrance standards.</p>
+            <p>This fee is introductory. <strong className="text-wine">Notice:</strong> The profile initialization fee automatically increases to <strong>₦5,000</strong> after 1,000 verified builders have cleared the alignment standards.</p>
           </div>
           
           <div className="term-item">
             <h3>3. Strict No-Refund Policy</h3>
             <p><strong>There are absolutely no refunds under any circumstances.</strong></p>
-            <p>You are paying to initialize your candidate profile on the verification database. The fee covers the computation of your examination, RLS table security configurations, and credential verification checks. If you fail the exam, the process is still executed. Therefore, no refunds are issued. Do not apply if you are not certain of your commitment.</p>
+            <p>You are paying to initialize your candidate profile on the verification database. The fee covers the computation of your alignment scores, RLS table security configurations, and credential verification checks. If you do not satisfy the audit criteria, the process is still executed. Therefore, no refunds are issued. Do not apply if you are not certain of your commitment.</p>
           </div>
         </div>
       </section>
 
-      {/* SECTION 3: THE EXAMINATION & INTEGRITY REGULATIONS */}
+      {/* SECTION 3: THE ALIGNMENT CHECK & INTEGRITY REGULATIONS */}
       <section className="section-block">
-        <h2>The Entrance Examination</h2>
+        <h2>The Readiness Audit</h2>
         <p>
-          The exam verifies your mental readiness to receive the modular training vault.
+          The alignment check verifies your mental readiness to receive the modular training vault.
         </p>
         
         <div className="terms-list-container">
           <div className="term-item">
-            <h3>1. Mandatory Entrance Exam</h3>
-            <p>Payment of the fee does not grant automatic access to the dashboard utilities. You must pass the FoxRevo Entrance Examination (45/50 passing mark).</p>
+            <h3>1. Mandatory Alignment Check</h3>
+            <p>Payment of the fee does not grant automatic access to the dashboard utilities. You must pass the FoxRevo Readiness Audit (45/50 passing mark).</p>
           </div>
           
           <div className="term-item">
             <h3>2. The Two-Attempt Gate</h3>
-            <p>You are granted exactly <strong>two (2) attempts</strong> to clear the examination.</p>
+            <p>You are granted exactly <strong>two (2) attempts</strong> to satisfy the audit criteria.</p>
             <ul className="bullet-list" style={{ paddingLeft: '20px', marginTop: '8px' }}>
               <li>If you pass, your access credentials activate, unlocking the deprogramming roadmap.</li>
-              <li>If you fail both attempts, your profile is locked out. You can reset your logs and re-register by paying the profile fee again, resetting your exam attempts limit.</li>
+              <li>If you fail both attempts, your profile is locked out. You can reset your logs and re-register by paying the profile fee again, resetting your audit attempts limit.</li>
             </ul>
           </div>
           
           <div className="term-item">
-            <h3>3. Cheating Disqualification</h3>
-            <p className="text-wine font-bold">Any candidate attempting to copy, use external resources, or falsify examination inputs will be permanently disqualified.</p>
-            <p>The exam measures your baseline deprogramming. Cheating defeats the purpose of mindset rewiring. Facilitators monitor logs; compromised profiles are banned immediately.</p>
+            <h3>3. Integrity Disqualification</h3>
+            <p className="text-wine font-bold">Any candidate attempting to copy, use external resources, or falsify alignment inputs will be permanently disqualified.</p>
+            <p>The audit measures your baseline deprogramming. Bypassing defeats the purpose of mindset rewiring. Facilitators monitor logs; compromised profiles are banned immediately.</p>
           </div>
         </div>
       </section>
@@ -92,7 +92,7 @@ export default function Terms() {
       <section className="section-block">
         <h2>The Anti-Sharing Clause (Protecting the Process)</h2>
         <p>This is the core regulation of the FoxRevo community.</p>
-        <p>Sharing your dashboard credentials or downloaded files with someone who did not earn them is not generosity—it is robbery. You are robbing them of the detox and examination process required to change their mindset.</p>
+        <p>Sharing your dashboard credentials or downloaded files with someone who did not earn them is not generosity—it is robbery. You are robbing them of the detox and audit process required to change their mindset.</p>
         
         <div className="terms-list-container mt-4">
           <div className="term-item">
@@ -142,7 +142,7 @@ export default function Terms() {
       {/* SECTION 7: THE FINAL DECLARATION */}
       <section className="section-block declaration-section">
         <h2>Do You Accept?</h2>
-        <p>You have read the terms. You acknowledge that the initialization fee is non-refundable, exam limits are enforced, cheating triggers blacklisting, and sharing materials compromises the process.</p>
+        <p>You have read the terms. You acknowledge that the initialization fee is non-refundable, audit limits are enforced, cheating triggers blacklisting, and sharing materials compromises the process.</p>
         <p className="mt-4">
           If you accept these terms, proceed to the register block and initialize your profile.
         </p>

@@ -277,7 +277,7 @@ export default function AdmissionClient({ initialIsOpen, openDateStr }) {
               <div style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', gap: '20px', margin: '20px 0' }}>
                 <div>
                   <h4 style={{ color: 'var(--text-primary)', marginBottom: '4px' }}>1. Join the Preparatory WhatsApp Group</h4>
-                  <p style={{ color: 'var(--text-secondary)', fontSize: '14px', margin: 0 }}>Get exam materials. See proof. Know the exact opening time before others.</p>
+                  <p style={{ color: 'var(--text-secondary)', fontSize: '14px', margin: 0 }}>Get audit prep materials. See proof. Know the exact opening time before others.</p>
                 </div>
                 
                 <a 
@@ -326,7 +326,7 @@ export default function AdmissionClient({ initialIsOpen, openDateStr }) {
 
                 <div>
                   <h4 style={{ color: 'var(--text-primary)', marginBottom: '4px' }}>3. Prepare Yourself</h4>
-                  <p style={{ color: 'var(--text-secondary)', fontSize: '14px', margin: 0 }}>Read the foundational article. The exam is timed. Proctored. Standard. Come ready or don't come at all.</p>
+                  <p style={{ color: 'var(--text-secondary)', fontSize: '14px', margin: 0 }}>Read the foundational article. The audit is timed. Automated. Standard. Come ready or don't come at all.</p>
                 </div>
               </div>
             </div>
@@ -335,9 +335,9 @@ export default function AdmissionClient({ initialIsOpen, openDateStr }) {
 
             {/* Support / Already passed */}
             <div className="support-section text-center">
-              <h4>Already Passed the Exam?</h4>
+              <h4>Already Completed the Audit?</h4>
               <p>
-                If you passed the entrance exam in a previous window and have not received your exam record document, contact us: <strong className="accent-color">+234 707 742 2928</strong>
+                If you completed the readiness audit in a previous window and have not received your clearance document, contact us: <strong className="accent-color">+234 707 742 2928</strong>
               </p>
             </div>
           </div>
@@ -363,7 +363,7 @@ export default function AdmissionClient({ initialIsOpen, openDateStr }) {
             </div>
             <h1 className="admission-headline">The Gates Are Open. <br />Complete Your Registration Now.</h1>
             <p className="admission-subheadline">
-              Admission is open for a limited window. To enter the cohort, you must register your identity, pay the ₦3,000 entrance examination fee, and pass the assessment.
+              Admission is open for a limited window. To enter the cohort, you must register your identity, pay the ₦3,000 profile audit fee, and clear the alignment assessment.
             </p>
           </div>
 
@@ -377,7 +377,7 @@ export default function AdmissionClient({ initialIsOpen, openDateStr }) {
             <div>
               <h4>The Admission Rule</h4>
               <p>
-                We do not sell documents. We do not sell certificates. You are paying for the right to sit the entrance examination. If you score 45% or above, you are admitted. If you fail both attempts, your fee is lost and access is permanently denied.
+                We do not sell documents. We do not sell certificates. You are paying for the right to complete the Readiness Audit. If you clear the alignment threshold, you are admitted. If you fail both attempts, your fee is lost and access is permanently denied.
               </p>
               <p className="warning-bold">
                 If you are looking for easy shortcuts, exit this page immediately.
@@ -449,7 +449,7 @@ export default function AdmissionClient({ initialIsOpen, openDateStr }) {
                 type="submit" 
                 className="btn btn-primary btn-large w-full mt-4"
               >
-                Register & Pay Exam Fee
+                Register & Pay Audit Fee
               </button>
             </form>
           </div>

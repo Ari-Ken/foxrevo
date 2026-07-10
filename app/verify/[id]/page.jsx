@@ -61,7 +61,7 @@ export default async function VerificationPage({ params }) {
                 <span className="detail-value font-inter">{candidate.email}</span>
               </div>
               <div className="detail-item">
-                <span className="detail-label">VERIFICATION EXAM SCORE</span>
+                <span className="detail-label">ALIGNMENT AUDIT SCORE</span>
                 <span className="detail-value">{candidate.exam_score} / 50</span>
               </div>
               <div className="detail-item">
@@ -72,7 +72,7 @@ export default async function VerificationPage({ params }) {
 
             <div className="verification-attestation">
               <p>
-                This attests that the individual above has successfully satisfied the deprogramming exam standards and has demonstrated complete mastery of structural capital and asset compounding systems.
+                This attests that the individual above has successfully satisfied the deprogramming alignment standards and has demonstrated complete mastery of structural capital and asset compounding systems.
               </p>
             </div>
 
@@ -101,7 +101,7 @@ export default async function VerificationPage({ params }) {
             <div className="error-checks-list text-left">
               <h5>Potential Causes:</h5>
               <ul>
-                <li>The candidate profile is waitlisted or has not passed the entrance exam.</li>
+                <li>The candidate profile is waitlisted or has not completed the alignment audit.</li>
                 <li>The transaction clearance is still pending verification.</li>
                 <li>The credential link is corrupted or missing path parameters.</li>
               </ul>

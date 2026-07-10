@@ -283,7 +283,7 @@ export default function Home() {
               <span>Initialize FoxRevo OS (₦3,000) →</span>
             </a>
             <p className="hero-cta-subtext">
-              ₦3,000 profile fee | Entrance Exam required | Two attempts | Certificate on Graduation
+              ₦3,000 profile fee | Readiness Audit included | Two attempts | Certificate on Graduation
             </p>
             <p className="hero-warning-text font-outfit">
               ⚠️ Profile activation fee increases to ₦5,000 after 1,000 verified builders are confirmed.
@@ -343,7 +343,7 @@ export default function Home() {
                 className={`sidebar-tab ${activeMockupTab === 'exam' ? 'active' : ''}`}
               >
                 <ShieldCheck size={16} />
-                <span>Entrance Exam</span>
+                <span>Readiness Audit</span>
               </button>
               <button 
                 onClick={() => setActiveMockupTab('certificate')} 
@@ -387,10 +387,10 @@ export default function Home() {
               {activeMockupTab === 'exam' && (
                 <div className="exam-mockup animate-fade">
                   <div className="exam-header-mock">
-                    <h4>FoxRevo Entrance Exam Center</h4>
+                    <h4>FoxRevo Readiness Audit Center</h4>
                     <span className="timer-mock">⏱️ 29:45 remaining</span>
                   </div>
-                  <p className="panel-desc">You are permitted 2 attempts at the entrance examination. Try the sample question below:</p>
+                  <p className="panel-desc">You are permitted 2 attempts at the readiness audit. Try the sample question below:</p>
 
                   <div className="quiz-question-box">
                     <h5 className="question-text">
@@ -770,18 +770,18 @@ export default function Home() {
       <section className="section-block padding-y" id="how-to-register">
         <h2>The Platform Entry Gate</h2>
         <p className="lead-paragraph">
-          FoxRevo OS enforces performance entry filters. The dashboard workspace is locked until candidates pass structural validation.
+          FoxRevo OS enforces profile alignment checks. The dashboard workspace is locked until candidates satisfy deprogramming alignment criteria.
         </p>
         
         <p style={{ fontWeight: '700', color: 'var(--text-primary)', marginTop: '24px' }}>Here is how it works:</p>
         <ol className="register-steps">
           <li>Read the platform documentation article we provide.</li>
-          <li>Take the automated entrance examination.</li>
-          <li>The verification engine analyzes your deprogramming scores.</li>
+          <li>Complete the automated Readiness Audit.</li>
+          <li>The verification engine analyzes your alignment scores.</li>
           <li>If approved, your credentials activate, granting full database access.</li>
         </ol>
         <p className="text-secondary" style={{ fontSize: '14px', fontStyle: 'italic', marginTop: '12px' }}>
-          Candidates are permitted two attempts at the verification exam. Treat the first one seriously.
+          Candidates are permitted two attempts at the alignment audit. Treat the first one seriously.
         </p>
 
         <div className="button-group-desktop mt-4">
@@ -805,9 +805,9 @@ export default function Home() {
         <ul className="terms-list" style={{ marginTop: '24px' }}>
           <li>Registration fee is <strong>₦3,000</strong>. Bank charges may apply by location.</li>
           <li><strong>No refunds.</strong> Commit before you pay.</li>
-          <li>Entrance examination is <strong>mandatory</strong>.</li>
-          <li>You have <strong>two attempts</strong> at the exam.</li>
-          <li><strong>No cheating.</strong> Anyone found compromising the exam is permanently disqualified.</li>
+          <li>Mindset alignment audit is <strong>mandatory</strong>.</li>
+          <li>You have <strong>two attempts</strong> at the audit.</li>
+          <li><strong>No cheating.</strong> Anyone found compromising the audit is permanently disqualified.</li>
         </ul>
 
         <p style={{ margin: '24px 0', fontStyle: 'italic', fontWeight: '600', color: 'var(--text-primary)' }}>
@@ -934,12 +934,12 @@ export default function Home() {
 
           <div className={`faq-item ${openFaq === 2 ? 'active' : ''}`}>
             <button className="faq-question" onClick={() => toggleFaq(2)} type="button">
-              <span>Why is there an entrance exam?</span>
+              <span>Why is there an alignment audit?</span>
               <span className="faq-toggle-icon">{openFaq === 2 ? '－' : '＋'}</span>
             </button>
             <div className="faq-answer">
               <p>
-                A: Because who you learn alongside matters. The exam confirms you are ready to receive what is inside, not to reject you. Prepare and you will be fine.
+                A: Because who you learn alongside matters. The audit confirms you are ready to receive what is inside, not to reject you. Prepare and you will be fine.
               </p>
             </div>
           </div>
@@ -1002,7 +1002,7 @@ export default function Home() {
             <span>Initialize FoxRevo OS (₦3,000) →</span>
           </a>
           <p className="hero-cta-subtext" style={{ maxWidth: '640px', margin: '12px auto 0' }}>
-            ₦3,000 | Two Exam Attempts | Certificate on Completion<br />
+            ₦3,000 | Two Audit Attempts | Certificate on Completion<br />
             Fee increases to ₦5,000 after 1,000 finalists are confirmed.
           </p>
         </div>
@@ -1029,7 +1029,7 @@ export default function Home() {
         <div className="sticky-cta-container">
           <div className="sticky-cta-left">
             <strong>FoxRevo OS Initializer</strong>
-            <span>₦3,000 Profile Fee • Exam Included • No Refunds</span>
+            <span>₦3,000 Profile Fee • Audit Included • No Refunds</span>
           </div>
           <div className="sticky-cta-right">
             <a href="#register" onClick={handleScrollToRegister} className="btn-sticky-cta neon-btn">

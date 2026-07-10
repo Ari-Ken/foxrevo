@@ -78,7 +78,7 @@ export default function About() {
           <strong>Transformation cannot be downloaded. It must be earned.</strong>
         </p>
         <p>
-          This is why we maintain strict entry filters: a mandatory entrance examination, a two-attempt limit, and an absolute no-refund policy. Every member inside the dashboard workspace has proven their commitment to deprogramming.
+          This is why we maintain strict entry filters: a mandatory mindset alignment audit, a two-attempt limit, and an absolute no-refund policy. Every member inside the dashboard workspace has proven their commitment to deprogramming.
         </p>
         
         <ul className="philosophy-list">
@@ -120,7 +120,7 @@ export default function About() {
         <h2>Deploy Your Wealth OS Today.</h2>
         <p>Africa has enough noise. It needs builders. System-thinking, asset-compounding builders.</p>
         <p>
-          If you are ready to stop performing success and start architecting it, your seat in the workspace is ready. Initialize your profile, pass the clearance exam, and start deprogramming.
+          If you are ready to stop performing success and start architecting it, your seat in the workspace is ready. Initialize your profile, complete the Readiness Audit, and start deprogramming.
         </p>
 
         <div className="button-group-vertical mt-4">

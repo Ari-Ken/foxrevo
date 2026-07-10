@@ -297,7 +297,7 @@ export default function TrainingExamClient({ part, candidate }) {
         <div className="modal-overlay">
           <div className="modal-content">
             <h2 className="modal-title text-wine">Evaluate Assessment?</h2>
-            <p className="modal-text">You are about to submit your confirmation test. Once submitted, your answers will be scored and logged.</p>
+            <p className="modal-text">You are about to submit your confirmation check. Once submitted, your answers will be scored and logged.</p>
             <p className="modal-text font-bold">Are you ready to submit?</p>
             <div className="modal-actions mt-4">
               <button className="btn btn-secondary" onClick={() => setShowConfirm(false)}>Review Answers</button>

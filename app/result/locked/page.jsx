@@ -27,7 +27,7 @@ function LockedContent() {
         </div>
 
         <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6', marginBottom: '32px', fontSize: '16px' }}>
-          You have exhausted all your examination attempts. You are not ready for this specific revolution at this time. We protect the integrity of this process above all else. Your records have been sealed. 
+          You have exhausted all your audit attempts. You are not ready for this specific revolution at this time. We protect the integrity of this process above all else. Your records have been sealed. 
         </p>
 
         <Link href="/" style={{ display: 'inline-block', width: '100%', padding: '16px', backgroundColor: 'var(--bg-tertiary)', color: 'var(--text-secondary)', border: '1px solid var(--border-medium)', fontWeight: '700', textDecoration: 'none', borderRadius: '4px', fontSize: '18px', transition: 'all 0.2s' }}>

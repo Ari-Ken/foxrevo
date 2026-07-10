@@ -12,17 +12,17 @@ export default function InstructionsClient() {
         
         <div style={{ borderBottom: '1px solid var(--border-medium)', paddingBottom: '24px', marginBottom: '32px' }}>
           <h1 style={{ fontSize: '32px', fontWeight: '800', color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '1px' }}>
-            Examination Protocols
+            Readiness Audit Protocols
           </h1>
           <p style={{ color: 'var(--text-secondary)', marginTop: '8px', fontSize: '16px' }}>
-            Standard Computer-Based Testing (CBT) Rules & Regulations
+            Standard Alignment Checks & Guidelines
           </p>
         </div>
 
         <div className="ui-notice-box urgent-notice mb-6" style={{ borderLeft: '4px solid #A51C30' }}>
-          <strong style={{ color: '#A51C30', fontSize: '18px' }}>⚠️ CRITICAL WARNING</strong>
+          <strong style={{ color: '#A51C30', fontSize: '18px' }}>⚠️ ATTENTION REQUIRED</strong>
           <p style={{ marginTop: '8px', color: 'var(--text-primary)', lineHeight: '1.6' }}>
-            You are about to enter a highly sensitive, timed examination environment. Do not proceed until you have carefully read and understood every instruction below. Ignorance of the protocols will not be accepted as an excuse for technical failures.
+            You are about to enter a timed alignment audit workspace. Do not proceed until you have carefully read and understood every instruction below. Ignorance of the protocols will not be accepted as an excuse for technical failures.
           </p>
         </div>
 
@@ -35,7 +35,7 @@ export default function InstructionsClient() {
 
             
             <li style={{ marginBottom: '20px' }}>
-              <strong style={{ color: 'var(--text-primary)' }}>Time Constraints:</strong> The examination is strictly timed. A digital timer will be visible at the top of your screen. When the timer hits <code>00:00</code>, your answers will be automatically submitted exactly as they are. Manage your time efficiently.
+              <strong style={{ color: 'var(--text-primary)' }}>Time Constraints:</strong> The audit check is strictly timed. A digital timer will be visible at the top of your screen. When the timer hits <code>00:00</code>, your answers will be automatically submitted exactly as they are. Manage your time efficiently.
             </li>
             
             <li style={{ marginBottom: '20px' }}>
@@ -70,7 +70,7 @@ export default function InstructionsClient() {
               style={{ marginTop: '6px', marginRight: '16px', width: '20px', height: '20px', accentColor: '#A51C30' }}
             />
             <span style={{ color: 'var(--text-primary)', fontSize: '15px', lineHeight: '1.6' }}>
-              I declare that I have read the examination protocols. I understand that my identity is tied to my current session, and that refreshing the page will terminate my session. I am ready to begin.
+              I declare that I have read the alignment protocols. I understand that my identity is tied to my current session, and that refreshing the page will terminate my session. I am ready to begin.
             </span>
           </label>
         </div>
@@ -86,7 +86,7 @@ export default function InstructionsClient() {
               pointerEvents: agreed ? 'auto' : 'none'
             }}
           >
-            Commence Examination
+            Commence Readiness Audit
           </Link>
         </div>
 
