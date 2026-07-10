@@ -8,12 +8,12 @@ export default function Terms() {
       
       {/* PAGE HEADER / HERO SECTION */}
       <section className="section-block hero-section">
-        <h1 className="hero-headline">The Terms of Entry. The Architecture of Commitment.</h1>
+        <h1 className="hero-headline">The Terms of Entry. The Rules of the Operating System.</h1>
         <p className="hero-subheadline">
-          FoxRevo is not a subscription. It is not a casual seminar. It is a deliberate, disciplined dismantling of your old self and the construction of a new one. The terms below are not bureaucracy. They are the first construction site of your new life.
+          FoxRevo OS is a disciplined deprogramming environment. The terms below are not administrative bureaucracy. They are the structural rules that protect the integrity of the platform.
         </p>
         <p className="hero-warning">
-          Read them carefully. If you cannot accept them, do not apply. The revolution is not for everyone. It is only for those who are ready to earn it.
+          Read them carefully. If you cannot accept them, do not apply. The system is only for those who are ready to satisfy the criteria.
         </p>
       </section>
 
@@ -25,13 +25,10 @@ export default function Terms() {
           <strong>Transformation cannot be downloaded. It must be earned.</strong>
         </p>
         <p>
-          The principles inside FoxRevo are not just information; they are transformation tools. A person who receives this revolution without going through the process of committing, paying the price of attention, and proving their readiness will read the same words as a committed member, and nothing will change inside them. Not because the words are less powerful, but because they did not break their old self down first.
+          The manual, the assets tracker, and the community feed inside FoxRevo are deprogramming tools. A person who receives this operating system without going through the process of committing, paying the price of attention, and proving their readiness will not change. 
         </p>
         <p>
-          These terms are designed to protect the integrity of the process. They are designed to ensure that when you receive the blueprints, the soil of your mind has been properly prepared to receive them.
-        </p>
-        <p className="protection-clause">
-          <strong>The revolution protects its own. And to do that, it must be fiercely selective.</strong>
+          These terms protect the integrity of the community. They ensure that when you enter the workspace, you are surrounded by verified builders.
         </p>
       </section>
 
@@ -39,107 +36,97 @@ export default function Terms() {
       <section className="section-block">
         <h2>The Investment and The Standard</h2>
         <p>
-          The registration fee is not a purchase price for information. It is the first physical demonstration of your commitment. It is the moment you prove that you value your transformation enough to invest in it.
+          The registration fee is the first physical demonstration of your commitment. You are registering your profile on the secure verification engine.
         </p>
         
         <div className="terms-list-container">
           <div className="term-item">
-            <h3>1. The Registration Fee</h3>
-            <p>The current registration fee to access the entrance examination and the foundational materials is <strong>₦3,000</strong> (bank charges may apply depending on your country/location and payment gateway).</p>
+            <h3>1. The Profile Initialization Fee</h3>
+            <p>The current registration fee to initialize your profile and access the entrance examination is <strong>₦3,000</strong> (payment gateway and transaction charges may apply depending on your location).</p>
           </div>
           
           <div className="term-item">
-            <h3>2. The 2026 Finalist Threshold</h3>
-            <p>This fee is introductory. <strong className="text-wine">Notice:</strong> Our registration fee will automatically increase to <strong>₦5,000</strong> as soon as we round up our first 1,000 finalists for 2026. Secure your position now.</p>
+            <h3>2. Vetted Builder Threshold</h3>
+            <p>This fee is introductory. <strong className="text-wine">Notice:</strong> The profile initialization fee automatically increases to <strong>₦5,000</strong> after 1,000 verified builders have cleared the entrance standards.</p>
           </div>
           
           <div className="term-item">
-            <h3>3. The Strict No-Refund Policy</h3>
+            <h3>3. Strict No-Refund Policy</h3>
             <p><strong>There are absolutely no refunds under any circumstances.</strong></p>
-            <p>You are not paying for a product; you are paying for entry into a process. The fee covers the administrative architecture of your assessment, the maintenance of the examination portal, and the curation of the community. If you register and decide not to take the exam, or if you fail the exam, the process has still been executed on our end. The soil was still prepared. Therefore, no refunds will be issued. Do not pay this fee if you are not 100% certain of your intention to see the process through.</p>
+            <p>You are paying to initialize your candidate profile on the verification database. The fee covers the computation of your examination, RLS table security configurations, and credential verification checks. If you fail the exam, the process is still executed. Therefore, no refunds are issued. Do not apply if you are not certain of your commitment.</p>
           </div>
         </div>
       </section>
 
       {/* SECTION 3: THE EXAMINATION & INTEGRITY REGULATIONS */}
       <section className="section-block">
-        <h2>The Crucible of the Entrance Exam</h2>
+        <h2>The Entrance Examination</h2>
         <p>
-          The entrance examination is not a gatekeeping mechanism designed to keep you out. It is a mirror designed to show you who you already are. It proves, before the lesson begins, that you are ready to receive it.
+          The exam verifies your mental readiness to receive the modular training vault.
         </p>
         
         <div className="terms-list-container">
           <div className="term-item">
-            <h3>1. Mandatory Examination</h3>
-            <p>Payment of the registration fee does not grant you automatic access to the core revolution materials. You must successfully pass the FoxRevo Entrance Examination.</p>
+            <h3>1. Mandatory Entrance Exam</h3>
+            <p>Payment of the fee does not grant automatic access to the dashboard utilities. You must pass the FoxRevo Entrance Examination (45/50 passing mark).</p>
           </div>
           
           <div className="term-item">
-            <h3>2. The Rule of Two Chances</h3>
-            <p>You are granted exactly <strong>two (2) attempts</strong> to pass the examination.</p>
-            <ul className="bullet-list">
-              <li>If you pass on the first or second attempt, you will be accepted into the revolution.</li>
-              <li>If you fail both attempts, your registration will be closed. We protect the integrity of the community by ensuring only those who demonstrate readiness are admitted. There are no third chances, no appeals, and no exceptions.</li>
+            <h3>2. The Two-Attempt Gate</h3>
+            <p>You are granted exactly <strong>two (2) attempts</strong> to clear the examination.</p>
+            <ul className="bullet-list" style={{ paddingLeft: '20px', marginTop: '8px' }}>
+              <li>If you pass, your access credentials activate, unlocking the deprogramming roadmap.</li>
+              <li>If you fail both attempts, your profile is locked out. You can reset your logs and re-register by paying the profile fee again, resetting your exam attempts limit.</li>
             </ul>
           </div>
           
           <div className="term-item">
-            <h3>3. Zero Tolerance for Cheating</h3>
-            <p className="text-wine font-bold">There is a strict, zero-tolerance policy against cheating, using AI to generate answers, or having another person take the exam on your behalf.</p>
-            <p>The exam is a mirror showing you who you are—<em>do not lie to it</em>. If you cheat, you are not tricking FoxRevo; you are only robbing yourself of the very transformation you came here to find. Any member found to have cheated will be immediately and permanently banned, and their fee will be forfeited.</p>
+            <h3>3. Cheating Disqualification</h3>
+            <p className="text-wine font-bold">Any candidate attempting to copy, use external resources, or falsify examination inputs will be permanently disqualified.</p>
+            <p>The exam measures your baseline deprogramming. Cheating defeats the purpose of mindset rewiring. Facilitators monitor logs; compromised profiles are banned immediately.</p>
           </div>
         </div>
       </section>
 
       {/* SECTION 4: INTELLECTUAL PROPERTY & ANTI-SHARING */}
       <section className="section-block">
-        <h2>Protecting the Process (The Anti-Robbery Clause)</h2>
-        <p>This is the most critical regulation of the FoxRevo revolution.</p>
-        <p>Someone may ask you to share your login, your PDF, or your access to the revolution with them. They may frame it as generosity. They may say, <em>"Help me na, just send it."</em></p>
-        <div className="ui-notice-box urgent-notice mt-4 mb-4">
-          <strong>Sharing this material with someone who did not earn it is not kindness. It is robbery.</strong>
-        </div>
-        <p>
-          You are not robbing FoxRevo. You are robbing <em>them</em>. If they receive the materials without going through the detox, without paying the fee, and without passing the exam, the words will not change them. You will be giving them a shortcut that costs them the very transformation they need most.
-        </p>
-
+        <h2>The Anti-Sharing Clause (Protecting the Process)</h2>
+        <p>This is the core regulation of the FoxRevo community.</p>
+        <p>Sharing your dashboard credentials or downloaded files with someone who did not earn them is not generosity—it is robbery. You are robbing them of the detox and examination process required to change their mindset.</p>
+        
         <div className="terms-list-container mt-4">
           <div className="term-item">
-            <h3>1. Strict Non-Transferability</h3>
-            <p>Your registration, login credentials, and access to all FoxRevo materials (including <em>The Wealth Revolution</em> book, lectures, and community forums) are strictly non-transferable.</p>
+            <h3>1. Non-Transferable Access</h3>
+            <p>Your dashboard profile, cryptographic ID, and training vault are mapped strictly to your verified email identity.</p>
           </div>
           <div className="term-item">
-            <h3>2. Prohibition of Sharing</h3>
-            <p>You may not share, distribute, copy, record, or forward any part of the FoxRevo materials to any third party. This includes sending files via WhatsApp, email, or uploading them to any public or private drive.</p>
+            <h3>2. Distribution Ban</h3>
+            <p>You may not share or forward any part of the FoxRevo OS manuals, lectures, or directories. This includes WhatsApp groups, public repositories, or cloud drives.</p>
           </div>
           <div className="term-item">
-            <h3>3. Revocation for Sharing</h3>
-            <p>If our systems detect that your credentials have been shared, or if you are found distributing the materials, your access will be <strong className="text-wine">immediately and permanently revoked without refund</strong>. You will be expelled from the revolution.</p>
+            <h3>3. Immediate Expulsion</h3>
+            <p>If our security systems detect multiple concurrent sessions or unauthorized distribution of assets, your access token is <strong className="text-wine">permanently blacklisted</strong> without appeal or refund.</p>
           </div>
         </div>
-
-        <p className="mt-4">
-          <em>If you want someone to have access to this revolution, send them to FoxRevo. Let them earn it. That is the greatest gift you can give them.</em>
-        </p>
       </section>
 
       {/* SECTION 5: CODE OF CONDUCT & COMMUNITY STANDARDS */}
       <section className="section-block">
-        <h2>The Builder's Ethos</h2>
-        <p>When you are accepted into FoxRevo, you are entering a sanctuary of excellence. The noise of the outside world is not permitted inside.</p>
+        <h2>The Builder's Code</h2>
+        <p>Accepted members enter a focused sanctuary of legated wealth builders. Distractions and noise are prohibited.</p>
         
         <div className="terms-list-container mt-4">
           <div className="term-item">
             <h3>1. No Performance, Only Building</h3>
-            <p>You will not use the FoxRevo community or materials to perform success. You will not use the platform to solicit members for your schemes, promote your shortcuts, or sell your noise. You are here to build.</p>
+            <p>You will not use the TikTok of Wealth feed or community forums to perform success. You will not promote get-rich schemes or pitch external offers. You are here to document real metrics and systems.</p>
           </div>
           <div className="term-item">
             <h3>2. Radical Responsibility</h3>
-            <p>You will not use the community to complain about the government, the economy, or your environment without also taking radical responsibility for your own outcomes. We acknowledge the barriers, but we do not use them as excuses.</p>
+            <p>Complaints about the environment, the economy, or external barriers are not permitted without logging your personal structural response. We audit leaks; we do not nurse excuses.</p>
           </div>
           <div className="term-item">
-            <h3>3. Respect for the Architecture</h3>
-            <p>You will respect the process, the examiners, the facilitators, and your fellow members. Disruptive, abusive, or entitled behavior will result in immediate removal.</p>
+            <h3>3. Vetted Collaboration</h3>
+            <p>Respect other builders, registry facilitators, and CAC/banking directory partners. Abusive behavior results in immediate token revocation.</p>
           </div>
         </div>
       </section>
@@ -148,27 +135,28 @@ export default function Terms() {
       <section className="section-block">
         <h2>The Right of Exit</h2>
         <p>
-          FoxRevo reserves the right to terminate your membership and revoke your access to all materials, without refund, at its sole discretion, if you violate any of these terms, compromise the integrity of the examination, or breach the code of conduct.
-        </p>
-        <p className="mt-4 text-wine font-bold">
-          Once expelled for a violation of these terms, you are permanently barred from re-entering the FoxRevo revolution.
+          FoxRevo OS reserves the right to terminate your account and blacklist your cryptographic verification ID if you violate these terms or compromise assessment integrity. Expelled profiles are permanently locked.
         </p>
       </section>
 
       {/* SECTION 7: THE FINAL DECLARATION */}
       <section className="section-block declaration-section">
         <h2>Do You Accept?</h2>
-        <p>You have read the terms. You understand that this is not a casual purchase. You understand that the fee is non-refundable, the exam allows only two chances, cheating results in immediate expulsion, and sharing the materials is an act of robbery against the recipient.</p>
+        <p>You have read the terms. You acknowledge that the initialization fee is non-refundable, exam limits are enforced, cheating triggers blacklisting, and sharing materials compromises the process.</p>
         <p className="mt-4">
-          If you accept these terms, you are ready to proceed to the checkout and begin the registration process.
+          If you accept these terms, proceed to the register block and initialize your profile.
         </p>
         <p>
-          If you do not accept these terms, <strong>do not apply.</strong> Close this page. The revolution will still be here when you are ready to take it seriously.
+          If you do not accept, close this portal. The operating system will be here when you are ready to take it seriously.
         </p>
 
         <div className="button-group-vertical mt-4">
-          <Link href="/register" className="btn btn-primary">I Accept. Proceed to Registration.</Link>
-          <Link href="/" className="btn btn-secondary">I Do Not Accept. Take Me Back to the Homepage.</Link>
+          <Link href="/register" className="btn btn-primary" style={{ background: 'var(--accent-gradient)', border: '1px solid rgba(255, 62, 108, 0.3)', fontWeight: '700' }}>
+            I Accept. Initialize FoxRevo OS (₦3,000)
+          </Link>
+          <Link href="/" className="btn btn-secondary">
+            I Do Not Accept. Return to Homepage
+          </Link>
         </div>
       </section>
 

@@ -8,35 +8,29 @@ export default function About() {
       
       {/* PAGE HEADER / HERO SECTION */}
       <section className="section-block hero-section">
-        <h1 className="hero-headline">We Are Not Here to Motivate You. We Are Here to Change You.</h1>
+        <h1 className="hero-headline">Not a Motivation Seminar. An Operating System Upgrade.</h1>
         <p className="hero-subheadline">
-          FoxRevo is not a seminar. It is not a collection of quotes designed to make you feel inspired for 48 hours. It is the deliberate dismantling of the lies you were taught about wealth, and the installation of the principles that actually built the world.
+          FoxRevo OS is not a book you skim or a series of motivational quotes. It is a systematic deprogramming utility. We dismantle the default employee programming installed in the African builder, and deploy first-principles wealth architectures.
         </p>
         <div className="image-placeholder main-image" style={{ padding: 0, overflow: 'hidden' }}>
-          <img src="/image001.jpg" alt="FoxRevo Mission Blueprint" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          <img src="/image001.jpg" alt="FoxRevo OS Blueprint" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
         </div>
       </section>
 
       {/* SECTION 1: THE ORIGIN */}
       <section className="section-block">
-        <h2>The Grief That Built This Revolution</h2>
+        <h2>The Grief That Built This OS</h2>
         <p>
-          FoxRevo was not born in a boardroom. It was not conceptualized in a strategy meeting. It was forged in grief.
+          FoxRevo was not conceived in a corporate brainstorm. It was born out of profound grief.
         </p>
         <p>
-          Before FoxRevo was a revolution, it was a quiet, breaking realization. I watched my generation—brilliant, fiery, full of a potential that could make the world tremble—choose to pour all of it into noise.
+          We watched a generation of brilliant African minds—creative, resilient, capable of global dominance—spend their sharpest years trading hours for pennies. We saw developers building world-class platforms for overseas clients while their own asset columns stayed empty.
         </p>
         <p>
-          I watched young Nigerians spend their sharpest years chasing viral moments, performing lifestyles they could not afford, and treating the idea of building something real as a joke only naive people tell. I grieved for the boy who sold his future for a fast move. I grieved for the graduate who was smart enough to change everything but was never taught what to do with that smartness.
+          The problem was never talent. The problem was the curriculum. The educational and cultural systems installed in us were designed to make us useful to someone else's wealth, never to master our own.
         </p>
         <p>
-          I grieved for the Google that was never built here. For the Apple conceived in a Lagos bedroom and never made it past a dream. For the Amazon that could have started in Aba and conquered Africa, but did not, because no one told the founder that the principles for building it already existed.
-        </p>
-        <p>
-          No one translated it for them. That was the gap. That was the grief. And that grief became the fuel.
-        </p>
-        <p>
-          I realized that Africa does not need one more person waiting for change. Africa needs people who have decided to <em>become</em> the change. FoxRevo was built to find them, deprogram them, and hand them the blueprints.
+          FoxRevo OS exists to bridge this gap. We translate the documented wealth playbooks of Warren Buffett, Elon Musk, and Aliko Dangote into actionable software utilities and frameworks specifically tailored for the African builder.
         </p>
         <p className="founder-signoff">
           <strong>— Benedict A., Founder</strong>
@@ -45,99 +39,97 @@ export default function About() {
 
       {/* SECTION 2: THE MISSION */}
       <section className="section-block">
-        <h2>Our Mission: The Architecture of a New Africa</h2>
+        <h2>System Architecture: The Moats We Deploy</h2>
         <p>
-          We exist to close the gap between the potential of the African mind and the reality of African wealth. We do this by extracting the hard-won wisdom of the world's greatest builders—Buffett, Dangote, Musk, Kiyosaki, Thiel—and translating it directly into the African context.
+          We do not just hand out books. We build functional SaaS dashboard tools to structure your transition from active contractor to asset architect:
         </p>
-        <p>Our mission is precise, uncompromising, and non-negotiable:</p>
         
         <div className="mission-points">
           <div className="mission-point">
-            <h3>1. To Deprogram the Noise</h3>
-            <p>We are here to dismantle the fast-money, get-rich-quick, social-media-performance mentality that has hijacked the ambitions of a generation. We tear down the lies installed in the African mind without permission.</p>
+            <h3>1. The Subconscious Detox</h3>
+            <p>Overwrite money wounds and get-rich-quick fallacies. Audit your baseline cash flows, clear overhead leaks, and name the specific unproductive noises draining your capital.</p>
           </div>
           <div className="mission-point">
-            <h3>2. To Install the Builder's Operating System</h3>
-            <p>We install the wealth mindset, the entrepreneurial frameworks, and the leadership principles that built companies worth hundreds of billions of dollars. We replace the psychology of the consumer with the architecture of the creator.</p>
+            <h3>2. Asset Column Tracker</h3>
+            <p>Deploy interactive personal balance sheets inside your platform workspace. Chart asset-to-liability ratios and monitor your compounding progress in real-time.</p>
           </div>
           <div className="mission-point">
-            <h3>3. To Translate Global Wisdom for African Realities</h3>
-            <p>We do not just admire Silicon Valley or Wall Street from a distance. We take those principles and apply them to Nigerian markets, African realities, and the specific, beautiful, difficult challenges of building on this continent.</p>
+            <h3>3. Lean Validation Wizard</h3>
+            <p>Test business concepts against first-principles friction points. Secure customer pre-signups and evaluate your ideas before spending setup capital.</p>
           </div>
           <div className="mission-point">
-            <h3>4. To Produce Legacy Architects</h3>
-            <p>We are here to produce founders, not just employees. Builders, not just consumers. Legacy architects, not just hustle performers.</p>
+            <h3>4. Vetted Partner Directory</h3>
+            <p>Connect directly with trusted CAC legal registration agents, corporate dollar banking channels, and integration developers to solve local operational friction.</p>
           </div>
           <div className="mission-point">
-            <h3>5. To Be The Starting Point</h3>
-            <p>Our ultimate measure of success is this: To be the starting point of the story that a Nigerian billionaire tells in an interview thirty years from now, when they say, <em>"It all started when I encountered the FoxRevo revolution."</em></p>
+            <h3>5. Public Cryptographic Registry</h3>
+            <p>Secure verifiable credentials on our registry page (`/verify/[id]`). Display your verified examination scores to global clients and investors.</p>
           </div>
         </div>
       </section>
 
       {/* SECTION 3: THE PHILOSOPHY */}
       <section className="section-block">
-        <h2>Why We Are Different (And Why We Are Uncompromising)</h2>
+        <h2>Uncompromising Quality Standards</h2>
         <p>
-          If you are looking for a place to be told that you are already perfect just the way you are, FoxRevo is not for you.
+          FoxRevo OS is built only for serious architects. Commitment is the first barrier to entry.
         </p>
         <p className="highlight-truth">
-          We operate on a fundamental truth: <strong>Transformation cannot be downloaded. It must be earned.</strong>
+          <strong>Transformation cannot be downloaded. It must be earned.</strong>
         </p>
         <p>
-          This is why we do not just hand out information. Information without transformation is just entertainment. This is why we have an entrance examination. This is why we require you to read, to study, and to prove you are serious before the reward arrives.
+          This is why we maintain strict entry filters: a mandatory entrance examination, a two-attempt limit, and an absolute no-refund policy. Every member inside the dashboard workspace has proven their commitment to deprogramming.
         </p>
         
         <ul className="philosophy-list">
-          <li><strong>The Detox:</strong> We first clear the ground. We destroy the money wounds, the scarcity mindsets, and the addiction to noise that were installed in you by a system designed to keep you dependent.</li>
-          <li><strong>The Rewire:</strong> We lay the foundation. We install the disciplines of delayed gratification, compound thinking, and the silent builder's identity.</li>
-          <li><strong>The Build:</strong> We hand you the blueprints. We teach you the money architecture, the obsession principle, and the leadership crucible required to construct a legacy.</li>
+          <li><strong>Step 1: The Detox</strong> - Clear mental noise and lock unproductive cash leaks.</li>
+          <li><strong>Step 2: The Rewire</strong> - Master strategic leverage and identify African commercial friction.</li>
+          <li><strong>Step 3: The Build</strong> - Validate systems with minimal cash and launch compounding assets.</li>
         </ul>
 
         <p className="protection-clause">
-          We protect this process fiercely. We do not allow our materials to be shared with those who have not earned them, because giving someone a shortcut robs them of the very transformation they need most. <strong>The revolution protects its own.</strong>
+          We protect this operating system fiercely. Giving someone a shortcut robs them of the transformation process. <strong>The system protects its own.</strong>
         </p>
       </section>
 
       {/* SECTION 4: THE VISION */}
       <section className="section-block">
-        <h2>The 2035 Projection: What We Are Building Toward</h2>
+        <h2>The 2035 Projection</h2>
         <p>
-          We are not just building bank accounts; we are building the infrastructure of a new African economy. By the year 2035, the FoxRevo revolution will have directly catalyzed the following realities across the continent:
+          By the year 2035, the builders using FoxRevo OS will have established the cornerstone of a new African economy:
         </p>
         
         <ul className="projection-list">
-          <li><strong>[X]</strong> New African Billionaires Forged</li>
-          <li><strong>[X]</strong> African Millionaires Produced</li>
-          <li><strong>[X]</strong> Tech Companies Built in Africa</li>
-          <li><strong>[X]</strong> Globally Recognized Companies Originating from Africa</li>
-          <li><strong>[X]</strong> World-Competing Entrepreneurs</li>
-          <li><strong>[X]</strong> Visionary Leaders Rewiring their Communities</li>
+          <li><strong>[X]</strong> Vetted African Billionaires Forged</li>
+          <li><strong>[X]</strong> Compounding Millionaire Asset Columns</li>
+          <li><strong>[X]</strong> Moat-Protected Tech Startups</li>
+          <li><strong>[X]</strong> Globally Competitive African Brands</li>
+          <li><strong>[X]</strong> System-Thinking Legacy Architects</li>
         </ul>
 
         <p>
-          We see a day when the world looks at the next great global tech giant, the next great industrial monopoly, the next great financial institution, and asks: <em>"Did this really come from Africa?"</em>
+          We see a day when the world looks at the next great global conglomerate and asks: <em>"Did this really come from Africa?"</em>
         </p>
         <p>
-          And the answer will be: <em>Yes. And it was built by the architects of the FoxRevo revolution.</em>
+          And the answer will be: <em>Yes. And it was built by the architects of FoxRevo OS.</em>
         </p>
       </section>
 
       {/* SECTION 5: THE INVITATION */}
       <section className="section-block">
-        <h2>The Revolution Has Already Begun. Are You In?</h2>
-        <p>Africa has enough noise. Enough flash. Enough performance.</p>
-        <p>Africa needs builders. Disciplined, obsessed, long-game-playing, systems-thinking, legacy-obsessed builders.</p>
+        <h2>Deploy Your Wealth OS Today.</h2>
+        <p>Africa has enough noise. It needs builders. System-thinking, asset-compounding builders.</p>
         <p>
-          If you are tired of performing success and are ready to start building it, your seat at the table is waiting. But you must earn it. You must pass the exam. You must commit to the detox.
-        </p>
-        <p>
-          Read the terms. Take the examination. Prove to yourself, before the lesson begins, that you are ready to receive it.
+          If you are ready to stop performing success and start architecting it, your seat in the workspace is ready. Initialize your profile, pass the clearance exam, and start deprogramming.
         </p>
 
         <div className="button-group-vertical mt-4">
-          <Link href="/register" className="btn btn-primary">Begin the Registration Process</Link>
-          <Link href="/terms" className="btn btn-secondary">Read the Entrance Terms & FAQs</Link>
+          <Link href="/register" className="btn btn-primary" style={{ background: 'var(--accent-gradient)', border: '1px solid rgba(255, 62, 108, 0.3)', fontWeight: '700' }}>
+            Initialize FoxRevo OS (₦3,000) →
+          </Link>
+          <Link href="/terms" className="btn btn-secondary" style={{ borderRadius: '8px' }}>
+            Review OS Entrance Terms →
+          </Link>
         </div>
       </section>
 

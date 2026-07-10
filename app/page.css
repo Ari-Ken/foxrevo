@@ -153,6 +153,22 @@
   border-color: rgba(255, 62, 108, 0.2);
 }
 
+.os-slider-card {
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid rgba(255, 62, 108, 0.2) !important;
+  box-shadow: 0 0 30px rgba(255, 62, 108, 0.05);
+}
+
+@media (max-width: 768px) {
+  .os-slider-card {
+    min-height: 480px;
+    padding: 32px 20px !important;
+  }
+}
+
 /* Hero Badge */
 .saas-badge {
   display: inline-flex;

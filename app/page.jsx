@@ -39,6 +39,48 @@ export default function Home() {
 
   // Interactive Curriculum Explorer Tab state
   const [activeCurriculumTab, setActiveCurriculumTab] = useState('part1'); // 'part1' | 'part2' | 'part3'
+  
+  // Interactive OS Guide Slider state
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const osSlides = [
+    {
+      title: "The Book IS the Operating System",
+      badge: "SLIDE 1: SYSTEM DEFINITION",
+      text: "FoxRevo OS is not literature to skim for entertainment. It is software for your mind. Sourced from the documented wealth patterns of Musk, Buffett, and Dangote, it is designed to overwrite the default employee curriculum and install a permanent, lifetime wealth-builder mindset.",
+      icon: "⚙️"
+    },
+    {
+      title: "Phase 1: Download & Detox",
+      badge: "SLIDE 2: PHASE ONE INITIALIZATION",
+      text: "After onboarding, download Part 1 (The Detox) directly to your dashboard. You will read with a physical notebook to audit your cash flows, locate structural overhead leaks, and name the specific psychological and physical noise elements draining your focus.",
+      icon: "📥"
+    },
+    {
+      title: "Phase 2: Mandatory Assessments",
+      badge: "SLIDE 3: CHECKPOINT FILTER GATE",
+      text: "FoxRevo OS is a sequential operating system. You cannot skip chapters. At the completion of each part of the book, you must log into your dashboard and sit the corresponding assessment exam. Passing is the only way to unlock the next part.",
+      icon: "🛡️"
+    },
+    {
+      title: "Phase 3: The Rewire Protocol",
+      badge: "SLIDE 4: SUBCONSCIOUS UPGRADE",
+      text: "In Part 2 (The Rewire), the OS changes how your mind processes opportunity. You will master first-principles deconstruction, study microeconomic asset pillars, and locate hidden cash flow within market friction in African realities.",
+      icon: "🧠"
+    },
+    {
+      title: "Phase 4: Lean Validation Wizard",
+      badge: "SLIDE 5: MODEL TESTING & VALIDATION",
+      text: "Part 3 (The Build) transitions you from theory to execution. You will outline your Minimum Viable Offer (MVO) and deploy it to get target customer pre-signups, evaluating your ideas using the platform's wizard before spending capital.",
+      icon: "🧪"
+    },
+    {
+      title: "Phase 5: Graduate Registry",
+      badge: "SLIDE 6: CREDENTIAL ACTIVATION",
+      text: "Clearing all checks locks in your verified status. Your credentials activate on the public cryptographic registry, and you gain lifetime access to the private builder forum to launch legacy projects with fellow architects.",
+      icon: "🎓"
+    }
+  ];
 
   const voiceQuotes = [
     "I would not mind paying more for this. It is worth it.",
@@ -435,6 +477,70 @@ export default function Home() {
                 </div>
               )}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* INTERACTIVE OS GUIDE SLIDER (SLIDE 1 TO 6) */}
+      <section className="section-block padding-y" id="os-guide">
+        <div className="text-center" style={{ marginBottom: '40px' }}>
+          <div className="saas-badge mini">SYSTEM OPERATIONS MANUAL</div>
+          <h2>How the Wealth Operating System Works</h2>
+          <p className="section-subtitle font-inter">The book is not literature. It is software for your mind. Study the 6 phases of deployment below.</p>
+        </div>
+
+        <div className="glass-card os-slider-card animate-scale" style={{ padding: '40px', position: 'relative' }}>
+          <div className="os-slide-icon-bg" style={{ fontSize: '48px', marginBottom: '20px' }}>
+            {osSlides[currentSlide].icon}
+          </div>
+          
+          <span style={{ fontSize: '11px', color: 'var(--accent-neon)', fontWeight: '700', letterSpacing: '0.08em', textTransform: 'uppercase', display: 'block', marginBottom: '8px' }}>
+            {osSlides[currentSlide].badge}
+          </span>
+          
+          <h3 style={{ fontSize: '24px', fontWeight: '800', color: 'var(--text-primary)', marginBottom: '16px', fontFamily: 'var(--font-outfit), sans-serif' }}>
+            {osSlides[currentSlide].title}
+          </h3>
+
+          <p style={{ fontSize: '15.5px', color: 'var(--text-secondary)', lineHeight: '1.7', margin: '0 0 32px 0' }}>
+            {osSlides[currentSlide].text}
+          </p>
+
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '24px' }}>
+            <button 
+              onClick={() => setCurrentSlide((prev) => (prev > 0 ? prev - 1 : osSlides.length - 1))}
+              className="btn-submit-cta mini-btn outlined-btn"
+              style={{ padding: '8px 16px', fontSize: '13px' }}
+            >
+              ← Previous
+            </button>
+
+            <div style={{ display: 'flex', gap: '8px' }}>
+              {osSlides.map((_, idx) => (
+                <button 
+                  key={idx}
+                  onClick={() => setCurrentSlide(idx)}
+                  style={{
+                    width: '10px',
+                    height: '10px',
+                    borderRadius: '50%',
+                    backgroundColor: currentSlide === idx ? 'var(--accent-neon)' : 'var(--border-light)',
+                    border: 'none',
+                    cursor: 'pointer',
+                    transition: 'background-color 0.2s'
+                  }}
+                  aria-label={`Go to slide ${idx + 1}`}
+                />
+              ))}
+            </div>
+
+            <button 
+              onClick={() => setCurrentSlide((prev) => (prev < osSlides.length - 1 ? prev + 1 : 0))}
+              className="btn-submit-cta mini-btn"
+              style={{ padding: '8px 16px', fontSize: '13px' }}
+            >
+              Next →
+            </button>
           </div>
         </div>
       </section>
