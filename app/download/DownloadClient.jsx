@@ -105,7 +105,7 @@ export default function DownloadClient() {
               onClick={handleDownload}
               disabled={!covenantChecked || isDownloading}
             >
-              {isDownloading ? 'Decrypting Secure Vault...' : '📥 Download "The Wealth Revolution" (PDF)'}
+              {isDownloading ? 'Decrypting Secure Vault...' : '📥 Download the Wealth OS (PDF)'}
             </button>
           </div>
           <p className="file-subtext">Secure, encrypted file. Size: 4.2 MB</p>

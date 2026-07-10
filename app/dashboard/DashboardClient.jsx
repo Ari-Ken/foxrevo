@@ -13,6 +13,45 @@ import CertificateButton from './CertificateButton';
 import CheckoutButton from './CheckoutButton';
 import './dashboard.css';
 
+const osSlides = [
+  {
+    title: "The Book IS the Operating System",
+    badge: "SLIDE 1: SYSTEM DEFINITION",
+    text: "FoxRevo OS is not literature to skim for entertainment. It is software for your mind. Sourced from the documented wealth patterns of Musk, Buffett, and Dangote, it is designed to overwrite the default employee curriculum and install a permanent, lifetime wealth-builder mindset.",
+    icon: "⚙️"
+  },
+  {
+    title: "Phase 1: Download & Detox",
+    badge: "SLIDE 2: PHASE ONE INITIALIZATION",
+    text: "After onboarding, download Part 1 (The Detox) directly to your dashboard. You will read with a physical notebook to audit your cash flows, locate structural overhead leaks, and name the specific psychological and physical noise elements draining your focus.",
+    icon: "📥"
+  },
+  {
+    title: "Phase 2: Mandatory Assessments",
+    badge: "SLIDE 3: CHECKPOINT FILTER GATE",
+    text: "FoxRevo OS is a sequential operating system. You cannot skip chapters. At the completion of each part of the book, you must log into your dashboard and complete the corresponding assessment check. Passing is the only way to unlock the next part.",
+    icon: "🛡️"
+  },
+  {
+    title: "Phase 3: The Rewire Protocol",
+    badge: "SLIDE 4: SUBCONSCIOUS UPGRADE",
+    text: "In Part 2 (The Rewire), the OS changes how your mind processes opportunity. You will master first-principles deconstruction, study microeconomic asset pillars, and locate hidden cash flow within market friction in African realities.",
+    icon: "🧠"
+  },
+  {
+    title: "Phase 4: Lean Validation Wizard",
+    badge: "SLIDE 5: MODEL TESTING & VALIDATION",
+    text: "Part 3 (The Build) transitions you from theory to execution. You will outline your Minimum Viable Offer (MVO) and deploy it to get target customer pre-signups, evaluating your ideas using the platform's wizard before spending capital.",
+    icon: "🧪"
+  },
+  {
+    title: "Phase 5: Graduate Registry",
+    badge: "SLIDE 6: CREDENTIAL ACTIVATION",
+    text: "Clearing all checks locks in your verified status. Your credentials activate on the public cryptographic registry, and you gain lifetime access to the private builder forum to launch legacy projects with fellow architects.",
+    icon: "🎓"
+  }
+];
+
 export default function DashboardClient({ candidate }) {
   const router = useRouter();
   const supabase = createClient();
@@ -55,6 +94,7 @@ export default function DashboardClient({ candidate }) {
   const [covenantChecked, setCovenantChecked] = useState(false);
   const [downloadStarted, setDownloadStarted] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
+  const [activeGuideSlide, setActiveGuideSlide] = useState(0);
 
   const isPaid = candidate.payment_status === true;
   const hasPassed = candidate.passed_exam === true;
@@ -445,63 +485,125 @@ export default function DashboardClient({ candidate }) {
                       <p style={{ margin: 0, fontSize: '14px', color: 'var(--text-secondary)', lineHeight: '1.5' }}>
                         You cleared the alignment audit with a score of {candidate.exam_score}/50. The modular training sequences are fully unlocked below.
                       </p>
-                    </div>
+                      {/* EMBEDDED BOOK DOWNLOAD CENTER (EMPHASIZED) */}
+                      <div style={{ backgroundColor: 'var(--bg-tertiary)', border: '1px solid rgba(255, 62, 108, 0.3)', borderRadius: '12px', padding: '32px', marginBottom: '32px', boxShadow: '0 0 20px rgba(255, 62, 108, 0.05)', textAlign: 'left' }}>
+                        <span style={{ fontSize: '11px', color: 'var(--accent-neon)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '8px' }}>CORE PLATFORM ASSET UNLOCKED</span>
+                        <h3 style={{ fontSize: '22px', fontWeight: '800', color: 'var(--text-primary)', marginBottom: '12px', fontFamily: 'var(--font-outfit), sans-serif' }}>
+                          📥 Download: The Wealth OS (Official Blueprint)
+                        </h3>
+                        
+                        <div style={{ color: 'var(--text-secondary)', fontSize: '14px', lineHeight: '1.6', marginBottom: '24px', backgroundColor: 'rgba(0,0,0,0.2)', padding: '16px 20px', borderRadius: '8px', borderLeft: '3px solid var(--accent)' }}>
+                          <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '6px' }}>The Covenant of the Revolution</strong>
+                          This blueprint was earned, not just downloaded. Sharing this file with someone who has not deprogrammed through the alignment audit is not generosity — it is a shortcut that robs them of their transformation. If you want someone to have access to this, send them to the platform. Let them earn their place.
+                        </div>
 
-                    {/* EMBEDDED BOOK DOWNLOAD CENTER (EMPHASIZED) */}
-                    <div style={{ backgroundColor: 'var(--bg-tertiary)', border: '1px solid rgba(255, 62, 108, 0.3)', borderRadius: '12px', padding: '32px', marginBottom: '32px', boxShadow: '0 0 20px rgba(255, 62, 108, 0.05)', textAlign: 'left' }}>
-                      <span style={{ fontSize: '11px', color: 'var(--accent-neon)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '8px' }}>CORE PLATFORM ASSET UNLOCKED</span>
-                      <h3 style={{ fontSize: '22px', fontWeight: '800', color: 'var(--text-primary)', marginBottom: '12px', fontFamily: 'var(--font-outfit), sans-serif' }}>
-                        📥 Download: The Wealth Revolution (Official Blueprint)
-                      </h3>
-                      
-                      <div style={{ color: 'var(--text-secondary)', fontSize: '14px', lineHeight: '1.6', marginBottom: '24px', backgroundColor: 'rgba(0,0,0,0.2)', padding: '16px 20px', borderRadius: '8px', borderLeft: '3px solid var(--accent)' }}>
-                        <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '6px' }}>The Covenant of the Revolution</strong>
-                        This blueprint was earned, not just downloaded. Sharing this file with someone who has not detoxed through the alignment audit is not generosity — it is a shortcut that robs them of their transformation. If you want someone to have access to this, send them to the platform. Let them earn their place.
-                      </div>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                          <label style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', cursor: 'pointer', textAlign: 'left' }}>
+                            <input 
+                              type="checkbox" 
+                              checked={covenantChecked}
+                              onChange={(e) => setCovenantChecked(e.target.checked)}
+                              style={{ marginTop: '3px', cursor: 'pointer' }}
+                            />
+                            <span style={{ fontSize: '13px', color: 'var(--text-secondary)', lineHeight: '1.4' }}>
+                              <strong>I understand and agree to protect the process.</strong> I will not share my access or the book files with anyone.
+                            </span>
+                          </label>
 
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                        <label style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', cursor: 'pointer', textAlign: 'left' }}>
-                          <input 
-                            type="checkbox" 
-                            checked={covenantChecked}
-                            onChange={(e) => setCovenantChecked(e.target.checked)}
-                            style={{ marginTop: '3px', cursor: 'pointer' }}
-                          />
-                          <span style={{ fontSize: '13px', color: 'var(--text-secondary)', lineHeight: '1.4' }}>
-                            <strong>I understand and agree to protect the process.</strong> I will not share my access or the book files with anyone.
-                          </span>
-                        </label>
+                          <div style={{ marginTop: '8px' }}>
+                            <button 
+                              onClick={handleDownload}
+                              disabled={!covenantChecked || isDownloading}
+                              className={`btn-submit-cta ${covenantChecked && !isDownloading ? 'neon-btn' : ''}`}
+                              style={{ 
+                                padding: '14px 28px', 
+                                fontSize: '15px', 
+                                width: '100%',
+                                backgroundColor: covenantChecked ? 'var(--accent)' : 'var(--bg-secondary)',
+                                color: covenantChecked ? '#fff' : 'var(--text-tertiary)',
+                                border: covenantChecked ? 'none' : '1px solid var(--border-light)',
+                                cursor: covenantChecked && !isDownloading ? 'pointer' : 'not-allowed',
+                                transition: 'all 0.2s',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center'
+                              }}
+                            >
+                              <span>{isDownloading ? 'Decrypting Secure Vault...' : '📥 Download the Wealth OS (PDF)'}</span>
+                            </button>
+                            <p style={{ margin: '8px 0 0 0', fontSize: '12px', color: 'var(--text-tertiary)' }}>Secure, encrypted file. Size: 4.2 MB</p>
+                          </div>
+                        </div>
 
-                        <div style={{ marginTop: '8px' }}>
-                          <button 
-                            onClick={handleDownload}
-                            disabled={!covenantChecked || isDownloading}
-                            className={`btn-submit-cta ${covenantChecked && !isDownloading ? 'neon-btn' : ''}`}
-                            style={{ 
-                              padding: '14px 28px', 
-                              fontSize: '15px', 
-                              width: '100%',
-                              backgroundColor: covenantChecked ? 'var(--accent)' : 'var(--bg-secondary)',
-                              color: covenantChecked ? '#fff' : 'var(--text-tertiary)',
-                              border: covenantChecked ? 'none' : '1px solid var(--border-light)',
-                              cursor: covenantChecked && !isDownloading ? 'pointer' : 'not-allowed',
-                              transition: 'all 0.2s',
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'center'
-                            }}
-                          >
-                            <span>{isDownloading ? 'Decrypting Secure Vault...' : '📥 Download "The Wealth Revolution" (PDF)'}</span>
-                          </button>
-                          <p style={{ margin: '8px 0 0 0', fontSize: '12px', color: 'var(--text-tertiary)' }}>Secure, encrypted file. Size: 4.2 MB</p>
+                        {downloadStarted && (
+                          <div style={{ marginTop: '16px', backgroundColor: 'rgba(16,185,129,0.08)', border: '1px solid #10B981', color: '#10B981', padding: '12px', borderRadius: '6px', fontSize: '13px', fontWeight: '600' }}>
+                            ✓ Decryption successful. Your download has started in a new tab.
+                          </div>
+                        )}
+
+                        {/* INTEGRATED 6-SLIDE GUIDE */}
+                        <div style={{ marginTop: '32px', borderTop: '1px solid var(--border-light)', paddingTop: '24px' }}>
+                          <span style={{ fontSize: '11px', color: 'var(--accent-neon)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '8px' }}>SYSTEM USER MANUAL</span>
+                          <h4 style={{ fontSize: '16px', fontWeight: '800', color: 'var(--text-primary)', marginBottom: '16px', margin: '0 0 16px 0' }}>
+                            How to Deploy and Use the Wealth OS
+                          </h4>
+
+                          <div style={{ backgroundColor: 'rgba(0,0,0,0.15)', border: '1px solid var(--border-light)', borderRadius: '8px', padding: '24px', position: 'relative' }}>
+                            <div style={{ fontSize: '32px', marginBottom: '12px' }}>
+                              {osSlides[activeGuideSlide].icon}
+                            </div>
+                            
+                            <span style={{ fontSize: '10px', color: 'var(--accent-neon)', fontWeight: '700', letterSpacing: '0.08em', textTransform: 'uppercase', display: 'block', marginBottom: '6px' }}>
+                              {osSlides[activeGuideSlide].badge}
+                            </span>
+                            
+                            <h5 style={{ fontSize: '15px', fontWeight: '800', color: 'var(--text-primary)', marginBottom: '8px', margin: '0 0 8px 0' }}>
+                              {osSlides[activeGuideSlide].title}
+                            </h5>
+
+                            <p style={{ fontSize: '13px', color: 'var(--text-secondary)', lineHeight: '1.6', margin: '0 0 20px 0' }}>
+                              {osSlides[activeGuideSlide].text}
+                            </p>
+
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                              <button 
+                                onClick={() => setActiveGuideSlide((prev) => (prev > 0 ? prev - 1 : osSlides.length - 1))}
+                                className="btn-submit-cta mini-btn outlined-btn"
+                                style={{ padding: '6px 12px', fontSize: '11px', border: '1px solid var(--border-light)', background: 'transparent', color: 'var(--text-primary)' }}
+                              >
+                                ← Prev
+                              </button>
+
+                              <div style={{ display: 'flex', gap: '6px' }}>
+                                {osSlides.map((_, idx) => (
+                                  <button 
+                                    key={idx}
+                                    onClick={() => setActiveGuideSlide(idx)}
+                                    style={{
+                                      width: '8px',
+                                      height: '8px',
+                                      borderRadius: '50%',
+                                      backgroundColor: activeGuideSlide === idx ? 'var(--accent-neon)' : 'var(--border-light)',
+                                      border: 'none',
+                                      cursor: 'pointer',
+                                      padding: 0
+                                    }}
+                                    aria-label={`Go to slide ${idx + 1}`}
+                                  />
+                                ))}
+                              </div>
+
+                              <button 
+                                onClick={() => setActiveGuideSlide((prev) => (prev < osSlides.length - 1 ? prev + 1 : 0))}
+                                className="btn-submit-cta mini-btn"
+                                style={{ padding: '6px 12px', fontSize: '11px', border: 'none', background: 'var(--accent)', color: '#fff' }}
+                              >
+                                Next →
+                              </button>
+                            </div>
+                          </div>
                         </div>
                       </div>
-
-                      {downloadStarted && (
-                        <div style={{ marginTop: '16px', backgroundColor: 'rgba(16,185,129,0.08)', border: '1px solid #10B981', color: '#10B981', padding: '12px', borderRadius: '6px', fontSize: '13px', fontWeight: '600' }}>
-                          ✓ Decryption successful. Your download has started in a new tab.
-                        </div>
-                      )}
                     </div>
 
                     {/* Academy Roadmap */}
