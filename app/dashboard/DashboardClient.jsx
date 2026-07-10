@@ -448,7 +448,7 @@ export default function DashboardClient({ candidate }) {
               </div>
 
               {/* Steps panel logic */}
-              <div className="glass-card" style={{ padding: '32px' }}>
+              <div className="glass-card dashboard-panel-card">
                 
                 {/* 1. Not paid */}
                 {!isPaid && (
@@ -486,7 +486,7 @@ export default function DashboardClient({ candidate }) {
                         You cleared the alignment audit with a score of {candidate.exam_score}/50. The modular training sequences are fully unlocked below.
                       </p>
                       {/* EMBEDDED BOOK DOWNLOAD CENTER (EMPHASIZED) */}
-                      <div style={{ backgroundColor: 'var(--bg-tertiary)', border: '1px solid rgba(255, 62, 108, 0.3)', borderRadius: '12px', padding: '32px', marginBottom: '32px', boxShadow: '0 0 20px rgba(255, 62, 108, 0.05)', textAlign: 'left' }}>
+                      <div className="download-os-container">
                         <span style={{ fontSize: '11px', color: 'var(--accent-neon)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '8px' }}>CORE PLATFORM ASSET UNLOCKED</span>
                         <h3 style={{ fontSize: '22px', fontWeight: '800', color: 'var(--text-primary)', marginBottom: '12px', fontFamily: 'var(--font-outfit), sans-serif' }}>
                           📥 Download: The Wealth OS (Official Blueprint)

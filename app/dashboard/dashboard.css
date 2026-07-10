@@ -95,8 +95,34 @@
 
 /* Tab Panels */
 .tab-panel-container {
-  max-width: 800px;
+  max-width: 950px;
   margin: 0 auto;
+}
+
+.download-os-container {
+  background-color: var(--bg-tertiary);
+  border: 1px solid rgba(255, 62, 108, 0.3);
+  border-radius: 12px;
+  padding: 32px;
+  margin-bottom: 32px;
+  box-shadow: 0 0 20px rgba(255, 62, 108, 0.05);
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .download-os-container {
+    padding: 16px !important;
+  }
+}
+
+.dashboard-panel-card {
+  padding: 32px;
+}
+
+@media (max-width: 768px) {
+  .dashboard-panel-card {
+    padding: 16px !important;
+  }
 }
 
 .panel-header-section {
